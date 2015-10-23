@@ -104,6 +104,19 @@ var SampleApp = function() {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache_get('index.html') );
         };
+
+        self.routes['/nettime'] = function(req, res){
+            res.setHeader('Content-Type', 'text/JSON');
+
+            var netDate = { 
+                "Response": 0110111,
+                "isThisReal": false;
+        };
+
+            var respString = JSON.stringify(netDate);
+
+            res.send(respString);
+        }
     };
 
 
