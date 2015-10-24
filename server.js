@@ -109,14 +109,14 @@ var SampleApp = function() {
             res.setHeader('Content-Type', 'text/JSON');
 
             var netDate = { 
-                "Response": 0110111,
-                "isThisReal": false;
-        };
+                "Response": 892,
+                "isThisReal": false
+            };
 
             var respString = JSON.stringify(netDate);
 
             res.send(respString);
-        }
+        };
     };
 
 
