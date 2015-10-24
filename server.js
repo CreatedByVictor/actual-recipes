@@ -108,7 +108,10 @@ var SampleApp = function() {
         self.routes['/nettime'] = function(req, res){
             res.setHeader('Content-Type', 'application/JSON');
 
+
             var newDate = new Date(Date.now());
+
+            var set
 
             var netDate = { 
                 "Response": 892,
@@ -117,7 +120,8 @@ var SampleApp = function() {
                     "hour": newDate.getHours(),
                     "minute": newDate.getMinutes(),
                     "second": newDate.getSeconds()
-                }
+                },
+                "timezoneOffset": newDate.getTimezoneOffset()
             };
 
             var respString = JSON.stringify(netDate);
