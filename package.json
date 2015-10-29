@@ -31,6 +31,6 @@
   "bundleDependencies": [],
 
   "private": true,
-  "old_main": "server.js",
-  "main":"$OPENSHIFT_REPO_DIR/node_modules/.bin/actionHero start"
+  "main": "server.js",
+  "bad_main":"$OPENSHIFT_REPO_DIR/node_modules/.bin/actionHero start"
 }
