@@ -1,36 +1,25 @@
-{
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
-  "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
-  ],
-  "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+ {
+  "author"      : "YOU <YOU@example.com>",
+  "name"        : "my_actionhero_project",
+  "description" : "my actionhero project",
+  "version"     : "0.0.1",
+  "engines"     : {
+    "node": ">=0.10.0"
   },
-  "homepage": "http://www.openshift.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+  "dependencies" : {
+    "actionhero" : "12.1.2",
+    "ws"         : "latest",
+    "grunt"      : "latest"
   },
-
-  "engines": {
-    "node": ">= 0.6.0",
-    "npm": ">= 1.0.0"
+  "devDependencies" : {
+    "mocha"  : "latest",
+    "should" : "latest"
   },
-
-  "dependencies": {
-    "express": "~3.4.4"
-  },
-  "devDependencies": {},
-  "bundleDependencies": [],
-
-  "private": true,
-  "main": "server.js",
-  "bad_main":"$OPENSHIFT_REPO_DIR/node_modules/.bin/actionHero start"
+  "scripts" : {
+    "help"         : "actionhero help",
+    "start"        : "actionhero start",
+    "actionhero"   : "actionhero",
+    "startCluster" : "actionhero startCluster",
+    "test"         : "mocha"
+  }
 }

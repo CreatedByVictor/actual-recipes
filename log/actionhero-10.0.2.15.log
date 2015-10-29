@@ -1,0 +1,32 @@
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-10-29T06:44:58.785Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-10-29T06:44:58.844Z"}
+{"level":"notice","message":"pid: 4447","timestamp":"2015-10-29T06:44:59.033Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-10-29T06:44:59.033Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-10-29T06:44:59.034Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-10-29T06:44:59.035Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-10-29T06:44:59.042Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-10-29T06:44:59.046Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-10-29T06:44:59.054Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-10-29T06:45:00.007Z"}
+{"level":"notice","message":"*** Server Started @ 2015-10-29 02:45:00 ***","timestamp":"2015-10-29T06:45:00.007Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-10-29T06:45:17.016Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-10-29T07:03:08.554Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-10-29T07:03:08.621Z"}
+{"level":"notice","message":"pid: 4551","timestamp":"2015-10-29T07:03:08.811Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-10-29T07:03:08.812Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-10-29T07:03:08.812Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-10-29T07:03:08.813Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-10-29T07:03:08.820Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-10-29T07:03:08.821Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-10-29T07:03:08.829Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-10-29T07:03:09.760Z"}
+{"level":"notice","message":"*** Server Started @ 2015-10-29 03:03:09 ***","timestamp":"2015-10-29T07:03:09.761Z"}
+{"to":"10.0.2.15","action":"showDocumentation","params":"{\"action\":\"showDocumentation\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:03:30.626Z"}
+{"to":"10.0.2.15","action":"status","params":"{\"action\":\"status\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:03:30.631Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:04:18.033Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:04:23.869Z"}
+{"to":"10.0.2.15","action":"status","params":"{\"action\":\"status\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:04:42.344Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:05:18.938Z"}
+{"to":"10.0.2.15","action":"showDocumentation","params":"{\"action\":\"showDocumentation\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:06:35.612Z"}
+{"to":"10.0.2.15","params":"{}","duration":1,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-10-29T07:06:53.757Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-10-29T07:14:13.996Z"}

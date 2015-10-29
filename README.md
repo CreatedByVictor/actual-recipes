@@ -1,4 +1,14 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
+# My actionhero Project
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
-# internet-woo-woo 
+*visit www.actionherojs.com for more information*
+
+## To install:
+(assuming you have [node](http://nodejs.org/) and NPM installed)
+
+`npm install`
+
+## To Run:
+`npm start`
+
+## To Test:
+`npm test`
