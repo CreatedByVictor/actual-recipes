@@ -21,5 +21,6 @@
     "actionhero"   : "actionhero",
     "startCluster" : "actionhero startCluster",
     "test"         : "mocha"
-  }
+  },
+  "main": "actionhero start"
 }
