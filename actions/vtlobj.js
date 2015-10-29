@@ -5,10 +5,10 @@ exports.vtlobj = {
 
   outputExample:{
     "name":{
-      "firstName":"Victor",
-      "middleName":"Thomas",
-      "lastName":"Lawrence",
-      "fullName":"Victor Lawrence",
+      "firstName":  "Victor",
+      "middleName": "Thomas",
+      "lastName":   "Lawrence",
+      "fullName":   "Victor Lawrence",
       "previousAliases": ["Viktor Wilczak", "Viktor Crane"]
     },
     "currentAge": {
@@ -25,7 +25,7 @@ exports.vtlobj = {
         "previousAliases":   ["Viktor Wilczak", "Victor Crane"]
     };
     data.response.currentAge  = {
-      "timestamp" = (new Date().getTime()) - (new Date("November 26, 1986 23:26:00").getTime())
+      "timestamp" : (new Date().getTime()) - (new Date("November 26, 1986 23:26:00").getTime())
     };
 
     next();
