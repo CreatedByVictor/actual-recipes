@@ -1,125 +1,111 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="recipeBook">
   <head>
+
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="en" />
     <meta name="description" content="actionhero.js" />
-    <link rel="stylesheet" href="/public/css/actionhero.css" type="text/css">
     <link rel="icon" href="/public/favicon.ico">
-    <title>actionhero.js</title>
+    <title>ActualRecipies</title>
 
     <script src="/public/javascript/actionheroClient.js"></script>
 
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.css"  media="screen,projection"/>
+    <link href="css/adjustments.css" rel="stylesheet" type="text/css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body>
-
-  <section class="intro">
-    <div class="intro-body">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <h1 class="brand-heading">actionhero</h1>
-            <p class="intro-text">The Reusable, Scalable, and Quick node.js API Server.</p>
-            <a href="http://github.com/evantahler/actionhero">
-                <img src="/public/logo/actionhero.png" width="300" />
-            </a>
-            <h2>Congratulations!</h2> 
-            <h3>Your actionhero server is working.</h3>
+      <div class="container" ng-controller="BookController as book">
+        <div ng-repeat="recipe in book.recipes" ng-controller="EditModeController as mode">
+          <div class="card" ng-hide="mode.isEditMode">
+            <div class="card-content amber lighten-3">
+              <a class="card-title grey-text text-darken-4">{{recipe.title}}</a>
+                <h6>{{ recipe.description }}</h6>
+                <h6>by <a href="{{recipe.link}}">{{recipe.username}}</a> on {{recipe.date | date}}</h6>
+              <div class="row">
+                <ul class="col s12 m5">
+                  <h5>Ingredients</h5>
+                  <li ng-repeat="ingredient in recipe.ingredients">{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}} {{ingredient.note}}</li>
+                </ul>
+                <ol class="col s12 m7">
+                  <h5>Directions</h5>
+                  <li ng-repeat="step in recipe.directions">{{step.value}}</li>
+                  <div class="divider amber darken-4"></div>
+                  <b ng-show="recipe.footnotes.length">Footnotes: </b>
+                  {{recipe.footnotes}}
+                </ol>
+              </div>
+              <a class="waves-effect waves-light btn" ng-click="mode.toggleEditMode()">Edit</a>
+            </div>
           </div>
+
+          <div ng-show="mode.isEditMode" class="">
+            <div class="row">
+              <div class="col s12">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">
+                      <input placeholder="Placeholder" ng-model="recipe.title" id="first_name" type="text" class="validate">
+                      <label for="first_name">First Name</label>
+                    </span>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input placeholder="Placeholder" id="no" type="text" class="validate">
+                        <label for="no">First Name</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Ingredients</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                  <div class="card-content white-text">
+                    <span class="card-title">Directions</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="waves-effect waves-light btn" ng-click="mode.toggleEditMode()" ng-show="mode.isEditMode">Done Editing</a>
+          </div>
+          </form>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="container content-section text-center">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        <h2>About actionhero</h2>
-        <p>actionhero.js is a multi-transport API Server with integrated cluster capabilities and delayed tasks.</p>
-        <p>actionhero was built from the ground up to include all the features you expect from a modern API framework. This includes all the features listed below and more.  actionhero also knows when to get out of the way to allow you to customize your stack to fit your needs.</p>
-        <br />
-        <br />
-        <br />
-        <h2><a href="/chat.html">Try a realtime-chat with websockets</a></h2>
-        <br />
-        <br />
-        <br />
-        <h2>Learn more @ <a href="http://www.actionherojs.com/docs">www.actionherojs.com/docs</a></h2>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section text-center">
-    <div class="features-section">
-      <div class="container">
-        <div class="row">
-          <h2>This Server</h2>
-
-          <div class="col-md-12">
-            <h4>Server Information:</h4>
-            <pre>
-Server Name:        <span class="right" id="serverName"></span>
-API Version:        <span class="right" id="serverVersion"></span>
-Actionhero Version  <span class="right" id="actionheroVersion"></span>
-Uptime (min):       <span class="right" id="uptime"></span>
-            </pre>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-        
-
-  <section class="container content-section text-center">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2">
-        <h2>Actions on This Server:</h2>
-        <span class="server_info" id="actions"></span>
-      </div>
-    </div>
-  </section>
-
-  <script type="text/javascript">
-    var populateStatus = function(data){
-      if(data.serverInformation){
-        document.getElementById('serverVersion').innerHTML = data.serverInformation.apiVersion;
-        document.getElementById('serverName').innerHTML = data.serverInformation.serverName;
-      }
-      document.getElementById('actionheroVersion').innerHTML = data.actionheroVersion;
-      document.getElementById('uptime').innerHTML = Math.round( data.uptime / 1000 / 60 );
-    }
-
-    var populateDocumentation = function(data){
-      for(var actionName in data.documentation){
-        for(var version in data.documentation[actionName]){
-          var action = data.documentation[actionName][version];
-          var row = '';
-          row += '<h4><a href="/api/' + action.name + '?apiVersion=' + version + '">' + action.name + ' (v' + version + ')</a></h4>';
-          row += '<pre>';
-          row += '<strong>Description</strong>: ' + action.description;
-          row += '<br /><br />';
-          row += '<strong>inputs</strong>: ' + JSON.stringify(action.inputs, null, 4);
-          row += '<br /><br />';
-          row += '<strong>output example</strong>: ' + JSON.stringify(action.outputExample, null, 4);
-          row += '</pre>';
-          row += '<br/>';
-          row += '<br/>';
-          document.getElementById('actions').innerHTML += row;
-        }
-      }
-    }
-
-    var client = new ActionheroClient();
-    client.action('showDocumentation', function(data){
-      if(data.error){ window.alert(data.error); }
-      populateDocumentation(data)
-    });
-
-    client.action('status', function(data){
-      if(data.error){ window.alert(data.error); }
-      populateStatus(data)
-    });
-  </script>
-
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/public/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/public/javascript/angular.min.js"></script>
+    <script type="text/javascript" src="/public/javascript/app.js"></script>
   </body>
 </html>
