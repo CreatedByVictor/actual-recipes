@@ -99,3 +99,446 @@
 {"level":"notice","message":"starting server: websocket","timestamp":"2015-11-01T05:47:23.674Z"}
 {"level":"notice","message":"environment: development","timestamp":"2015-11-01T05:47:25.261Z"}
 {"level":"notice","message":"*** Server Started @ 2015-11-01 01:47:25 ***","timestamp":"2015-11-01T05:47:25.262Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-01T17:26:10.075Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-01T17:26:38.276Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-01T17:26:38.356Z"}
+{"level":"notice","message":"pid: 2751","timestamp":"2015-11-01T17:26:38.541Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-01T17:26:38.542Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-01T17:26:38.544Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-01T17:26:38.544Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-01T17:26:38.553Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-01T17:26:38.554Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-01T17:26:38.562Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-01T17:26:39.500Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-01 12:26:39 ***","timestamp":"2015-11-01T17:26:39.501Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-02T01:34:05.471Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-02T01:34:05.521Z"}
+{"level":"notice","message":"pid: 1638","timestamp":"2015-11-02T01:34:05.719Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-02T01:34:05.719Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-02T01:34:05.720Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-02T01:34:05.720Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-02T01:34:05.726Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-02T01:34:05.729Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-02T01:34:05.738Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-02T01:34:06.706Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-01 20:34:06 ***","timestamp":"2015-11-02T01:34:06.707Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-02T05:43:33.241Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-02T05:43:33.512Z"}
+{"level":"notice","message":"pid: 1106","timestamp":"2015-11-02T05:43:34.846Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-02T05:43:34.847Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-02T05:43:34.847Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-02T05:43:34.848Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-02T05:43:34.856Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-02T05:43:34.858Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-02T05:43:34.866Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-02T05:43:36.354Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 00:43:36 ***","timestamp":"2015-11-02T05:43:36.355Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-02T13:51:23.538Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-02T13:51:23.799Z"}
+{"level":"notice","message":"pid: 1103","timestamp":"2015-11-02T13:51:25.390Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-02T13:51:25.391Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-02T13:51:25.391Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-02T13:51:25.392Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-02T13:51:25.401Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-02T13:51:25.401Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-02T13:51:25.409Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-02T13:51:26.823Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 08:51:26 ***","timestamp":"2015-11-02T13:51:26.823Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-02T14:46:46.537Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-02T14:46:46.814Z"}
+{"level":"notice","message":"pid: 1106","timestamp":"2015-11-02T14:46:48.237Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-02T14:46:48.238Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-02T14:46:48.238Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-02T14:46:48.239Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-02T14:46:48.247Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-02T14:46:48.248Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-02T14:46:48.259Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-02T14:46:49.734Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 09:46:49 ***","timestamp":"2015-11-02T14:46:49.734Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-02T14:46:53.623Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T00:17:54.344Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T00:17:54.398Z"}
+{"level":"notice","message":"pid: 1518","timestamp":"2015-11-03T00:17:54.618Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T00:17:54.618Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T00:17:54.619Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T00:17:54.620Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T00:17:54.630Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T00:17:54.631Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T00:17:54.638Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T00:17:55.699Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 19:17:55 ***","timestamp":"2015-11-03T00:17:55.700Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T00:18:14.869Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T00:18:36.820Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T00:18:36.869Z"}
+{"level":"notice","message":"pid: 1545","timestamp":"2015-11-03T00:18:37.072Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T00:18:37.073Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T00:18:37.073Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T00:18:37.074Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T00:18:37.083Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T00:18:37.084Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T00:18:37.092Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T00:18:38.074Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 19:18:38 ***","timestamp":"2015-11-03T00:18:38.075Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T00:18:45.692Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T02:08:43.139Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T02:08:43.192Z"}
+{"level":"notice","message":"pid: 1661","timestamp":"2015-11-03T02:08:43.406Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T02:08:43.407Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T02:08:43.407Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T02:08:43.408Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T02:08:43.417Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T02:08:43.418Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T02:08:43.427Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T02:08:44.454Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 21:08:44 ***","timestamp":"2015-11-03T02:08:44.455Z"}
+{"to":"10.0.2.15","params":"{\"s\":\"\\\"Whodat?\\\"\"}","duration":1,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:33:44.759Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:33:53.686Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T03:34:10.926Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T03:34:20.915Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T03:47:41.078Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T03:47:41.125Z"}
+{"level":"notice","message":"pid: 2053","timestamp":"2015-11-03T03:47:41.324Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T03:47:41.324Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T03:47:41.325Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T03:47:41.325Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T03:47:41.334Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T03:47:41.335Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T03:47:41.344Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T03:47:42.275Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 22:47:42 ***","timestamp":"2015-11-03T03:47:42.275Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T03:47:51.053Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T03:48:30.800Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T03:48:30.844Z"}
+{"level":"notice","message":"pid: 2079","timestamp":"2015-11-03T03:48:31.034Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T03:48:31.034Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T03:48:31.035Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T03:48:31.035Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T03:48:31.041Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T03:48:31.045Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T03:48:31.053Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T03:48:32.007Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 22:48:32 ***","timestamp":"2015-11-03T03:48:32.008Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T03:48:33.486Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T03:48:43.814Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T03:48:43.860Z"}
+{"level":"notice","message":"pid: 2098","timestamp":"2015-11-03T03:48:44.065Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T03:48:44.066Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T03:48:44.067Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T03:48:44.067Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T03:48:44.076Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T03:48:44.078Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T03:48:44.086Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T03:48:45.044Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 22:48:45 ***","timestamp":"2015-11-03T03:48:45.045Z"}
+{"to":"10.0.2.15","action":"vtlobj2","params":"{\"action\":\"vtlobj2\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:48:55.651Z"}
+{"to":"10.0.2.15","params":"{}","duration":1,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:49:06.848Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T03:50:54.249Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T03:50:58.225Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T03:50:58.273Z"}
+{"level":"notice","message":"pid: 2118","timestamp":"2015-11-03T03:50:58.461Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T03:50:58.462Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T03:50:58.462Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T03:50:58.463Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T03:50:58.470Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T03:50:58.478Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T03:50:59.407Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 22:50:59 ***","timestamp":"2015-11-03T03:50:59.407Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T03:50:59.409Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:51:06.970Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:51:40.209Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:51:47.284Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:51:53.822Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:51:56.738Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:52:00.565Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:52:01.819Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T03:52:29.935Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T03:52:35.836Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T03:52:35.881Z"}
+{"level":"notice","message":"pid: 2148","timestamp":"2015-11-03T03:52:36.072Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T03:52:36.072Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T03:52:36.073Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T03:52:36.073Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T03:52:36.082Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T03:52:36.083Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T03:52:36.091Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T03:52:37.053Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 22:52:37 ***","timestamp":"2015-11-03T03:52:37.054Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:52:49.720Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:53:00.725Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:53:02.072Z"}
+{"to":"10.0.2.15","action":"vtlobj2","params":"{\"action\":\"vtlobj2\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T03:53:05.405Z"}
+{"level":"alert","message":"! Failed to load /home/victor/fogwoods/blackoak/actions/vtlobj.js","timestamp":"2015-11-03T04:07:56.283Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T04:09:36.737Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T04:09:36.792Z"}
+{"level":"notice","message":"pid: 2215","timestamp":"2015-11-03T04:09:37.009Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T04:09:37.010Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T04:09:37.010Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T04:09:37.011Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T04:09:37.021Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T04:09:37.022Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T04:09:37.031Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T04:09:38.100Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 23:09:38 ***","timestamp":"2015-11-03T04:09:38.100Z"}
+{"to":"10.0.2.15","action":"vecho","params":"{\"action\":\"vecho\",\"apiVersion\":1}","duration":7,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:09:42.560Z"}
+{"to":"10.0.2.15","action":"showDocumentation","params":"{\"action\":\"showDocumentation\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:10:27.635Z"}
+{"to":"10.0.2.15","action":"status","params":"{\"action\":\"status\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:10:27.640Z"}
+{"to":"10.0.2.15","action":"vecho","params":"{\"apiVersion\":\"1\",\"action\":\"vecho\"}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:10:56.592Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T04:13:08.621Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T04:13:13.005Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T04:13:13.057Z"}
+{"level":"notice","message":"pid: 2250","timestamp":"2015-11-03T04:13:13.285Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T04:13:13.286Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T04:13:13.286Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T04:13:13.287Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T04:13:13.296Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T04:13:13.296Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T04:13:13.305Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T04:13:14.382Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 23:13:14 ***","timestamp":"2015-11-03T04:13:14.383Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":3,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:13:25.680Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T04:16:48.809Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T04:16:56.573Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T04:16:56.626Z"}
+{"level":"notice","message":"pid: 2287","timestamp":"2015-11-03T04:16:56.836Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T04:16:56.837Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T04:16:56.837Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T04:16:56.838Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T04:16:56.847Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T04:16:56.848Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T04:16:56.858Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T04:16:57.880Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-02 23:16:57 ***","timestamp":"2015-11-03T04:16:57.881Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":3,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:17:04.564Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"232\",\"action\":\"echo\",\"apiVersion\":1}","duration":5,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:17:09.719Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"tuesday walris\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:17:18.046Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"tuesday walrus\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:17:23.453Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"\\\"twentytwo\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:17:31.682Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:17:45.666Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default,\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:18:09.846Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default?\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:18:14.326Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default;\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:18:21.489Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default;S=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:18:43.506Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"defaultS=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:18:50.346Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default S=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:18:56.680Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default S=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:22:37.243Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:25:01.044Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:25:12.710Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:25:24.188Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:25:41.755Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"\\\"www\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:26:50.448Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"www\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:26:57.916Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"healthy\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:27:08.227Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"healthy\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:27:40.532Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"we have nothing to fear\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:28:14.639Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"we have nothing to fear\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:29:13.137Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"{\\\"habitat\\\":\\\"tuesday\\\"}\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:29:28.027Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T04:34:09.475Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T04:35:06.572Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T07:18:24.139Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T07:18:24.345Z"}
+{"level":"notice","message":"pid: 1118","timestamp":"2015-11-03T07:18:25.637Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T07:18:25.638Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T07:18:25.639Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T07:18:25.639Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T07:18:25.649Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T07:18:25.650Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T07:18:25.658Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T07:18:27.323Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-03 02:18:27 ***","timestamp":"2015-11-03T07:18:27.323Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T07:24:48.098Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T07:24:52.018Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T07:24:52.073Z"}
+{"level":"notice","message":"pid: 2029","timestamp":"2015-11-03T07:24:52.324Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T07:24:52.324Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T07:24:52.325Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T07:24:52.325Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T07:24:52.331Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T07:24:52.334Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T07:24:52.347Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T07:24:53.538Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-03 02:24:53 ***","timestamp":"2015-11-03T07:24:53.539Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":4,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:25:23.881Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:25:36.649Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:25:58.238Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:26:04.024Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T07:29:05.956Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T07:29:11.270Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T07:29:11.331Z"}
+{"level":"notice","message":"pid: 2133","timestamp":"2015-11-03T07:29:11.655Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T07:29:11.655Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T07:29:11.656Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T07:29:11.657Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T07:29:11.667Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T07:29:11.669Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T07:29:11.678Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T07:29:13.059Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-03 02:29:13 ***","timestamp":"2015-11-03T07:29:13.060Z"}
+{"level":"error","message":"! uncaught error from action: action:echo","timestamp":"2015-11-03T07:29:19.340Z"}
+{"level":"error","message":"! connection details:","timestamp":"2015-11-03T07:29:19.341Z"}
+{"level":"error","message":"!     remoteIP: \"10.0.2.15\"","timestamp":"2015-11-03T07:29:19.341Z"}
+{"level":"error","message":"!     type: \"web\"","timestamp":"2015-11-03T07:29:19.341Z"}
+{"level":"error","message":"!     params: {\"s\":\"default S=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","timestamp":"2015-11-03T07:29:19.341Z"}
+{"level":"error","message":"! TypeError: Object #<Object> has no method 'getOwnPropertyNames'","timestamp":"2015-11-03T07:29:19.353Z"}
+{"level":"error","message":"!     at Object.exports.echo.run (/home/victor/fogwoods/blackoak/actions/echo.js:18:28)","timestamp":"2015-11-03T07:29:19.356Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:285:31","timestamp":"2015-11-03T07:29:19.357Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:152:9","timestamp":"2015-11-03T07:29:19.357Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:697:13","timestamp":"2015-11-03T07:29:19.358Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:52:16","timestamp":"2015-11-03T07:29:19.359Z"}
+{"level":"error","message":"!     at iterate (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:263:24)","timestamp":"2015-11-03T07:29:19.359Z"}
+{"level":"error","message":"!     at async.forEachOfSeries.async.eachOfSeries (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:284:9)","timestamp":"2015-11-03T07:29:19.359Z"}
+{"level":"error","message":"!     at _parallel (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:688:9)","timestamp":"2015-11-03T07:29:19.359Z"}
+{"level":"error","message":"!     at Object.async.series (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:710:9)","timestamp":"2015-11-03T07:29:19.360Z"}
+{"level":"error","message":"!     at api.actionProcessor.preProcessAction (/home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:151:13)","timestamp":"2015-11-03T07:29:19.360Z"}
+{"level":"error","message":"*","timestamp":"2015-11-03T07:29:19.360Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default S=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":37,"error":"Error: The server experienced an internal error","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:29:19.363Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:29:25.327Z"}
+{"level":"error","message":"! uncaught error from action: action:echo","timestamp":"2015-11-03T07:29:29.903Z"}
+{"level":"error","message":"! connection details:","timestamp":"2015-11-03T07:29:29.903Z"}
+{"level":"error","message":"!     remoteIP: \"10.0.2.15\"","timestamp":"2015-11-03T07:29:29.904Z"}
+{"level":"error","message":"!     type: \"web\"","timestamp":"2015-11-03T07:29:29.905Z"}
+{"level":"error","message":"!     params: {\"s\":\"default S=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","timestamp":"2015-11-03T07:29:29.905Z"}
+{"level":"error","message":"! TypeError: Object #<Object> has no method 'getOwnPropertyNames'","timestamp":"2015-11-03T07:29:29.909Z"}
+{"level":"error","message":"!     at Object.exports.echo.run (/home/victor/fogwoods/blackoak/actions/echo.js:18:28)","timestamp":"2015-11-03T07:29:29.909Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:285:31","timestamp":"2015-11-03T07:29:29.909Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:152:9","timestamp":"2015-11-03T07:29:29.910Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:697:13","timestamp":"2015-11-03T07:29:29.910Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:52:16","timestamp":"2015-11-03T07:29:29.910Z"}
+{"level":"error","message":"!     at iterate (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:263:24)","timestamp":"2015-11-03T07:29:29.910Z"}
+{"level":"error","message":"!     at async.forEachOfSeries.async.eachOfSeries (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:284:9)","timestamp":"2015-11-03T07:29:29.911Z"}
+{"level":"error","message":"!     at _parallel (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:688:9)","timestamp":"2015-11-03T07:29:29.913Z"}
+{"level":"error","message":"!     at Object.async.series (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:710:9)","timestamp":"2015-11-03T07:29:29.914Z"}
+{"level":"error","message":"!     at api.actionProcessor.preProcessAction (/home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:151:13)","timestamp":"2015-11-03T07:29:29.915Z"}
+{"level":"error","message":"*","timestamp":"2015-11-03T07:29:29.915Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default S=\\\"tuba\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":13,"error":"Error: The server experienced an internal error","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:29:29.916Z"}
+{"level":"error","message":"! uncaught error from action: action:echo","timestamp":"2015-11-03T07:29:33.454Z"}
+{"level":"error","message":"! connection details:","timestamp":"2015-11-03T07:29:33.454Z"}
+{"level":"error","message":"!     remoteIP: \"10.0.2.15\"","timestamp":"2015-11-03T07:29:33.454Z"}
+{"level":"error","message":"!     type: \"web\"","timestamp":"2015-11-03T07:29:33.455Z"}
+{"level":"error","message":"!     params: {\"s\":\"default\",\"action\":\"echo\",\"apiVersion\":1}","timestamp":"2015-11-03T07:29:33.455Z"}
+{"level":"error","message":"! TypeError: Object #<Object> has no method 'getOwnPropertyNames'","timestamp":"2015-11-03T07:29:33.456Z"}
+{"level":"error","message":"!     at Object.exports.echo.run (/home/victor/fogwoods/blackoak/actions/echo.js:18:28)","timestamp":"2015-11-03T07:29:33.456Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:285:31","timestamp":"2015-11-03T07:29:33.456Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:152:9","timestamp":"2015-11-03T07:29:33.457Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:697:13","timestamp":"2015-11-03T07:29:33.457Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:52:16","timestamp":"2015-11-03T07:29:33.457Z"}
+{"level":"error","message":"!     at iterate (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:263:24)","timestamp":"2015-11-03T07:29:33.458Z"}
+{"level":"error","message":"!     at async.forEachOfSeries.async.eachOfSeries (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:284:9)","timestamp":"2015-11-03T07:29:33.458Z"}
+{"level":"error","message":"!     at _parallel (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:688:9)","timestamp":"2015-11-03T07:29:33.460Z"}
+{"level":"error","message":"!     at Object.async.series (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:710:9)","timestamp":"2015-11-03T07:29:33.460Z"}
+{"level":"error","message":"!     at api.actionProcessor.preProcessAction (/home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:151:13)","timestamp":"2015-11-03T07:29:33.461Z"}
+{"level":"error","message":"*","timestamp":"2015-11-03T07:29:33.472Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"default\",\"action\":\"echo\",\"apiVersion\":1}","duration":20,"error":"Error: The server experienced an internal error","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:29:33.474Z"}
+{"level":"error","message":"! uncaught error from action: action:echo","timestamp":"2015-11-03T07:29:43.741Z"}
+{"level":"error","message":"! connection details:","timestamp":"2015-11-03T07:29:43.743Z"}
+{"level":"error","message":"!     remoteIP: \"10.0.2.15\"","timestamp":"2015-11-03T07:29:43.744Z"}
+{"level":"error","message":"!     type: \"web\"","timestamp":"2015-11-03T07:29:43.745Z"}
+{"level":"error","message":"!     params: {\"s\":\"bork\",\"action\":\"echo\",\"apiVersion\":1}","timestamp":"2015-11-03T07:29:43.745Z"}
+{"level":"error","message":"! TypeError: Object #<Object> has no method 'getOwnPropertyNames'","timestamp":"2015-11-03T07:29:43.746Z"}
+{"level":"error","message":"!     at Object.exports.echo.run (/home/victor/fogwoods/blackoak/actions/echo.js:18:28)","timestamp":"2015-11-03T07:29:43.746Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:285:31","timestamp":"2015-11-03T07:29:43.747Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:152:9","timestamp":"2015-11-03T07:29:43.747Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:697:13","timestamp":"2015-11-03T07:29:43.747Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:52:16","timestamp":"2015-11-03T07:29:43.747Z"}
+{"level":"error","message":"!     at iterate (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:263:24)","timestamp":"2015-11-03T07:29:43.748Z"}
+{"level":"error","message":"!     at async.forEachOfSeries.async.eachOfSeries (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:284:9)","timestamp":"2015-11-03T07:29:43.748Z"}
+{"level":"error","message":"!     at _parallel (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:688:9)","timestamp":"2015-11-03T07:29:43.748Z"}
+{"level":"error","message":"!     at Object.async.series (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:710:9)","timestamp":"2015-11-03T07:29:43.748Z"}
+{"level":"error","message":"!     at api.actionProcessor.preProcessAction (/home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:151:13)","timestamp":"2015-11-03T07:29:43.749Z"}
+{"level":"error","message":"*","timestamp":"2015-11-03T07:29:43.749Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"bork\",\"action\":\"echo\",\"apiVersion\":1}","duration":16,"error":"Error: The server experienced an internal error","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:29:43.750Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T07:30:38.985Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T07:30:43.294Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T07:30:43.356Z"}
+{"level":"notice","message":"pid: 2181","timestamp":"2015-11-03T07:30:43.650Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T07:30:43.652Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T07:30:43.652Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T07:30:43.653Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T07:30:43.659Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T07:30:43.663Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T07:30:43.672Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T07:30:44.946Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-03 02:30:44 ***","timestamp":"2015-11-03T07:30:44.948Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"bork\",\"action\":\"echo\",\"apiVersion\":1}","duration":5,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:30:53.091Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"bork\",\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:31:02.131Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"bork\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:31:16.802Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"bork\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:31:18.845Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"s\":\"bork\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:31:20.150Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"error":"Error: s is a required parameter for this action","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:31:31.918Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:31:50.320Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:31:58.194Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:32:12.257Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:32:19.397Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:32:27.340Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:33:36.720Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:33:38.247Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:33:39.723Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:33:45.598Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:33:47.946Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:33:51.046Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-03T07:33:59.595Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T07:34:04.092Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T07:34:04.152Z"}
+{"level":"notice","message":"pid: 2248","timestamp":"2015-11-03T07:34:04.432Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T07:34:04.433Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T07:34:04.434Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T07:34:04.435Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T07:34:04.446Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T07:34:04.447Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T07:34:04.477Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T07:34:05.681Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-03 02:34:05 ***","timestamp":"2015-11-03T07:34:05.681Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:34:16.923Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:34:25.902Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:34:34.003Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:35:42.275Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:36:13.609Z"}
+{"level":"error","message":"! uncaught error from action: action:echo","timestamp":"2015-11-03T07:36:50.527Z"}
+{"level":"error","message":"! connection details:","timestamp":"2015-11-03T07:36:50.527Z"}
+{"level":"error","message":"!     remoteIP: \"10.0.2.15\"","timestamp":"2015-11-03T07:36:50.527Z"}
+{"level":"error","message":"!     type: \"web\"","timestamp":"2015-11-03T07:36:50.528Z"}
+{"level":"error","message":"!     params: {\"action\":\"echo\",\"apiVersion\":1}","timestamp":"2015-11-03T07:36:50.528Z"}
+{"level":"error","message":"! TypeError: Object.getOwnPropertyNames called on non-object","timestamp":"2015-11-03T07:36:50.533Z"}
+{"level":"error","message":"!     at Function.getOwnPropertyNames (native)","timestamp":"2015-11-03T07:36:50.534Z"}
+{"level":"error","message":"!     at Object.exports.echo.run (/home/victor/fogwoods/blackoak/actions/echo.js:17:23)","timestamp":"2015-11-03T07:36:50.534Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:285:31","timestamp":"2015-11-03T07:36:50.534Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/initializers/actionProcessor.js:152:9","timestamp":"2015-11-03T07:36:50.535Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:697:13","timestamp":"2015-11-03T07:36:50.535Z"}
+{"level":"error","message":"!     at /home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:52:16","timestamp":"2015-11-03T07:36:50.536Z"}
+{"level":"error","message":"!     at iterate (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:263:24)","timestamp":"2015-11-03T07:36:50.536Z"}
+{"level":"error","message":"!     at async.forEachOfSeries.async.eachOfSeries (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:284:9)","timestamp":"2015-11-03T07:36:50.536Z"}
+{"level":"error","message":"!     at _parallel (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:688:9)","timestamp":"2015-11-03T07:36:50.537Z"}
+{"level":"error","message":"!     at Object.async.series (/home/victor/fogwoods/blackoak/node_modules/actionhero/node_modules/async/lib/async.js:710:9)","timestamp":"2015-11-03T07:36:50.537Z"}
+{"level":"error","message":"*","timestamp":"2015-11-03T07:36:50.537Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":12,"error":"Error: The server experienced an internal error","level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:36:50.538Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:37:11.319Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:37:19.482Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:37:35.143Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"default32\",\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:37:41.487Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:37:47.439Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"default32\",\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:37:59.162Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"1221\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:38:03.707Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"\\\"1221\\\"\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:38:12.275Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"'1221'\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:38:18.193Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"/1221/\",\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:38:26.447Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"/1221/\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:38:38.617Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"/1221/\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:38:51.982Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"/1221/\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:38:59.189Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:39:07.392Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"4422\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:39:19.248Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"4422\",\"action\":\"echo\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:44:13.574Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"4422\",\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:44:34.052Z"}
+{"level":"alert","message":"! Failed to load /home/victor/fogwoods/blackoak/actions/echo.js","timestamp":"2015-11-03T07:45:02.417Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-03T07:45:29.368Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-03T07:45:29.430Z"}
+{"level":"notice","message":"pid: 2755","timestamp":"2015-11-03T07:45:29.747Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-03T07:45:29.747Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-03T07:45:29.748Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-03T07:45:29.748Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T07:45:29.754Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-03T07:45:29.759Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-03T07:45:29.771Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-03T07:45:30.977Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-03 02:45:30 ***","timestamp":"2015-11-03T07:45:30.977Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"4422\",\"action\":\"echo\",\"apiVersion\":1}","duration":4,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:45:38.357Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T07:45:43.172Z"}
+{"to":"10.0.2.15","action":"echo","params":"{\"id\":\"default32\",\"action\":\"echo\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"2015-11-03T08:21:25.302Z"}
