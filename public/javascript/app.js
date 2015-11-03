@@ -1,6 +1,7 @@
 (function(){
 
-  var app = angular.module("recipeBook", ['ngMaterial']);
+  //var app = angular.module("recipeBook", ['ngMaterial']); //For angular material usage
+  var app = angular.module("recipeBook", []);
 
   var bookListing = [
         {
@@ -87,7 +88,7 @@
           footnotes:"Aluminum foil can be used to keep food moist, cook it evenly, and make clean-up easier."
         },
         {
-          title:"Stuffed Jack-O-Lantern Bell Peppers",
+          title:"Different Stuffed Jack-O-Lantern Bell Peppers",
           date:1446403471,
           username:"stepperanddaniel",
           description:"My own stuffed bell pepper recipe with a festive twist for Halloween.",
@@ -170,53 +171,70 @@
           footnotes:"Aluminum foil can be used to keep food moist, cook it evenly, and make clean-up easier."
         }
       ];
-
+/*
   app.config(function($mdThemingProvider) {
       // Configure a dark theme with primary foreground yellow
       $mdThemingProvider.theme('docs-dark', 'default')
         .primaryPalette('yellow')
         .dark();
-    });
+    });*/
 
-  app.controller("MenuController", function(){
-    this.isShown = false;
-    this.toggleMenu = function(){
-      if (this.isShown === false){ this.isShown = true; }
-      else { this.isShown = false; }
-    }
-  });
+    var _currentMode="select";
 
-  var globalEditModeIndex = 0;
+    var _globalSelectedIndex = 0;
 
   app.controller("BookController", function(){
+    this.echo = function(input){return input;};
     this.recipes = bookListing;
-    this.matchCurrentEditModeIndex = function(input){
-      return globalEditModeIndex === index;
-    }
-  });
-  app.controller("EditModeController", function(){
-    this.isEditMode = false; //default needs to be false.
-    this.toggleEditMode = function(index){
-      if (this.isEditMode){
-        globalEditModeIndex = undefined;
-        this.isEditMode = false;
+
+    this.presentState={
+      "mode":_currentMode,
+      "index":_globalSelectedIndex,
+    };
+
+    this.isSelectMode = function(){return _currentMode === "select"};
+    this.isViewingMe = function(myIndex){
+      if( _currentMode === "view"){
+        return _globalSelectedIndex === myIndex;
       }
       else{
-        globalEditModeIndex = index;
-        this.isEditMode = true;
+        return false;
       }
-    }
-
-    this.editedObject = {
-      title:undefined,
-      date:undefined,
-      username:undefined,
-      description:undefined,
-      link:undefined,
-      ingredients:[],
-      directions:[],
-      footnotes:undefined
     };
+    this.isEditingMe = function(myIndex){
+      if( _currentMode === "edit"){
+        return _globalSelectedIndex === myIndex;
+      }
+      else{
+        return false;
+      }
+    };
+  });
+
+  app.controller("ModeController",function(){
+
+    function setTo(input){
+      if (_currentMode !== input){
+        _currentMode = input;
+      }
+      //console.log("globalIndex", _globalSelectedIndex, "mode", input);
+    }
+    this.setToViewMode = function(index){
+      _globalSelectedIndex = index;
+      setTo("view");
+    }
+    this.setToEditMode = function(index){
+      _globalSelectedIndex = index;
+      setTo("edit");
+    }
+    this.setToSelectMode = function(){
+      _globalSelectedIndex = -1;
+      setTo("select");
+    }
+  });
+
+  app.controller("EditModeController", function(){
+    this.isEditMode = (_currentMode === "edit"); //default needs to be false.
     this.addEmptyIngredientTo = function (targetRecipe) {
       var emptyIngredient = {
         quantity:undefined,
@@ -242,7 +260,7 @@
       targetRecipe.directions.splice(stepIndex,1);
     }
   });
-
+/*
   app.controller('DialogController', function($scope, $mdDialog){
 
   });
@@ -251,6 +269,6 @@
     $scope.openBottomSheet = function() {
     $mdBottomSheet.show({template: '<md-bottom-sheet>Hello!</md-bottom-sheet>'});
   };
-});
+});*/
 
 })()

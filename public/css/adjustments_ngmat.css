@@ -1,0 +1,30 @@
+.yellow{
+  background-color: yellow;
+}
+.blue{
+  background-color: blue;
+}
+.gray{
+  background-color: grey;
+}
+.green{
+  background-color: green;
+}
+md-list-item.md-2-line.md-long-text, md-list-item.md-2-line>.md-no-style.md-long-text{
+  margin:0;
+}
+md-list-item.md-2-line .md-list-item-text, md-list-item.md-2-line>.md-no-style .md-list-item-text, md-list-item.md-3-line .md-list-item-text, md-list-item.md-3-line>.md-no-style .md-list-item-text{
+  margin:1em;
+}
+.bgr{
+  background-color:rgba(0,0,0,.25);
+}
+.smallInfo{
+  padding: 8px;
+}
+.editMode{
+  background-color: rgb(228,228,228);
+}
+.transparent{
+  background-color: transparent;
+}

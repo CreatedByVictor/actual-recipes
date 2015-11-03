@@ -10,189 +10,112 @@
     <!-- this holds an interface for actionhero. -->
     <script src="/public/javascript/actionheroClient.js"></script>
 
-    <!-- Angular Material CSS now available via Google CDN; version 0.11.2 used here -->
-    <link rel="stylesheet" href="https://gitcdn.xyz/repo/angular/bower-material/master/angular-material.css">
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/adjustments.css" rel="stylesheet" type="text/css">
 
+    <!-- Latest Bootstrap compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+    integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
+    crossorigin="anonymous">
+
     <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
 
   <body>
-    <div ng-controller="BookController as book" layout="column" ng-cloak>
-      <md-toolbar class="md-whiteframe-8dp" >
-        <div class="md-toolbar-tools" >
-          <md-button aria-label="Settings">
-            <md-icon class="material-icons md-36">local_dining</md-icon>
-          </md-button>
-          <span>ActualRecipes</span>
-          <!-- fill up the space between left and right area -->
-          <span flex></span>
-          <md-button>
-             All Recipes
-          </md-button>
-        </div>
-      </md-toolbar>
-      <!--End of Toolbar area-->
-      <md-content class="md-padding bgr">
-        <div ng-controller="EditModeController as mode">
-          <md-card ng-class="{editMode:mode.isEditMode}" ng-repeat="recipe in book.recipes" layout="column">
-            <div ng-hide="book.matchCurrentEditModeIndex($index)">
-            <md-card-content>
-              <div layout="column">
-                <h2 class="md-title">{{recipe.title}}</h2>
-                <md-subheader>"{{recipe.description}}" -- <emphasis>{{recipe.username}}</emphasis></md-subheader>
-              </div>
-            </md-card-content>
-              <md-divider></md-divider>
-            <md-card-content>
-              <md-content>
-              <div layout="row" layout-sm="column">
-                <div flex-md="40" flex-gt-md="40" flex-sm="grow">
-                  <md-list>
-                    <div class="md-title">Ingredients</div>
-                    <div ng-repeat="ing in recipe.ingredients">
-                      <md-list-item class="">
-                        <div class="md-list-item-text">
-                          <p>{{ing.quantity}} {{ing.unit}} {{ing.name}}</br>
-                          <span class="md-caption">{{ing.note}}</span></p>
-                        </div>
-                      </md-list-item>
-                    </div>
-                  </md-list>
-                </div>
-                <div flex-md="60" flex-gt-md="60" flex-sm="grow">
-                  <md-list>
-                    <div class="md-title">Directions</div>
-                    <md-list-item ng-repeat="step in recipe.directions" class="md-2-line md-long-text">
-                      <div class="md-list-item-text" >
-                        <h3>Step {{$index + 1}}:</h3>
-                        <p>{{step.value}}</p>
-                      </div>
-                    </md-list-item>
-                  </md-list>
-                </div>
-              </div>
-              <div layout="column" flex="grow">
-                Notes: {{recipe.footnotes}}
-              </div>
-            </md-content>
-            </md-card-content>
-            <md-divider></md-divider>
-            <md-card-content>
-              <div layout-sm="column" layout-gt-md="row">
-                <div class="smallInfo" ng-show="recipe.yield"><md-icon class="material-icons">people</md-icon> Yield: {{recipe.yield}}</div>
-                <div class="smallInfo" ng-show="recipe.time.prep"><md-icon class="material-icons">schedule</md-icon> Prep: {{recipe.time.prep}}</div>
-                <div class="smallInfo" ng-show="recipe.time.cook"><md-icon class="material-icons">timer</md-icon> Cook: {{recipe.time.cook}}</div>
-              </div></md-card-content>
-            <md-divider></md-divider>
-            <md-card-actions layout="row">
-              <md-button class="md-primary" ng-click="mode.toggleEditMode($index)"><md-icon class="material-icons">edit</md-icon>Edit Recipe</md-button>
-              <md-button class="md-primary" href="{{recipe.link}}" target="_blank"><md-icon class="material-icons">link</md-icon>Original Article</md-button>
-            </md-card-actions>
-          </div>
-            <!--Main Card ends, Edit mode begins-->
-            <div ng-show="book.matchCurrentEditModeIndex($index)">
-            <md-card-content>
-              <md-content class="editMode">
-                <div layout="row" layout-sm="column">
-                  <div flex-md="50" flex-gt-md="50" flex-sm="grow">
-                    <md-list>
-                      <div class="md-title">Ingredients</div>
-                      <md-list-item class="" ng-repeat="ing in recipe.ingredients">
-                        <md-card layout="row" style="border-right: 1px solid rgba(0,0,0,.2)" flex="fill">
-                          <md-card-content layout="column" style="padding-bottom:0" flex="fill">
-                            <div show layout="row" flex="fill">
-                                <md-input-container style="width:35px" flex="none">
-                                  <label>Qty</label>
-                                  <input ng-model="ing.quantity">
-                                </md-input-container>
-                                <md-input-container style="width:100px" flex="none" flex-sm="grow" flex-md="grow">
-                                  <label>Unit</label>
-                                  <input ng-model="ing.unit">
-                                </md-input-container>
-                                <md-input-container hide-md hide-sm flex="grow">
-                                  <label>Ingredent Name</label>
-                                  <input ng-model="ing.name">
-                                </md-input-container>
-                              </div>
-                              <div hide show-md show-sm flex="100">
-                                <md-input-container style="width: 100%" flex="grow">
-                                  <label>Ingredent Name</label>
-                                  <input ng-model="ing.name">
-                                </md-input-container>
-                              </div>
-                            <div show layout="row" flex="grow">
-                              <md-input-container flex="grow">
-                                <label>Preperation / Note</label>
-                                <input ng-model="ing.note">
-                              </md-input-container>
-                              <md-button ng-click="mode.removeIngredientFrom($index,recipe)" flex="none" CLASS="md-icon-button md-warn">
-                                <md-icon class="material-icons">delete</md-icon>
-                              </md-button>
-                            </div>
-                          </md-card-content>
-                        </md-card>
-                      </md-list-item>
-                      <md-list-item layout="row" layout-align="center center">
-                        <md-button ng-click="mode.addEmptyIngredientTo(recipe)" class="md-accent md-raised"> Add an<span ng-hide="recipe.ingredients.length <= 0">other</span> Ingredient </md-button>
-                      </md-list-item>
-                    </md-list>
-                  </div>
-                  <div  flex-md="50" flex-gt-md="50" flex-sm="grow">
-                    <md-list class="editMode">
-                      <div class="md-title">Directions</div>
-                      <md-list-item ng-repeat="step in recipe.directions" layout="row" class="">
-                          <md-card layout="column" flex>
-                            <md-card-content layout="column" flex>
-                              <md-input-container class="md-block" flex="grow">
-                                <label>Step {{$index +1}}</label>
-                                <textarea ng-model="step.value" flex="grow"></textarea>
-                              </md-input-container>
-                            </md-card-content>
-                            <md-actions layout="row" layout-align="end center">
-                              <md-button ng-click="mode.removeStepFrom($index,recipe)" class="md-icon-button md-warn">
-                                <md-icon class="material-icons">delete</md-icon>
-                              </md-button>
-                            </md-actions>
-                          </md-card>
-                      </md-list-item>
-                      <md-list-item layout="row" layout-align="center center">
-                        <md-button ng-click="mode.addEmptyStepTo(recipe)" class="md-accent md-raised"> Add a<span ng-hide="recipe.directions.length <= 0">nother</span> Step </md-button>
-                      </md-list-item>
-                    </md-list>
-                  </div>
-                </div>
-                <div layout="row">
-                  <md-input-container class="md-block" flex="grow">
-                   <label>Notes</label>
-                   <textarea ng-model="recipe.footnotes"></textarea>
-                 </md-input-container>
-                </div>
-              </md-content>
-            </md-card-content>
-            <md-divider></md-divider>
-            <md-card-actions layout="row">
-              <md-button class="md-primary md-raised" ng-click="mode.toggleEditMode($index)">Done Editing</md-button>
-              <span flex></span>
-              <md-button class="md-warn md-raised">
-                <md-icon class="material-icons">delete</md-icon>
-              </md-button>
-            </md-card-actions>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Actual Recipes</a>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+    <div class="container-fluid" ng-controller="BookController as book" ng-cloak>
+      <div ng-repeat="recipe in book.recipes">
+        <div ng-show="book.isSelectMode()">
+          <!--BEGIN Selection MODE-->
+          <div class="panel panel-default" ng-cloak>
+            <div class="panel-heading">
+              <h3 class="panel-title">{{recipe.title}}</h3>
             </div>
-          </md-card>
+            <div class="panel-body">
+              {{recipe.description}}
+            </div>
+            <div class="panel-body">
+              <div>Yield: {{recipe.yield}}</div>
+              <div>Cook Time: {{recipe.time.cook}}</div>
+              <div>Prep Time: {{recipe.time.prep}}</div>
+            </div>
+            <div class="panel-footer" ng-controller="ModeController as mode">
+              <button type="button" ng-click="mode.setToViewMode($index)" class="btn btn-sm btn-default">View this Recipe</button>
+            </div>
+          </div>
+          <!--END Selection MODE-->
         </div>
-      </md-content>
-    </div> <!--End of the BookController scope-->
-
+        <div ng-show="book.isViewingMe($index)">
+          <!--BEGIN FullView MODE-->
+          <div class="panel panel-primary" ng-cloak>
+            <div class="panel-heading">
+              <h3 class="panel-title">{{recipe.title}}</h3>
+            </div>
+            <div class="panel-body">
+              {{recipe.description}}
+            </div>
+            <div class="panel-body">
+              <div>Yield: {{recipe.yield}}</div>
+              <div>Cook Time: {{recipe.time.cook}}</div>
+              <div>Prep Time: {{recipe.time.prep}}</div>
+            </div>
+            <div class="panel-footer" ng-controller="ModeController as mode">
+              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToSelectMode()">Back to Recipies</button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToEditMode($index)">Edit This Recipe</button>
+            </div>
+          </div>
+          <!--END FullView MODE-->
+        </div>
+        <div ng-show="book.isEditingMe($index)">
+          <!--BEGIN EDIT MODE-->
+          <div class="panel panel-info" ng-cloak>
+            <div class="panel-heading">
+                <label for="recTitle" class="sr-only">Recipe Title</label>
+                <input type="text" class="form-control recTitle" ng-model="recipe.title" placeholder="Recipe Title">
+            </div>
+            <div class="panel-body">
+              {{recipe.description}}
+            </div>
+            <div class="panel-body">
+              <div>Yield: {{recipe.yield}}</div>
+              <div>Cook Time: {{recipe.time.cook}}</div>
+              <div>Prep Time: {{recipe.time.prep}}</div>
+            </div>
+            <div class="panel-footer" ng-controller="ModeController as mode">
+              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToViewMode($index)">Done Editing</button>
+              <button type="button" class="btn btn-sm btn-danger" ng-click="">Delete</button>
+            </div>
+          </div>
+          <!--END EDIT MODE-->
+        </div>
+      </div>
+    </div><!--End of BookController scope-->
     <!--Imported Javascript Below-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.4/angular-material.min.js"></script>
+
+
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+
     <script type="text/javascript" src="/public/javascript/app.js"></script>
   </body>
 </html>
