@@ -209,6 +209,36 @@
         return false;
       }
     };
+    this.AddNewEmptyRecipeTo = function(targetBook){
+
+      var blankRecipe = {
+        title:undefined,
+        date: undefined,
+        username:undefined,
+        description:undefined,
+        link:undefined,
+        yield:undefined,
+        image:undefined,
+        time:{
+          prep:undefined,
+          cook:undefined
+        },
+        ingredients:[],
+        directions:[],
+        footnotes:undefined
+      }
+
+      targetBook.recipes.push(blankRecipe);
+      _globalSelectedIndex = this.recipes.length - 1;
+      _currentMode = "edit";
+      console.log("Added Recipe index:", _globalSelectedIndex)
+    }
+    this.removeRecipeFrom = function(recipeIndex,targetBook){
+      targetBook.recipes.splice(recipeIndex,1);
+      console.log("Removed Recipe: ", recipeIndex);
+      _globalSelectedIndex = -1;
+      _currentMode = "select";
+    }
   });
 
   app.controller("ModeController",function(){

@@ -46,26 +46,44 @@
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid" ng-controller="BookController as book" ng-cloak>
-      <div class="" id="recipe{{$index}}" ng-repeat="recipe in book.recipes">
+      <div>
+        <button ng-show="book.isSelectMode()" style="margin-bottom: 18px" class="center-block btn-lg btn btn-info" type="button" ng-click="book.AddNewEmptyRecipeTo(book)">New Recipe</button>
+      </div>
+      <div class="" id="recipe{{$index}}" ng-repeat="recipe in book.recipes" ng-init="recipeIndex = $index">
         <div class="center-block panel panel-default recipe" ng-show="book.isSelectMode() || (book.isEditingMe($index) || book.isViewingMe($index))">
           <div class="panel-heading">
 
             <span ng-hide="book.isEditingMe($index)">
-              <h4 ng-cloak>{{recipe.title}}</br><small>by {{recipe.username}}</small></h4>
+              <h4 ng-cloak>{{recipe.title}}</br><small ng-show="recipe.username">by {{recipe.username}}</small></h4>
             </span>
 
-            <label for="recTitle" class="sr-only">Recipe Title</label>
-            <input ng-show="book.isEditingMe($index)" type="text"
+            <label class="sr-only" for="recipe{{recipeIndex}}title">Recipe Title</label>
+            <input id="recipe{{recipeIndex}}title" ng-show="book.isEditingMe($index)" type="text"
             class="form-control recTitle" ng-model="recipe.title"
             placeholder="Recipe Title">
+
+            <label class="sr-only" for="recipe{{recipeIndex}}title">Author</label>
+            <input id="recipe{{recipeIndex}}author" ng-show="book.isEditingMe($index)" type="text"
+            class="form-control recTitle" ng-model="recipe.username"
+            placeholder="Author">
 
           </div>
           <div class="panel-body">
 
             <span ng-hide="book.isEditingMe($index)" ng-cloak>{{recipe.description}}</span>
+            <span ng-hide="book.isEditingMe($index)">
+              <a href="{{recipe.link}}" target="_blank" ng-hide="book.isEditingMe($index) || !recipe.link"><br>Original Recipe Link</a>
+            </span>
             <span ng-show="book.isEditingMe($index)">
-              <textarea class="form-control" ng-model="recipe.description" rows="3">
-              </textarea>
+
+              <label class="sr-only" for="recipe{{recipeIndex}}description">description</label>
+              <textarea id="recipe{{recipeIndex}}description" placeholder="Please describe your recipe." class="form-control" ng-model="recipe.description" rows="3"></textarea>
+
+              <label class="sr-only" for="recipe{{recipeIndex}}link">link</label>
+              <input id="recipe{{recipeIndex}}link" ng-show="book.isEditingMe($index)" type="text"
+              class="form-control" ng-model="recipe.link"
+              placeholder="Link">
+
             </span>
 
             <div class="container-fluid row" ng-show="book.isViewingMe($index) || book.isEditingMe($index)" ng-cloak>
@@ -83,21 +101,21 @@
                       <div class="col-xs-12">
                         <div class="row lrPadding">
                           <div class="col-xs-6 col-md-2 noPadding">
-                            <label class="sr-only" for="exampleInputName{{$index}}">Quantity</label>
-                            <input type="text" class="form-control input-sm" ng-model="ing.quantity" id="exampleInputqty{{$index}}" placeholder="Qty">
+                            <label class="sr-only" for="recipe{{recipeIndex}}Ingredient{{$index}}Qualtity">Quantity</label>
+                            <input type="text" class="form-control input-sm" ng-model="ing.quantity" id="recipe{{recipeIndex}}Ingredient{{$index}}Qualtity" placeholder="Qty">
                           </div>
                           <div class="col-xs-6 col-md-3 noPadding">
-                            <label class="sr-only" for="exampleInputName{{$index}}">unit</label>
-                            <input type="text" class="form-control input-sm" ng-model="ing.unit" id="exampleInputunit{{$index}}" placeholder="unit">
+                            <label class="sr-only" for="recipe{{recipeIndex}}Ingredient{{$index}}unit">unit</label>
+                            <input type="text" class="form-control input-sm" ng-model="ing.unit" id="recipe{{recipeIndex}}Ingredient{{$index}}unit" placeholder="unit">
                           </div>
                           <div class="col-xs-12 col-md-7 noPadding">
-                            <label class="sr-only" for="exampleInputName{{$index}}">name</label>
-                            <input type="text" class="form-control input-sm" ng-model="ing.name" id="exampleInputunit{{$index}}" placeholder="name">
+                            <label class="sr-only" for="recipe{{recipeIndex}}Ingredient{{$index}}name">name</label>
+                            <input type="text" class="form-control input-sm" ng-model="ing.name" id="recipe{{recipeIndex}}Ingredient{{$index}}name" placeholder="name">
                           </div>
                           <div class="col-xs-12 noPadding">
                             <div class="input-group">
-                              <label class="sr-only" for="exampleInputName{{$index}}">note</label>
-                              <input type="text" class="form-control input-sm" ng-model="ing.note" id="exampleInputunit{{$index}}" placeholder="note">
+                              <label class="sr-only" for="recipe{{recipeIndex}}Ingredient{{$index}}note">note</label>
+                              <input type="text" class="form-control input-sm" ng-model="ing.note" id="recipe{{recipeIndex}}Ingredient{{$index}}note" placeholder="note">
                               <span class="input-group-btn">
                                 <button class="btn btn-sm btn-danger" type="button" ng-click="edit.removeIngredientFrom($index, recipe)">Delete</button>
                               </span>
@@ -108,7 +126,7 @@
                     </div>
                     <div>
                       <button style="margin-top: 15px" class="btn btn-block btn-success" type="button" ng-click="edit.addEmptyIngredientTo(recipe)">
-                        Add an<span ng-show="recipe.ingredients.length >= 1">other</span> ingredient
+                        Add an<span ng-show="recipe.ingredients.length >= 1">other</span> Ingredient
                       </button>
                     </div>
                   </div>
@@ -124,12 +142,13 @@
                   <div ng-show="book.isEditingMe($index)">
                     <div class="lrPadding" ng-repeat="step in recipe.directions">
                       <small class="text-info" ng-cloak> Step {{$index +1}}: </small>
-                      <textarea class="form-control" ng-model="step.value" rows="4" placeholder="Step {{$index +1}}"></textarea>
+                      <label class="sr-only" for="recipe{{recipeIndex}}step{{$index}}">name</label>
+                      <textarea id="recipe{{recipeIndex}}step{{$index}}" class="form-control" ng-model="step.value" rows="4" placeholder="Step {{$index +1}}"></textarea>
                       <button class="btn btn-block btn-xs btn-danger" type="button" ng-click="edit.removeStepFrom($index,recipe)">Delete</button>
                     </div>
                     <div>
                       <button style="margin-top: 15px" class="btn btn-block btn-success" type="button" ng-click="edit.addEmptyStepTo(recipe)">
-                        Add a<span ng-show="recipe.ingredients.length >= 1">nother<span> Step
+                        Add a<span ng-show="recipe.directions.length >= 1">nother</span> Step
                       </button>
                     </div>
                   </div>
@@ -138,13 +157,27 @@
             </div><!--End of visible while editing and viewing scope-->
           </div><!--End of panel-body div-->
           <!-- List group -->
-            <ul class="list-group">
+            <ul class="list-group" ng-show="recipe.yield || recipe.time.cook || recipe.time.prep || book.isEditingMe(recipeIndex)">
               <li class="list-group-item">
-                <ul class="list-inline">
+                <ul class="list-inline" ng-hide="book.isEditingMe($index)">
                   <li ng-show="recipe.yield">Yield: {{recipe.yield}}</li>
                   <li ng-show="recipe.time.prep">Prep Time: {{recipe.time.prep}}</li>
                   <li ng-show="recipe.time.cook">Cook Time: {{recipe.time.cook}}</li>
                 </ul>
+                <div ng-show="book.isEditingMe($index)">
+                    <div class="input-group">
+                      <span class="input-group-addon" id="recipe{{recipeIndex}}yieldAddon">Yield</span>
+                      <input type="text" class="form-control" placeholder="# portions" aria-describedby="recipe{{recipeIndex}}yieldAddon">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="recipe{{recipeIndex}}prepAddon">Prep Time</span>
+                      <input type="text" class="form-control" placeholder="" aria-describedby="recipe{{recipeIndex}}prepAddon">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="recipe{{recipeIndex}}cookAddon">Cook Time</span>
+                      <input type="text" class="form-control" placeholder="" aria-describedby="recipe{{recipeIndex}}cookAddon">
+                    </div>
+                </div>
               </li>
             </ul>
           <div class="panel-footer" ng-controller="ModeController as mode">
@@ -155,10 +188,10 @@
               <button class="btn btn-default" ng-show="book.isViewingMe($index)" ng-click="mode.setToEditMode($index)" href="#recipe{{$index}}">Edit</button>
 
               <button class="btn btn-default" ng-show="book.isEditingMe($index)" ng-click="mode.setToViewMode($index)" href="#recipe{{$index}}">Done Editing</button>
-              <button class="btn btn-danger" ng-show="book.isEditingMe($index)">Delete</button>
+              <button class="btn btn-danger" ng-show="book.isEditingMe($index)" ng-click="book.removeRecipeFrom(recipeIndex,book)">Delete</button>
 
           </div>
-        </div><!--End of master showe hider for recipies-->
+        </div><!--End of master show hider for recipies-->
       </div><!--End of recipe REPEAER SCOPE-->
     </div><!--End of BookController scope-->
     <!--Imported Javascript Below-->
