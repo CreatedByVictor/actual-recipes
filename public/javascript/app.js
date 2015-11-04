@@ -244,19 +244,22 @@
 
       targetRecipe.ingredients.push(emptyIngredient);
 
-      //console.log("Added Empty Ingredient");
+      console.log("Added Empty Ingredient");
     }
 
     this.removeIngredientFrom = function(ingIndex, targetRecipe){
       targetRecipe.ingredients.splice(ingIndex,1);
-      //console.log("Removed an Ingredient");
+      console.log("Removed an Ingredient");
     }
     this.addEmptyStepTo = function(targetRecipe){
+      console.log("Step Count Before Addition: ", targetRecipe.directions.length);
       var emptyStep ={ value:undefined };
       targetRecipe.directions.push(emptyStep);
+      console.log("Step Count After Addition: ", targetRecipe.directions.length);
     }
     this.removeStepFrom = function(stepIndex,targetRecipe){
       targetRecipe.directions.splice(stepIndex,1);
+      console.log("Remove Step From: ", targetRecipe.directions.length);
     }
   });
 

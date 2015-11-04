@@ -567,3 +567,27 @@
 {"level":"notice","message":"environment: development","timestamp":"2015-11-03T15:03:56.925Z"}
 {"level":"notice","message":"*** Server Started @ 2015-11-03 10:03:56 ***","timestamp":"2015-11-03T15:03:56.926Z"}
 {"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-03T15:03:56.927Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-04T09:07:10.294Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-04T17:33:23.581Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-04T17:33:23.709Z"}
+{"level":"notice","message":"pid: 3670","timestamp":"2015-11-04T17:33:24.616Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-04T17:33:24.617Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-04T17:33:24.617Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-04T17:33:24.618Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-04T17:33:24.627Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-04T17:33:24.627Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-04T17:33:24.636Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-04T17:33:25.851Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-04 12:33:25 ***","timestamp":"2015-11-04T17:33:25.851Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-04T17:36:08.316Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-04T17:36:08.360Z"}
+{"level":"notice","message":"pid: 4070","timestamp":"2015-11-04T17:36:08.539Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-04T17:36:08.540Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-04T17:36:08.540Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-04T17:36:08.540Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-04T17:36:08.547Z"}
+{"level":"notice","message":"starting server: websocket","timestamp":"2015-11-04T17:36:08.556Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-04T17:36:09.422Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-04 12:36:09 ***","timestamp":"2015-11-04T17:36:09.423Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-04T17:36:09.424Z"}
+{"to":"10.0.2.15","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"2015-11-04T18:55:43.099Z"}
