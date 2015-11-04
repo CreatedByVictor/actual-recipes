@@ -188,7 +188,7 @@
               <button class="btn btn-default" ng-show="book.isViewingMe($index)" ng-click="mode.setToEditMode($index)" href="#recipe{{$index}}">Edit</button>
 
               <button class="btn btn-default" ng-show="book.isEditingMe($index)" ng-click="mode.setToViewMode($index)" href="#recipe{{$index}}">Done Editing</button>
-              <button class="btn btn-danger" ng-show="book.isEditingMe($index)" ng-click="book.removeRecipeFrom(recipeIndex,book)">Delete</button>
+              <button class="btn btn-danger" ng-show="book.isEditingMe($index)" ng-click="book.removeRecipeFrom($index,book)">Delete</button>
 
           </div>
         </div><!--End of master show hider for recipies-->
