@@ -34,72 +34,79 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Actual Recipes</a>
     </div>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
   </div><!-- /.container-fluid -->
 </nav>
     <div class="container-fluid" ng-controller="BookController as book" ng-cloak>
       <div ng-repeat="recipe in book.recipes">
-        <div ng-show="book.isSelectMode()">
-          <!--BEGIN Selection MODE-->
-          <div class="panel panel-default" ng-cloak>
-            <div class="panel-heading">
-              <h3 class="panel-title">{{recipe.title}}</h3>
-            </div>
-            <div class="panel-body">
-              {{recipe.description}}
-            </div>
-            <div class="panel-body">
-              <div>Yield: {{recipe.yield}}</div>
-              <div>Cook Time: {{recipe.time.cook}}</div>
-              <div>Prep Time: {{recipe.time.prep}}</div>
-            </div>
-            <div class="panel-footer" ng-controller="ModeController as mode">
-              <button type="button" ng-click="mode.setToViewMode($index)" class="btn btn-sm btn-default">View this Recipe</button>
-            </div>
+        <div class="panel panel-default recipe" ng-show="book.isSelectMode() || (book.isEditingMe($index) || book.isViewingMe($index))">
+          <div class="panel-heading">
+
+            <span ng-hide="book.isEditingMe($index)"><h4>{{recipe.title}}</br><small>by {{recipe.username}}</small></h4></span>
+
+            <label for="recTitle" class="sr-only">Recipe Title</label>
+            <input ng-show="book.isEditingMe($index)" type="text"
+            class="form-control recTitle" ng-model="recipe.title"
+            placeholder="Recipe Title">
+
           </div>
-          <!--END Selection MODE-->
-        </div>
-        <div ng-show="book.isViewingMe($index)">
-          <!--BEGIN FullView MODE-->
-          <div class="panel panel-primary" ng-cloak>
-            <div class="panel-heading">
-              <h3 class="panel-title">{{recipe.title}}</h3>
+          <div class="panel-body">
+
+            <span ng-hide="book.isEditingMe($index)">{{recipe.description}}</span>
+            <span ng-show="book.isEditingMe($index)">
+              <textarea class="form-control" ng-model="recipe.description" rows="3">
+              </textarea>
+            </span>
+
+            <div class="container-fluid row" ng-show="book.isViewingMe($index)">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 recipe-panel-left">
+                <h4>Ingredients</h4>
+                <ul class="list-group">
+                  <li class="list-group-item inline-block" ng-repeat="ingredient in recipe.ingredients">
+                    {{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}
+                    <br><small class="text-info">{{ingredient.note}}</small>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 recipe-panel-right">
+                <h4>Directions</h4>
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="step in recipe.directions">
+                    {{step.value}}
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="panel-body">
-              {{recipe.description}}
-            </div>
-            <div class="panel-body">
-              <div>Yield: {{recipe.yield}}</div>
-              <div>Cook Time: {{recipe.time.cook}}</div>
-              <div>Prep Time: {{recipe.time.prep}}</div>
-            </div>
-            <div class="panel-footer" ng-controller="ModeController as mode">
-              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToSelectMode()">Back to Recipies</button>
-              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToEditMode($index)">Edit This Recipe</button>
-            </div>
+
           </div>
-          <!--END FullView MODE-->
-        </div>
-        <div ng-show="book.isEditingMe($index)">
-          <!--BEGIN EDIT MODE-->
-          <div class="panel panel-info" ng-cloak>
-            <div class="panel-heading">
-                <label for="recTitle" class="sr-only">Recipe Title</label>
-                <input type="text" class="form-control recTitle" ng-model="recipe.title" placeholder="Recipe Title">
-            </div>
-            <div class="panel-body">
-              {{recipe.description}}
-            </div>
-            <div class="panel-body">
-              <div>Yield: {{recipe.yield}}</div>
-              <div>Cook Time: {{recipe.time.cook}}</div>
-              <div>Prep Time: {{recipe.time.prep}}</div>
-            </div>
-            <div class="panel-footer" ng-controller="ModeController as mode">
-              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToViewMode($index)">Done Editing</button>
-              <button type="button" class="btn btn-sm btn-danger" ng-click="">Delete</button>
-            </div>
+
+          <ul class="list-group" ng-hide="book.isEditingMe($index)">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                <li ng-show="recipe.yield">Yield: {{recipe.yield}}</li>
+                <li ng-show="recipe.time.prep">Prep Time:{{recipe.time.prep}}</li>
+                <li ng-show="recipe.time.cook">Cook Time:{{recipe.time.cook}}</li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="panel-footer" ng-controller="ModeController as mode">
+
+            <button ng-show="book.isSelectMode()" ng-click="mode.setToViewMode($index)">View this recipe</button>
+
+            <button ng-show="book.isViewingMe($index)" ng-click="mode.setToSelectMode()">Back to All Recipes</button>
+            <button ng-show="book.isViewingMe($index)" ng-click="mode.setToEditMode($index)">Edit</button>
+
+            <button ng-show="book.isEditingMe($index)" ng-click="mode.setToViewMode($index)">Done Editing</button>
+            <button ng-show="book.isEditingMe($index)">Delete</button>
+
           </div>
-          <!--END EDIT MODE-->
         </div>
       </div>
     </div><!--End of BookController scope-->

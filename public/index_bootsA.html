@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html ng-app="recipeBook">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="description" content="actionhero.js" />
+    <link rel="icon" href="/public/favicon.ico">
+    <title>ActualRecipies</title>
+    <!-- this holds an interface for actionhero. -->
+    <script src="/public/javascript/actionheroClient.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/adjustments.css" rel="stylesheet" type="text/css">
+
+    <!-- Latest Bootstrap compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+    integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
+    crossorigin="anonymous">
+
+    <!--Let browser know website is optimized for mobile-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Actual Recipes</a>
+    </div>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+  </div><!-- /.container-fluid -->
+</nav>
+    <div class="container-fluid" ng-controller="BookController as book" ng-cloak>
+      <div ng-repeat="recipe in book.recipes">
+        <div ng-show="book.isSelectMode()">
+          <!--BEGIN Selection MODE-->
+          <div class="recipe panel panel-default" ng-cloak>
+            <div class="panel-heading">
+              <h3 class="panel-title">{{recipe.title}}</h3>
+            </div>
+            <div class="panel-body">
+              {{recipe.description}}
+            </div>
+            <div class="container-fluid">
+              <ul class="list-inline">
+                <li ng-show="recipe.yield"><div>
+                  Yield: {{recipe.yield}}
+                </div></li>
+                <li ng-show="recipe.time.prep"><div>
+                  Prep Time: {{recipe.time.prep}}
+                </div></li>
+                <li ng-show="recipe.time.cook"><div>
+                  Cook Time: {{recipe.time.cook}}
+                </div></li>
+              </ul>
+            </div>
+            <div class="panel-footer" ng-controller="ModeController as mode">
+              <button type="button" ng-click="mode.setToViewMode($index)" class="btn btn-sm btn-default">View this Recipe</button>
+            </div>
+          </div>
+          <!--END Selection MODE-->
+        </div>
+        <div ng-show="book.isViewingMe($index)">
+          <!--BEGIN FullView MODE-->
+          <div class="recipe panel panel-primary" ng-cloak>
+            <div class="panel-heading">
+              <h3 class="panel-title">{{recipe.title}}</h3>
+            </div>
+            <div class="panel-body">
+              {{recipe.description}}
+            </div>
+            <div class="container-fluid">
+              <ul class="list-inline">
+                <li ng-show="recipe.yield"><div>
+                  Yield: {{recipe.yield}}
+                </div></li>
+                <li ng-show="recipe.time.prep"><div>
+                  Prep Time: {{recipe.time.prep}}
+                </div></li>
+                <li ng-show="recipe.time.cook"><div>
+                  Cook Time: {{recipe.time.cook}}
+                </div></li>
+              </ul>
+            </div>
+            <div class="panel-footer" ng-controller="ModeController as mode">
+              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToSelectMode()">Back to Recipies</button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToEditMode($index)">Edit This Recipe</button>
+            </div>
+          </div>
+          <!--END FullView MODE-->
+        </div>
+        <div ng-show="book.isEditingMe($index)">
+          <!--BEGIN EDIT MODE-->
+          <div class="recipe panel panel-info" ng-cloak>
+            <div class="panel-heading">
+              <label for="recTitle" class="sr-only">Recipe Title</label>
+              <input type="text" class="form-control recTitle" ng-model="recipe.title" placeholder="Recipe Title">
+            </div>
+            <div class="panel-body">
+              {{recipe.description}}
+            </div>
+            <div class="container-fluid">
+              <ul class="list-inline">
+                <li ng-show="recipe.yield"><div>
+                  Yield: {{recipe.yield}}
+                </div></li>
+                <li ng-show="recipe.time.prep"><div>
+                  Prep Time: {{recipe.time.prep}}
+                </div></li>
+                <li ng-show="recipe.time.cook"><div>
+                  Cook Time: {{recipe.time.cook}}
+                </div></li>
+              </ul>
+            </div>
+            <div class="panel-footer" ng-controller="ModeController as mode">
+              <button type="button" class="btn btn-sm btn-default" ng-click="mode.setToViewMode($index)">Done Editing</button>
+              <button type="button" class="btn btn-sm btn-danger" ng-click="">Delete</button>
+            </div>
+          </div>
+          <!--END EDIT MODE-->
+        </div>
+      </div>
+    </div><!--End of BookController scope-->
+    <!--Imported Javascript Below-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+
+
+
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript" src="/public/javascript/app.js"></script>
+  </body>
+</html>

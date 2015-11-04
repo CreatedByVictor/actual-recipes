@@ -179,7 +179,7 @@
         .dark();
     });*/
 
-    var _currentMode="select";
+    var _currentMode="view";
 
     var _globalSelectedIndex = 0;
 
@@ -234,7 +234,6 @@
   });
 
   app.controller("EditModeController", function(){
-    this.isEditMode = (_currentMode === "edit"); //default needs to be false.
     this.addEmptyIngredientTo = function (targetRecipe) {
       var emptyIngredient = {
         quantity:undefined,
@@ -258,6 +257,17 @@
     }
     this.removeStepFrom = function(stepIndex,targetRecipe){
       targetRecipe.directions.splice(stepIndex,1);
+    }
+  });
+
+/*
+  Directive Space Below,
+*/
+
+  app.directive("recipePanel", function(){
+    return{
+      resctrict:'E',
+      templateUrl:'/directives/recipe-panel'
     }
   });
 /*
