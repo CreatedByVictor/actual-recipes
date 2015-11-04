@@ -179,9 +179,9 @@
         .dark();
     });*/
 
-    var _currentMode="view";
+    var _currentMode="select"; //start with Select
 
-    var _globalSelectedIndex = 0;
+    var _globalSelectedIndex = 0; //start with 0
 
   app.controller("BookController", function(){
     this.echo = function(input){return input;};
@@ -259,6 +259,7 @@
       targetRecipe.directions.splice(stepIndex,1);
     }
   });
+
 
 /*
   Directive Space Below,
