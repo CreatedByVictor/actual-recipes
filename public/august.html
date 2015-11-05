@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script type="text/javascript">
+
+      var app = angular.module('actionheroDocumentationApp', []);
+
+      app.controller('actionsController', function($scope, Actions) {
+        $scope.actions = new Actions();
+        $scope.actions.showDocumentation();
+      });
+
+      app.factory('Actions', function($http){
+        var Actions = function(){
+          this.actions = {}
+          this.loaded  = false;
+        };
+
+        Actions.prototype.showDocumentation = function(){
+          var self = this;
+          self.loaded = false;
+          var url = '/api/showDocumentation?callback=JSON_CALLBACK';
+          $http.jsonp(url).success(function(data){
+            self.actions = data.documentation;
+            self.loaded = true;
+          });
+        }
+
+        return Actions;
+      });
+
+    </script>
+  </head>
+
+  <body ng-app="actionheroDocumentationApp">
+    <table border="1" ng-controller="actionsController">
+      <thead>
+        <tr><th colspan="6">Actionhero APIs</th></tr>
+        <tr>
+          <td><strong>name</strong></td>
+          <td><strong>version</strong></td>
+          <td><strong>description</strong></td>
+          <td><strong>required</strong></td>
+          <td><strong>optional</strong></td>
+          <td><strong>outputExample</strong></td>
+        </tr>
+      </thead>
+      <tbody ng-show="actions.loaded">
+        <tr ng-repeat="actionCollection in actions.actions">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <tbody ng-show="!actions.loaded">
+        <tr >
+          <td colspan="6">loading...</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

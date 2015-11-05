@@ -1,0 +1,27 @@
+recipedb=# CREATE TABLE IF NOT EXISTS recipes (
+id SERIAL PRIMARY KEY,
+title VARCHAR(200),
+description VARCHAR(500),
+username VARCHAR(200),
+cooktime VARCHAR(100),
+preptime VARCHAR(100),
+yield VARCHAR(100),
+link VARCHAR(500)
+
+CREATE TABLE IF NOT EXISTS ingredients (
+id SERIAL PRIMARY KEY,
+name VARCHAR(200) NOT NULL);
+
+CREATE TABLE IF NOT EXISTS RecipeDirectionsList (
+id SERIAL PRIMARY KEY,
+recipe_id integer REFERENCES recipes,
+text VARCHAR(500),
+steporder integer);
+
+recipedb=# CREATE TABLE IF NOT EXISTS RecipeIngredientList (
+id SERIAL PRIMARY KEY,
+recipe_id integer REFERENCES recipes, 
+ingredient_id integer REFERENCES ingredients, 
+quantity VARCHAR(50), 
+unit VARCHAR(100), 
+note VARCHAR(500));
