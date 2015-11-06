@@ -7,6 +7,7 @@ var openshift_DB_name = process.env.PGDATABASE;
 var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
 //var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@"+openshift_DB_host+":"+openshift_DB_port+"/recipesdb";
 //var connString   = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.7.190.2:5432/recipedb";
+var connString = openshift_DB_url + "/" + openshift_DB_name;
 
 exports.search = {
   name: 'search',
@@ -21,7 +22,7 @@ exports.search = {
   },
 
   run: function(api, connection, next){
-    var connectionString = openshift_DB_url;
+    var connectionString = connString;
     pg.connect(connectionString, function(err, client, done) {
     client.query('SELECT 1 + 5', ['brian@example.com'], function(err, result) {
       connection.response.result.row[0];
