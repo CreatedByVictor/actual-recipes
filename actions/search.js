@@ -9,24 +9,23 @@ var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
 //var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.7.190.2:5432/recipedb";
 //var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.0.0.1:5432/mytest"
 
-function databaseConnect(query, andThen){
-  var output = {};
+function databaseConnect(_api, _conn, andThen, query){
 
-  var connString = "postgresql://" + openshift_DB_user + ":" +
-        openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
+  var connString = "postgresql://" + openshift_DB_user + ":" + openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
 
   pg.connect(connString, function(err, client, done){
 
     //lets make an error handler, shall we?
-    var isAnError = function(error,message){
+    var isAnError = function(error,message, obj){
       if (!error){ return false; }; // No harm. no fowl, moving on.
       else{
 
         if (client){ done(client); }// hmm, there was a problem, lets move everyone out of the door
 
-        this.prototype.response = {
+        _conn.response.error = {
           "errorMessage":message,
-          "error":error
+          "error":error,
+          "moreDetails":obj
         } //let us notify the proper authorities.
         console.log("There was an error. \n", err); // also a nice console out for good measure.
         andThen();
@@ -38,15 +37,12 @@ function databaseConnect(query, andThen){
 
     //if we get to here, we know that atleast we could connect.
     client.query(query, function(err, result){
-      if(isAnError(err, "There was a problem with the query.")){
-        return;
-      }
+      if(isAnError(err, "There was a problem with the query.",{"query":query})){ return;} //cover our ass.
       //Great success.
       done();
       //if we get to here, the request returned... something...
-      output["rows"] = result.rows;
+      _conn.response.rows = result.rows;
       andThen();
-      return output;
     }); // end of query
 
   });//the last of the connect scope.
@@ -107,8 +103,8 @@ exports.search = {
   */
   //Big test below.
 
-  connection.response.results = databaseConnect("SELECT 1 + 5 AS number", next)[0].number;
-  
+    databaseConnect(api,connection,next,"SELECT 1 + 5 AS number");
+
   }
 
 };
