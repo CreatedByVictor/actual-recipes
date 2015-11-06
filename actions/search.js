@@ -33,9 +33,19 @@ exports.search = {
     };
     pg.connect(clientConfig,function(err,client,done){
       client.query("SELECT 1 + 1",function(err,result){
-        connection.response.horse = result.rows;
 
         var query = connection.params.q;
+
+        if (err){
+          connection.response.error={
+            "error":err,
+            "query":query;
+          };
+          done();
+          next();
+        }
+
+        connection.response.horse = result.rows;
 
         client.query()
 
