@@ -42,6 +42,7 @@ exports.search = {
        connection.response.result = {"error message":"An error occured.","error":err};
        console.log("an error occured \n", err);
        return true;
+       next();
     };
 
     if(handleError(err)){ return;}
@@ -50,11 +51,13 @@ exports.search = {
       if (err){
         done(client);
         console.log("There was a problem with the query \n", err);
+        next();
       }
       else{
         done();  // client idles for 30 seconds before closing
         connection.response.result = result.rows[0].number;
-        console.log("Success.")
+        console.log("Success.");
+        next();
       }
     });
   });
