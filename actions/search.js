@@ -21,49 +21,12 @@ exports.search = {
   },
 
   run: function(api, connection, next){
-
-    var clientConfig = {
-      "user":openshift_DB_user,
-      "password":openshift_DB_pass,
-      "host":openshift_DB_host,
-      "port":openshift_DB_port,
-      "database":"recipedb",
-      "application_name":"blackoak",
-      "ssl":true
-    };
-    pg.connect(clientConfig,function(err,client,done){
-      client.query("SELECT 1 + 1",function(err,result){
-
-        var query = connection.params.q;
-
-        if (err){
-          connection.response.error={
-            "error":err,
-            "query":query;
-          };
-          done();
-          next();
-        }
-        else{
-          connection.response.horse = result.rows;
-
-          client.query()
-
-          var output = {
-            "host":openshift_DB_host,
-            "port":openshift_DB_port,
-            "user":openshift_DB_user,
-            "pass":openshift_DB_pass,
-            "url":openshift_DB_url,
-            "db":openshift_DB_name
-          };
-          connection.response.output = output;
-          connection.response.q = query;
-
-          done();
-          next();
-        }
-      });
+    var connectionString = openshift_DB_url;
+    pg.connect(connectionString, function(err, client, done) {
+    client.query('SELECT 1 + 5', ['brian@example.com'], function(err, result) {
+      connection.response.result.row[0];
+      done();  // client idles for 30 seconds before closing
     });
+});
   }
 };
