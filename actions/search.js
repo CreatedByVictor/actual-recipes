@@ -104,7 +104,7 @@ exports.search = {
   */
   //Big test below.
 
-    databaseConnect(api,connection,next,"SELECT 1 + 5 AS number", function(output){
+    databaseConnect(api,connection,next,"SELECT title FROM recipes", function(output){
       if (output){
         connection.response.rows = output;
         next();
