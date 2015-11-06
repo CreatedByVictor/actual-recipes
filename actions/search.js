@@ -34,25 +34,25 @@ exports.search = {
     pg.connect(clientConfig,function(err,client,done){
       client.query("SELECT 1 + 1",function(err,result){
         connection.response.horse = result.rows;
+
+        var query = connection.params.q;
+
+        client.query()
+
+        var output = {
+          "host":openshift_DB_host,
+          "port":openshift_DB_port,
+          "user":openshift_DB_user,
+          "pass":openshift_DB_pass,
+          "url":openshift_DB_url,
+          "db":openshift_DB_name
+        };
+        connection.response.output = output;
+        connection.response.q = query;
+
         done();
+        next();
       });
     });
-
-    var query = connection.params.q;
-
-    client.query()
-
-    var output = {
-      "host":openshift_DB_host,
-      "port":openshift_DB_port,
-      "user":openshift_DB_user,
-      "pass":openshift_DB_pass,
-      "url":openshift_DB_url,
-      "db":openshift_DB_name
-    };
-    connection.response.output = output;
-    connection.response.q = query;
-
-    next();
   }
 };
