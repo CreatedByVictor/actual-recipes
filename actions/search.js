@@ -47,9 +47,15 @@ exports.search = {
     if(handleError(err)){ return;}
 
     client.query('SELECT 1 + 5 AS number', ['brian@example.com'], function(err, result) {
-      done();  // client idles for 30 seconds before closing
-      connection.response.result = result.rows[0].number;
-      console.log("Success.")
+      if (err){
+        done(client);
+        console.log("There was a problem with the query \n", err);
+      }
+      else{
+        done();  // client idles for 30 seconds before closing
+        connection.response.result = result.rows[0].number;
+        console.log("Success.")
+      }
     });
   });
   }
