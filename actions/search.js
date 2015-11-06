@@ -46,7 +46,7 @@ exports.search = {
 
     if(handleError(err)){ return;}
 
-    client.query('SELECT 1 + 5 AS number', ['brian@example.com'], function(err, result) {
+    client.query('SELECT 1 + 5 AS number', function(err, result) {
       if (err){
         done(client);
         console.log("There was a problem with the query \n", err);
