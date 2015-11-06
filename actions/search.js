@@ -107,6 +107,7 @@ exports.search = {
     databaseConnect(api,connection,next,"SELECT 1 + 5 AS number", function(output){
       if (output){
         connection.response.rows = output;
+        next();
       }
     });
 
