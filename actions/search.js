@@ -104,8 +104,11 @@ exports.search = {
   */
   //Big test below.
 
-    databaseConnect(api,connection,next,"SELECT title FROM recipes", function(output){
+    var query = "SELECT * FROM recipes";
+
+    databaseConnect(api,connection,next,query, function(output){
       if (output){
+        connection.response.query = query;
         connection.response.rows = output;
         next();
       }
