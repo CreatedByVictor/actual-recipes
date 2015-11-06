@@ -22,17 +22,27 @@ exports.search = {
 
   run: function(api, connection, next){
 
-    //var client = new pg.Client(connString);
-    /*
-    var client = new pg.Client({
-      user:"admineie8ym9",
-      password: "pQDGG_EQLTRd",
-      database:"recipedb",
-      host:"127.7.190.2",
-      port:"5432"
-    });*/
+    var clientConfig = {
+      "user":openshift_DB_user,
+      "password":openshift_DB_pass,
+      "host":openshift_DB_host,
+      "port":openshift_DB_port,
+      "database":"recipedb",
+      "application_name":"blackoak",
+      "ssl":true
+    };
+    pg.connect(clientConfig,function(err,client,done){
+      client.query("SELECT 1 + 1",function(err,result){
+        connection.response.horse = result.rows;
+        done();
+      });
+    })
+    client.query()
 
     var query = connection.params.q;
+
+    client.query()
+
     var output = {
       "host":openshift_DB_host,
       "port":openshift_DB_port,
@@ -41,40 +51,9 @@ exports.search = {
       "url":openshift_DB_url,
       "db":openshift_DB_name
     };
-      connection.response.output = output;
-      connection.response.q = query;
+    connection.response.output = output;
+    connection.response.q = query;
 
-    /*
-    if(client.connection._events != null)
-    {
-
-      client.connect(
-        function(err){
-          if (err){
-            console.error("Could not connect to the database.\n", err);
-            connection.response.error={
-              "general":"Could not connect to the database.",
-              "errorDetails":err,
-              "output":output
-            };
-            next();
-          }
-          client.query('SELECT *;',function(err,result){
-            if (err){
-              return console.error("error running query", err);
-            }
-
-            connection.response.results = result.rows[0];
-            console.log("boop",result.rows);
-
-            client.end();
-
-            next();
-          });
-        }
-      );
-
-    }*/
-      next();
+    next();
   }
 };
