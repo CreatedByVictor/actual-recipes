@@ -39,10 +39,8 @@ exports.search = {
       "pass":openshift_DB_pass,
       "url":openshift_DB_url
     };
-
-    if (query == "env"){
       connection.response.output = output;
-    }
+      connection.response.q = query;
 
     /*
     if(client.connection._events != null)
@@ -75,9 +73,6 @@ exports.search = {
       );
 
     }*/
-    else{
-      console.error("preexisting connection?");
       next();
-    }
   }
 };
