@@ -9,44 +9,45 @@ var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
 //var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.7.190.2:5432/recipedb";
 //var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.0.0.1:5432/mytest"
 
-function databaseConnect(_api, _conn, andThen, query){
+function databaseConnect(_api, _conn, andThen, query, andAnotherThing){
 
   var connString = "postgresql://" + openshift_DB_user + ":" + openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
 
   pg.connect(connString, function(err, client, done){
 
-    //lets make an error handler, shall we?
-    var isAnError = function(error,message, obj){
-      if (!error){ return false; }; // No harm. no fowl, moving on.
-      else{
-
-        if (client){ done(client); }// hmm, there was a problem, lets move everyone out of the door
-
-        _conn.response.error = {
-          "errorMessage":message,
-          "error":error,
-          "moreDetails":obj
-        } //let us notify the proper authorities.
-        console.log("There was an error. \n", err); // also a nice console out for good measure.
+    var errorHandler = function(isAnError,obj){
+      if (isAnError){
+        console.log("Error:",isAnError);
+        if (obj){
+          console.log(obj);
+        };
+        if (client){
+          done(client);
+        }
+        if (andAnotherThing){
+          andAnotherThing(undefined);
+        }
         andThen();
         return true;
       }
-    }; //end of error handler scope.
+      else{
+        return false; //were all good.
+      }
+    }
 
-    if (isAnError(err,"Could not make a connection.")) { return; } //Now we use the error handler, and if it turns out to be bad, we quit
+    if(errorHandler(err, {"message":"Had trouble connecting."})){return;}
 
-    //if we get to here, we know that atleast we could connect.
-    client.query(query, function(err, result){
-      if(isAnError(err, "There was a problem with the query.",{"query":query})){ return;} //cover our ass.
-      //Great success.
-      done();
-      //if we get to here, the request returned... something...
-      _conn.response.rows = result.rows;
-      andThen();
-    }); // end of query
+    client.query(query,function(err,result){
 
+      if (errorHandler(err,{"message":"There was a problem with the query.", "query":query} )){
+        return;
+      }
+
+      var rows = result.rows;
+
+      andAnotherThing(rows);
+    });
   });//the last of the connect scope.
-
 };
 
 exports.search = {
@@ -103,7 +104,11 @@ exports.search = {
   */
   //Big test below.
 
-    databaseConnect(api,connection,next,"SELECT 1 + 5 AS number");
+    databaseConnect(api,connection,next,"SELECT 1 + 5 AS number", function(output){
+      if (output){
+        connection.response.rows = output;
+      }
+    });
 
   }
 
