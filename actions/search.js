@@ -22,13 +22,15 @@ exports.search = {
   run: function(api, connection, next){
 
     //var client = new pg.Client(connString);
+    /*
     var client = new pg.Client({
       user:"admineie8ym9",
       password: "pQDGG_EQLTRd",
       database:"recipedb",
       host:"127.7.190.2",
       port:"5432"
-    });
+    });*/
+
     var query = connection.params.q;
     var output = {
       "host":openshift_DB_host,
@@ -38,8 +40,14 @@ exports.search = {
       "url":openshift_DB_url
     };
 
+    if (query == "env"){
+      connection.response.output = output;
+    }
+
+    /*
     if(client.connection._events != null)
     {
+
       client.connect(
         function(err){
           if (err){
@@ -66,7 +74,7 @@ exports.search = {
         }
       );
 
-    }
+    }*/
     else{
       console.error("preexisting connection?");
       next();
