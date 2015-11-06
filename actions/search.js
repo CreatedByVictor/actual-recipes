@@ -3,6 +3,7 @@ var openshift_DB_host = process.env.OPENSHIFT_POSTGRESQL_DB_HOST;
 var openshift_DB_port = process.env.OPENSHIFT_POSTGRESQL_DB_PORT;
 var openshift_DB_user = process.env.OPENSHIFT_POSTGRESQL_DB_USERNAME;
 var openshift_DB_pass = process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD;
+var openshift_DB_name = process.env.PGDATABASE;
 var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
 //var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@"+openshift_DB_host+":"+openshift_DB_port+"/recipesdb";
 //var connString   = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.7.190.2:5432/recipedb";
@@ -37,7 +38,8 @@ exports.search = {
       "port":openshift_DB_port,
       "user":openshift_DB_user,
       "pass":openshift_DB_pass,
-      "url":openshift_DB_url
+      "url":openshift_DB_url,
+      "db":openshift_DB_name
     };
       connection.response.output = output;
       connection.response.q = query;
