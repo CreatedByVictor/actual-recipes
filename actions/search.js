@@ -44,24 +44,25 @@ exports.search = {
           done();
           next();
         }
+        else{
+          connection.response.horse = result.rows;
 
-        connection.response.horse = result.rows;
+          client.query()
 
-        client.query()
+          var output = {
+            "host":openshift_DB_host,
+            "port":openshift_DB_port,
+            "user":openshift_DB_user,
+            "pass":openshift_DB_pass,
+            "url":openshift_DB_url,
+            "db":openshift_DB_name
+          };
+          connection.response.output = output;
+          connection.response.q = query;
 
-        var output = {
-          "host":openshift_DB_host,
-          "port":openshift_DB_port,
-          "user":openshift_DB_user,
-          "pass":openshift_DB_pass,
-          "url":openshift_DB_url,
-          "db":openshift_DB_name
-        };
-        connection.response.output = output;
-        connection.response.q = query;
-
-        done();
-        next();
+          done();
+          next();
+        }
       });
     });
   }
