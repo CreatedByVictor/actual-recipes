@@ -36,8 +36,7 @@ exports.search = {
         connection.response.horse = result.rows;
         done();
       });
-    })
-    client.query()
+    });
 
     var query = connection.params.q;
 
