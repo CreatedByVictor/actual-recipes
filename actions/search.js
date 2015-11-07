@@ -78,12 +78,12 @@ exports.recipe = {
   name: "recipe",
   description: "I will return all recipes within the range.",
   inputs: {
-    index:{
+    id:{
       required:true,
     }
   },
   run: function(api,connection,next){
-    var index = connection.params.index;
+    var index = connection.params.id;
     var recipeQuery = "SELECT * FROM recipes WHERE id = "+index;
 
     databaseConnect(recipeQuery, function(recipeOut){
@@ -124,6 +124,7 @@ exports.recipe = {
           });
         });
       } else {
+        connection.response.error = "No recipe found with that id.";
         next();
       };
     });
