@@ -6,7 +6,7 @@ var openshift_DB_pass = process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD;
 var openshift_DB_name = process.env.PGDATABASE;
 var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
 
-function databaseConnect(_api, _conn, andThen, query, andAnotherThing){
+function databaseConnect( query, andAnotherThing ){
 
   var connString = "postgresql://" + openshift_DB_user + ":" + openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
 
@@ -24,7 +24,6 @@ function databaseConnect(_api, _conn, andThen, query, andAnotherThing){
         if (andAnotherThing){
           andAnotherThing(undefined);
         }
-        andThen();
         return true;
       }
       else{
@@ -60,57 +59,70 @@ exports.search = {
   },
 
   run: function(api, connection, next){
-    /*
-    var connectionString = connString;
-    pg.connect(connectionString, function(err, client, done) {
-
-      var handleError = function(err) {
-       // no error occurred, continue with the request
-       if(!err) return false;
-
-       // An error occurred, remove the client from the connection pool.
-       // A truthy value passed to done will remove the connection from the pool
-       // instead of simply returning it to be reused.
-       // In this case, if we have successfully received a client (truthy)
-       // then it will be removed from the pool.
-       if(client){
-         done(client);
-       }
-       connection.response.result = {"error message":"An error occured.","error":err};
-       console.log("an error occured \n", err);
-       next();
-       return true;
-    };
-
-    if(handleError(err)){ return;}
-
-    client.query('SELECT 1 + 5 AS number', function(err, result) {
-      if (err){
-        done(client);
-        console.log("There was a problem with the query \n", err);
-        next();
-      }
-      else{
-        done();  // client idles for 30 seconds before closing
-        connection.response.result = result.rows[0].number;
-        console.log("Success.");
-        next();
-      }
-    });
-  });
-  */
-  //Big test below.
 
     var query = "SELECT * FROM recipes";
 
-    databaseConnect(api,connection,next,query, function(output){
+    databaseConnect(query, function(output){
       if (output){
         connection.response.query = query;
         connection.response.rows = output;
-        next();
       }
+      next();
     });
 
   }
 
 };
+
+exports.recipe = {
+  name: "recipe",
+  description: "I will return all recipes within the range.",
+  inputs: {
+    index:{required:true;}
+  },
+  run: function(api,connection,next){
+    var index = connection.params.index;
+    var recipeQuery = "SELECT * FROM recipes WHERE id = "+index;
+
+    databaseConnect(recipeQuery, function(recipeOut){
+      if (recipeOut){
+
+        //now, lets collect the ingredients.
+        var ingredientQuery = "SELECT * FROM recipeingredientlist WHERE recipe_id =" + index;
+        databaseConnect(ingredientQuery, function(ingOut){
+
+          //and lastly, lets get all those steps.
+          var stepQuery = "SELECT * FROM recipedirectionslist WHERE recipe_id =" + index;
+          databaseConnect(stepQuery, function(stepOut){
+
+            var recipeData = recipeOut[0]; // just the first row is needed.
+            var ingredientData = ingOut;   // the array of the ingredients and their data.
+            var directionsData = stepOut;  // the array of the Steps.
+
+            //directions and ingredients will return undefined if there was an error.
+
+            var outputObject = {
+              "recipe_id": recipeData.id,
+              "title": recipeData.title,
+              "description": recipeData.description,
+              "username": recipeData.username;
+              "time":{
+                "prep":recipeData.preptime,
+                "cook":recipeData.cooktime
+              },
+              "yield": recipeData.yield,
+              "link": recipeData.link,
+              "ingredients":ingredientData,
+              "directions": directionsData
+            };
+
+            connection.response.recipe = outputObject;
+
+          });
+        });
+      }; //end of if scope.
+      next();
+    });
+
+  }
+}
