@@ -5,9 +5,6 @@ var openshift_DB_user = process.env.OPENSHIFT_POSTGRESQL_DB_USERNAME;
 var openshift_DB_pass = process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD;
 var openshift_DB_name = process.env.PGDATABASE;
 var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
-//var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@"+openshift_DB_host+":"+openshift_DB_port+"/recipesdb";
-//var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.7.190.2:5432/recipedb";
-//var connString = "postgresql://admineie8ym9:pQDGG_EQLTRd@127.0.0.1:5432/mytest"
 
 function databaseConnect(_api, _conn, andThen, query, andAnotherThing){
 
