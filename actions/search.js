@@ -105,7 +105,7 @@ exports.recipe = {
               "recipe_id": recipeData.id,
               "title": recipeData.title,
               "description": recipeData.description,
-              "username": recipeData.username;
+              "username": recipeData.username,
               "time":{
                 "prep":recipeData.preptime,
                 "cook":recipeData.cooktime
