@@ -78,7 +78,9 @@ exports.recipe = {
   name: "recipe",
   description: "I will return all recipes within the range.",
   inputs: {
-    index:{required:true}
+    index:{
+      required:true,
+    }
   },
   run: function(api,connection,next){
     var index = connection.params.index;
@@ -117,11 +119,13 @@ exports.recipe = {
             };
 
             connection.response.recipe = outputObject;
-
+            console.log("success?");
+            next();
           });
         });
-      }; //end of if scope.
-      next();
+      } else {
+        next();
+      };
     });
 
   }
