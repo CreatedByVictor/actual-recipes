@@ -78,7 +78,7 @@ exports.recipe = {
   name: "recipe",
   description: "I will return all recipes within the range.",
   inputs: {
-    index:{required:true;}
+    index:{required:true}
   },
   run: function(api,connection,next){
     var index = connection.params.index;
