@@ -87,7 +87,7 @@ exports.recipe = {
     var recipeQuery = "SELECT * FROM recipes WHERE id = "+index;
 
     databaseConnect(recipeQuery, function(recipeOut){
-      if (if recipeOut && recipeOut[0]){
+      if (recipeOut && recipeOut[0]){
 
         //now, lets collect the ingredients.
         var ingredientQuery = "SELECT * FROM recipeingredientlist WHERE recipe_id =" + index;
