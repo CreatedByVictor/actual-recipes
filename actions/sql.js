@@ -132,6 +132,6 @@ exports.recipe = {
   }
 }
 
-exports.addIngredientToRecipe{
+exports.addIngredientToRecipe = {
 
 }
