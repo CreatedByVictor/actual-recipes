@@ -87,7 +87,7 @@ exports.recipe = {
     var recipeQuery = "SELECT * FROM recipes WHERE id = "+index;
 
     databaseConnect(recipeQuery, function(recipeOut){
-      if (recipeOut[0]){
+      if (if recipeOut && recipeOut[0]){
 
         //now, lets collect the ingredients.
         var ingredientQuery = "SELECT * FROM recipeingredientlist WHERE recipe_id =" + index;
@@ -124,7 +124,7 @@ exports.recipe = {
           });
         });
       } else {
-        connection.response.error = "No recipe found with that id.";
+        connection.response.error = "No recipe found with that id. It should be a whole number and be greater than 0";
         next();
       };
     });
