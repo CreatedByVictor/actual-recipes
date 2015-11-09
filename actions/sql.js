@@ -229,15 +229,15 @@ exports.listAllIngredients = {
     });
   }
 }
-exports.deleteIngredientByID = {
-  name:"deleteIngredientByID",
+exports.deleteIngredientById = {
+  name:"deleteIngredientById",
   description: "Delete an ingredient by its id.",
   input:{
     id:{required:true}
   },
   run: function(api, connection, next){
     var id = connection.params.id;
-    var query = "DELETE FROM ingredients WHERE id =" + id;
+    var query = "DELETE FROM ingredients WHERE id=" + id;
 
     databaseConnect(query, function(err, rows){
       if (rows && rows[0]){
