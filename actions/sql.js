@@ -186,3 +186,35 @@ exports.getIngredientName = {
     });
   }
 }
+exports.addIngredient = {
+  name: "addIngredient",
+  description: "I add an Ingredient to the master Ingredient list.",
+  inputs: {
+    name:{
+      required:true
+    }
+  },
+  run: function(api, connection, next){
+    var name = connection.params.name;
+    var query = "INSERT INTO ingredients (name) VALUES('" + name +"')";
+    databaseConnect(query, function(err, rows){
+      if (rows && rows[0]){
+        databaseConnect("SELECT id FROM ingredients WHERE name='" + name + "'", function(err1, rows1){
+
+          if (rows1 && rows1[0]){
+            connection.response.result = {
+              "id": rows1[0].id,
+              "name":name,
+            }
+          }
+
+        });
+      }
+      else {
+        connection.response.error = "Could not add this";
+        connection.response.param = name;
+      }
+      next();
+    });
+  }
+}
