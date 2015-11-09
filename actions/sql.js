@@ -22,7 +22,7 @@ function databaseConnect( query, andAnotherThing ){
           done(client);
         }
         if (andAnotherThing){
-          andAnotherThing(undefined);
+          andAnotherThing(err, undefined);
         }
         return true;
       }
@@ -41,7 +41,7 @@ function databaseConnect( query, andAnotherThing ){
 
       var rows = result.rows;
 
-      andAnotherThing(rows);
+      andAnotherThing(err, rows);
     });
   });//the last of the connect scope.
 };
@@ -62,7 +62,7 @@ exports.search = {
 
     var query = "SELECT * FROM recipes";
 
-    databaseConnect(query, function(output){
+    databaseConnect(query, function(err, output){
       if (output){
         connection.response.query = query;
         connection.response.rows = output;
@@ -86,16 +86,16 @@ exports.recipe = {
     var index = connection.params.id;
     var recipeQuery = "SELECT * FROM recipes WHERE id = "+index;
 
-    databaseConnect(recipeQuery, function(recipeOut){
+    databaseConnect(err1, recipeQuery, function(err, recipeOut){
       if (recipeOut && recipeOut[0]){
 
         //now, lets collect the ingredients.
         var ingredientQuery = "SELECT * FROM recipeingredientlist WHERE recipe_id =" + index;
-        databaseConnect(ingredientQuery, function(ingOut){
+        databaseConnect(err2, ingredientQuery, function(ingOut){
 
           //and lastly, lets get all those steps.
           var stepQuery = "SELECT * FROM recipedirectionslist WHERE recipe_id =" + index;
-          databaseConnect(stepQuery, function(stepOut){
+          databaseConnect(err3, stepQuery, function(stepOut){
 
             var recipeData = recipeOut[0]; // just the first row is needed.
             var ingredientData = ingOut;   // the array of the ingredients and their data.
@@ -131,7 +131,25 @@ exports.recipe = {
 
   }
 }
-/*
-exports.addIngredientToRecipe = {
 
-}*/
+exports.getIngredientName = {
+  name: "getIngredientName",
+  description: "I retrieve the Ingredient name from the db using its id.",
+  inputs: {
+    id:{required: true}
+  },
+  run: function(api, connection, next){
+    var ingId = connection.params.id;
+    var query = "SELECT name FROM ingredients WHERE id="+ingId;
+    databaseConnect(query, function(err, rows){
+      if (rows && row[0]){
+        connection.response.name = rows[0].name;
+      }
+      else {
+        connection.response.error = "Could not retrieve this Ingredient name. Is the id correct?";
+        connection.response.param = ingId;
+      }
+      next();
+    });
+  }
+}
