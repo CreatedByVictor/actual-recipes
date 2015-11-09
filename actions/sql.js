@@ -124,7 +124,7 @@ exports.getListOfDirectionsForRecipe = {
   run: function(api,connection,next){
     var recipe_id = connection.params.id;
 
-    var query = "SELECT * FROM recipedirectionslist WHERE recipe_id=" + recipe_id;
+    var query = "SELECT * FROM recipedirectionslist WHERE recipe_id=" + recipe_id + " ORDER BY steporder";
     databaseConnect(query, function(err,result){
       if (err){
         connection.response.error = err;
