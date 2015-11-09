@@ -223,7 +223,7 @@ exports.listAllIngredients = {
   name:"listAllIngredients",
   description:"I retrieve a list of all ingredients in the master list.",
   run: function(api,connection,next){
-    var query = "SELECT * FROM ingredients"
+    var query = "SELECT * FROM ingredients ORDER BY id"
     databaseConnect(query, function(err, rows){
       connection.response.allIngredients = rows;
       next();
