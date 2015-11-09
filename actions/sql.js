@@ -82,12 +82,58 @@ exports.getListOfRecipes = {
       if (err){
         connection.response.error = err;
         next();
-        return;
       }
       else{
         connection.response = recipes.rows;
         next();
       }
     }); // end of first database connection
+  }
+}
+
+exports.getListOfIngredientsForRecipe = {
+  name:"getListOfIngredientsForRecipe",
+  description: "I return the list of ingredients for a given recipe id.",
+  inputs: {
+    id: {required:true}
+  },
+  run: function(api,connection,next){
+    var recipeid = connection.params.id;
+
+    var query = "SELECT list.id AS rIngList_id, list.recipe_id, list.ingredient_id, ing.name, list.unit, list.quantity, list.note FROM ingredients AS ing, recipeingredientlist AS list WHERE list.recipe_id=" + recipe_id + " AND ing.ingredient_id = list.ingredient_id";
+
+    databaseConnect(query, function(err,result){
+      if (err){
+        connection.response.error = err;
+        next();
+      }
+      else{
+        connection.response = result.rows;
+        next();
+      }
+    });
+  }
+}
+
+exports.getListOfDirectionsForRecipe = {
+  name:"getListOfDirectionsForRecipe",
+  description:"I return the list of directions for a given recipe id.",
+  inputs: {
+    id: {required:true}
+  },
+  run: function(api,connection,next){
+    var recipeid = connection.params.id;
+
+    var query = "SELECT * FROM recipedirectionslist WHERE recipe_id=" + recipe_id;
+    databaseConnect(query, function(err,result){
+      if (err){
+        connection.response.error = err;
+        next();
+      }
+      else{
+        connection.response = result.rows;
+        next();
+      }
+    });
   }
 }
