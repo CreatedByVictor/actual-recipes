@@ -201,11 +201,11 @@ exports.addIngredient = {
       if (rows && rows[0]){
         connection.response.errorRows = rows;
         next();
-      }
+      };
       else if (err){
         connection.response.error = err;
         next();
-      },
+      };
       else {
         connection.response.error = "Could not add this";
         connection.response.param = name;
