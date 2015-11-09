@@ -148,14 +148,14 @@ exports.updateIngredientName = {
         console.log(err);
         connection.response.error = err;
       }
-      else(
+      else{
         if (rows && rows[0]){
           connection.response.rows = rows;
         }
         else{
           console.log("Something went wrong. when trying to update that name.");
         }
-      )
+      }
     });
   }
 }
