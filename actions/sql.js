@@ -85,8 +85,8 @@ exports.getListOfRecipes = {
         return;
       }
       else{
-        connection.response = recipes.rows[];
-        next();        
+        connection.response = recipes.rows;
+        next();
       }
     }); // end of first database connection
   }
