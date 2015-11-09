@@ -142,7 +142,7 @@ exports.getIngredientName = {
     var ingId = connection.params.id;
     var query = "SELECT name FROM ingredients WHERE id="+ingId;
     databaseConnect(query, function(err, rows){
-      if (rows && row[0]){
+      if (rows && rows[0]){
         connection.response.name = rows[0].name;
       }
       else {
