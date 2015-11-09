@@ -143,7 +143,7 @@ exports.findIngredientIdFromName = {
   description: "I search the ingredients table and see if an ingredint exists, and if it does, I return its id.",
   inputs:{
     name:{required:true}
-  }.
+  },
   run: function(api,connection,next){
     var searchName = connection.params.name;
 
