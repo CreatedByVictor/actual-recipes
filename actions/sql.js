@@ -153,8 +153,14 @@ exports.updateIngredientName = {
           connection.response.rows = rows;
         }
         else{
-          console.log("Something went wrong. when trying to update that name.");
+          console.log("Something went wrong. when trying to update INGREDIENT_ID",ingId, "with NAME",newName);
+          connection.response.error = {
+            "Message": "Something went wrong. when trying to update INGREDIENT_ID",
+            "IngredientId":ingId,
+            "NewName": newName
+          };
         }
+        next();
       }
     });
   }
