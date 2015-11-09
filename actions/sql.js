@@ -199,22 +199,29 @@ exports.addIngredient = {
     var query = "INSERT INTO ingredients (name) VALUES('" + name +"')";
     databaseConnect(query, function(err, rows){
       if (rows && rows[0]){
+        connection.response.errorRows = rows;
+        next();
+      }
+      else if (err){
+        connection.response.error = err;
+        next();
+      },
+      else {
+        connection.response.error = "Could not add this";
+        connection.response.param = name;
+
         databaseConnect("SELECT id FROM ingredients WHERE name='" + name + "'", function(err1, rows1){
 
-          if (rows1 && rows1[0]){
+          if (!rows1 && !rows1[0]){
             connection.response.result = {
               "id": rows1[0].id,
               "name":name,
             }
+            next();
           }
 
         });
       }
-      else {
-        connection.response.error = "Could not add this";
-        connection.response.param = name;
-      }
-      next();
     });
   }
 }
@@ -241,10 +248,13 @@ exports.deleteIngredientById = {
 
     databaseConnect(query, function(err, rows){
       if (rows && rows[0]){
-        connection.response = "Ingredient Deleted";
+        connection.response = rows;
       }
-      if(err){
-        connection.response = "ERROR";
+      else if(err){
+        connection.response.error = err;
+      }
+      else{
+        connection.response = "Ingredient " + id + " Deleted Successfully"
       }
       next();
     });
