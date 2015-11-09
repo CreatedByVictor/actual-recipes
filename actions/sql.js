@@ -138,3 +138,51 @@ exports.getListOfDirectionsForRecipe = {
     });
   }
 }
+exports.findIngredientIdFromName = {
+  name:"findIngredientIDFromName",
+  description: "I search the ingredients table and see if an ingredint exists, and if it does, I return its id.",
+  inputs:{
+    name:{required:true}
+  }.
+  run:function(api.connection,next){
+    var searchName = connection.params.name;
+
+    var searchName = "%"+searchName+"%"; //format to similar query;
+
+    query = "SELECT id FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
+
+    databaseConnect(query, function(err, result){
+      if(err){
+        connection.response.error = err;
+        next();
+      }
+      else{
+        connection.response = result.rows;
+        next();
+      }
+    });
+  }
+}
+
+exports.addIngredientToRecipe = {
+  name:"addIngredientToRecipe",
+  description: "I add an Ingredient to a recipe selected by the id.",
+  inputs:{
+    id:   {required:true},
+    name: {required:true},
+    qty:  {required:true},
+    unit: {required:false},
+    note: {required:false}
+  },
+  run: function(api,connection,next){
+    var recipe_id     = connection.params.id;
+    var ing_quantity  = connection.params.qty;
+    var ing_unit      = connection.params.unit;
+    var ing_name      = connection.params.name;
+    var ing_note      = connection.params.note;
+
+    var listQuery = function(){
+      var string = "INSERT INTO recipeingredientlist ()"
+    };
+  }
+}
