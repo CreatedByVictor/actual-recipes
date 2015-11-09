@@ -131,7 +131,34 @@ exports.recipe = {
 
   }
 }
+exports.updateIngredientName = {
+  name: "updateIngredientName",
+  description: "I take an Ingredient at an id and update its name to something new.",
+  inputs:{
+    id:{required:true},
+    name:{required:true}
+  },
+  run: function(api, connection, next){
+    var newName = connection.params.name;
+    var ingId = connection.params.id;
+    var query = "UPDATE ingredients SET name ='" + newName +"' WHERE id="+ingId;
 
+    databaseConnect(query, function(err, rows){
+      if(err){
+        console.log(err);
+        connection.response.error = err;
+      }
+      else(
+        if (rows && rows[0]){
+          connection.response.rows = rows;
+        }
+        else{
+          console.log("Something went wrong. when trying to update that name.");
+        }
+      )
+    });
+  }
+}
 exports.getIngredientName = {
   name: "getIngredientName",
   description: "I retrieve the Ingredient name from the db using its id.",
