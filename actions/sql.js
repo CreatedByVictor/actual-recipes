@@ -100,7 +100,9 @@ exports.getListOfIngredientsForRecipe = {
   run: function(api,connection,next){
     var recipe_id = connection.params.id;
 
-    var query = "SELECT list.id AS rIngList_id, list.recipe_id, list.ingredient_id, ing.name, list.unit, list.quantity, list.note FROM ingredients AS ing, recipeingredientlist AS list WHERE list.recipe_id=" + recipe_id + " AND ing.ingredient_id = list.ingredient_id";
+    var query =
+    "SELECT * FROM ingredients AS ing, recipeingredientlist AS list WHERE " +
+    "list.recipe_id= " + recipe_id + " AND ing.ingredient_id = list.ingredient_id";
 
     databaseConnect(query, function(err,result){
       if (err){
