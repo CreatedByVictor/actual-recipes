@@ -218,7 +218,6 @@ exports.addIngredient = {
     });
   }
 }
-
 exports.listAllIngredients = {
   name:"listAllIngredients",
   description:"I retrieve a list of all ingredients in the master list.",
@@ -226,6 +225,27 @@ exports.listAllIngredients = {
     var query = "SELECT * FROM ingredients ORDER BY id"
     databaseConnect(query, function(err, rows){
       connection.response = rows;
+      next();
+    });
+  }
+}
+exports.deleteIngredientByID = {
+  name:"deleteIngredientByID",
+  description: "Delete an ingredient by its id.",
+  input:{
+    id:{required:true}
+  },
+  run: function(api, connection, next){
+    var id = connection.params.id;
+    var query = "DELETE FROM ingredients WHERE id =" + id;
+
+    databaseConnect(query, function(err, rows){
+      if (rows && rows[0]){
+        connection.response = "Ingredient Deleted";
+      }
+      if(err){
+        connection.response = "ERROR";
+      }
       next();
     });
   }
