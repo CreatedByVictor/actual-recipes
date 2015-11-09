@@ -225,7 +225,7 @@ exports.listAllIngredients = {
   run: function(api,connection,next){
     var query = "SELECT * FROM ingredients ORDER BY id"
     databaseConnect(query, function(err, rows){
-      connection.response.allIngredients = rows;
+      connection.response = rows;
       next();
     });
   }
