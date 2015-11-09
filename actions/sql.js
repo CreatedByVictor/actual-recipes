@@ -144,7 +144,7 @@ exports.findIngredientIdFromName = {
   inputs:{
     name:{required:true}
   }.
-  run:function(api.connection,next){
+  run:function(api,connection,next){
     var searchName = connection.params.name;
 
     var searchName = "%"+searchName+"%"; //format to similar query;
