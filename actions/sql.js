@@ -232,7 +232,7 @@ exports.listAllIngredients = {
 exports.deleteIngredientById = {
   name:"deleteIngredientById",
   description: "Delete an ingredient by its id.",
-  input:{
+  inputs:{
     id:{required:true}
   },
   run: function(api, connection, next){
