@@ -14,6 +14,7 @@ var connectionObject = {
 };
 
 var db = pgp(connectionObject); //New Hotness.
+
 /*
 //var openshift_DB_host = process.env.OPENSHIFT_POSTGRESQL_DB_HOST;
 //var openshift_DB_port = process.env.OPENSHIFT_POSTGRESQL_DB_PORT;
@@ -59,7 +60,7 @@ var db = pgp(connectionObject); //New Hotness.
     });//the last of the connect scope.
   };//
 */
-
+//promised
 exports.search = {
   name: 'search',
   description: 'I will return an object of results from a database query.',
@@ -75,7 +76,17 @@ exports.search = {
   run: function(api, connection, next){
 
     var query = "SELECT * FROM recipes";
+    db.query(query)
+      .then(function(data){
+        connection.response = data;
+        next();
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next();
+      });
 
+    /*
     databaseConnect(query, function(err, output){
       if (output){
         connection.response.query = query;
@@ -83,16 +94,26 @@ exports.search = {
       }
       next();
     });
-
+    */
   }
 
 };
-
+//promised
 exports.getListOfRecipes = {
   name:"getListOfRecipes",
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
   run: function(api,connection,next){
+
+    db.query("SELECT * FROM recipes")
+      .then(function(data){
+        connection.response = data;
+      })
+      .catch(function(error){
+        connection.response.error = error;
+      });
+
+    /*
     databaseConnect("SELECT * FROM recipes", function(err,recipes){
       if (err){
         connection.response.error = err;
@@ -103,9 +124,10 @@ exports.getListOfRecipes = {
         next();
       }
     }); // end of first database connection
+    */
   }
 }
-
+//promised:
 exports.getListOfIngredientsForRecipe = {
   name:"getListOfIngredientsForRecipe",
   description: "I return the list of ingredients for a given recipe id.",
@@ -115,9 +137,18 @@ exports.getListOfIngredientsForRecipe = {
   run: function(api,connection,next){
     var recipe_id = connection.params.id;
 
-    var query =
-    "SELECT * FROM ingredients AS ing, recipeingredientlist AS list WHERE ing.id = list.ingredient_id AND list.recipe_id= "+recipe_id;
+    var query = "SELECT * FROM ingredients AS ing, recipeingredientlist AS list WHERE ing.id = list.ingredient_id AND list.recipe_id= "+recipe_id;
 
+    db.query(query)
+      .then(function(data){
+        connection.response = data;
+        next();
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next();
+      });
+    /*
     databaseConnect(query, function(err,result){
       if (err){
         connection.response.error = err;
@@ -128,9 +159,10 @@ exports.getListOfIngredientsForRecipe = {
         next();
       }
     });
+    */
   }
 }
-
+//promised:
 exports.getListOfDirectionsForRecipe = {
   name:"getListOfDirectionsForRecipe",
   description:"I return the list of directions for a given recipe id.",
@@ -163,6 +195,7 @@ exports.getListOfDirectionsForRecipe = {
       });
   }
 }
+//promised:
 exports.findIngredientIdFromName = {
   name:"findIngredientIDFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
@@ -171,10 +204,8 @@ exports.findIngredientIdFromName = {
   },
   run: function(api,connection,next){
     var searchName = connection.params.name;
-
     searchName = "'%"+searchName+"%'"; //format query;
-
-    query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
+    var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
     /*
     databaseConnect(query, function(err, result){
       if(err){
@@ -195,16 +226,24 @@ exports.findIngredientIdFromName = {
       }
     });
     */
+    db.query(query)
+      .then(function(data){
+        connection.response = data;
+        next();
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next();
+      });
+      /*
     var result = databaseConnect(query, function(err,result){
       return result;
     });
-
     connection.response.result = result;
-    next();
-
+    next();*/
   }
 }
-
+//todo:
 exports.addIngredientToRecipe = {
   name:"addIngredientToRecipe",
   description: "I add an Ingredient to a recipe selected by the id.",
