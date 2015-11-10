@@ -157,8 +157,16 @@ exports.findIngredientIdFromName = {
         next();
       }
       else{
-        connection.response = result.rows;
-        next();
+        if (result.rows.length === 0){
+          var errText = "The query ( " + connection.params.name + " ) was not found in the Ingredients Database.";
+          var newError = new Error(errText);
+          connection.response.error = errText;
+          next(newError);
+        }
+        else{
+          connection.response = result.rows;
+          next();
+        }
       }
     });
   }
