@@ -261,11 +261,24 @@ exports.addIngredientToDB = {
 
     db.query(doesIngredientExist)
       .then(function(data){
-        connection.response = data;
-        next();
+        //connection.response = data;
+        if(data.length = 1){
+          db.query(insertNewIngredient)
+            .then(function(result){
+              connection.response = result;
+              next();
+            })
+            .catch(function(error){
+              connection.response.error = error;
+              next( new Error(error) );
+            });
+        }
+        else{
+          return null;
+        }
       })
       .catch(function(error){
-        connection.response.jeep = error;
+        connection.response.error = error;
         next( new Error(error));
       });
   }
