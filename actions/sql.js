@@ -33,14 +33,16 @@ function databaseConnect( query, andAnotherThing ){
 
     if(errorHandler(err, {"message":"Had trouble connecting."})){return;}
 
-    client.query(query,function(err,result){
+    return client.query(query,function(err,result){
 
       if (errorHandler(err,{"message":"There was a problem with the query.", "query":query} )){
         andAnotherThing(err, null); // return the error on an error.
-        return;
+        return err;
       }
-      done(client);
-      andAnotherThing(null, result); //All is good, no error found, move out.
+      else{
+        done(client);
+        return andAnotherThing(null, result); //All is good, no error found, move out.
+      }
     }); // end of client query.
   });//the last of the connect scope.
 };//
