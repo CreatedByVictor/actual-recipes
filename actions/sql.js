@@ -22,10 +22,7 @@ var db = pgp(connectionObject); //New Hotness.
 //var openshift_DB_pass = process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD;
 //var openshift_DB_name = process.env.PGDATABASE;
 //var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
-*/
-
-//Old impleentation
-/*
+//Old implmentation
   function databaseConnect( query, andAnotherThing ){
     var connString = "postgresql://" + openshift_DB_user + ":" + openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
     pg.connect(connString, function(err, client, done){
@@ -61,6 +58,7 @@ var db = pgp(connectionObject); //New Hotness.
   };//
 */
 //promised
+
 exports.search = {
   name: 'search',
   description: 'I will return an object of results from a database query.',
@@ -244,6 +242,41 @@ exports.findIngredientIdFromName = {
   }
 }
 //todo:
+
+exports.addIngredientToDB = {
+  name:"addIngredientToDB",
+  description: "I add a named ingredient to its database table and return the id:name pair that is returned.",
+  inputs:{
+    name:{required:true}
+  },
+  run: function(api, connection, next){
+    var newIngName = connection.params.name;
+    var insertNewIngredient = "INSERT INTO ingredients (name) VALUES(" + newIngName +")";
+    var doesIngredintExist  = "SELECT * FROM ingredients WHERE name=" + newIngName;
+    db.query(doesIngredintExist)
+      .then(function(data){
+        if (data.length = 0){
+          db.query(insertNewIngredient)
+            .then(function(data){
+              connection.response = data;
+              next();
+            })
+            .catch(function(error){
+              connection.response.error = error;
+              next();
+            });
+        }
+        else{
+          return null; //that must exist
+        }
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next();
+      });
+  }
+}
+
 exports.addIngredientToRecipe = {
   name:"addIngredientToRecipe",
   description: "I add an Ingredient to a recipe selected by the id.",
@@ -260,9 +293,6 @@ exports.addIngredientToRecipe = {
     var ing_unit      = connection.params.unit;
     var ing_name      = connection.params.name;
     var ing_note      = connection.params.note;
-
-    var listQuery = function(){
-      var string = "INSERT INTO recipeingredientlist ()"
-    };
+    var query = "INSERT INTO "
   }
 }
