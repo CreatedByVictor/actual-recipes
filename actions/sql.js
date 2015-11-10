@@ -291,7 +291,12 @@ exports.addIngredientToDB = {
             });
         }
         else{
-          return null;
+          connection.response.error = {
+            "message":"There is already an ingredient by that name in the database.",
+            "query":searchName,
+            "proof":data
+          }
+          next()
         }
       })
       .catch(function(error){
