@@ -255,20 +255,7 @@ exports.addIngredientToDB = {
     var doesIngredintExist  = "SELECT * FROM ingredients WHERE UPPER(name) =" + newIngName.toUpperCase();
     db.query(doesIngredintExist)
       .then(function(data){
-        if (data.length = 0){
-          db.query(insertNewIngredient)
-            .then(function(data){
-              connection.response = data;
-              next();
-            })
-            .catch(function(error){
-              connection.response.error = error;
-              next();
-            });
-        }
-        else{
-          return null; //that must exist
-        }
+        connection.response.jeep = data;
       })
       .catch(function(error){
         connection.response.error = error;
