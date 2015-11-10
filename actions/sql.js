@@ -250,15 +250,16 @@ exports.addIngredientToDB = {
     name:{required:true}
   },
   run: function(api, connection, next){
-    var newIngName = connection.params.name;
-    var insertNewIngredient = "INSERT INTO ingredients (name) VALUES('" + newIngName +"')";
-    var doesIngredintExist  = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + newIngName.toUpperCase();
+    //var newIngName = connection.params.name;
+    //var insertNewIngredient = "INSERT INTO ingredients (name) VALUES('" + newIngName +"')";
+    //doesIngredintExist  = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + newIngName.toUpperCase();
 
     var searchName = connection.params.name;
-    //searchName = "'%"+searchName+"%'"; //format query;
-    var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
+    var formattedName = "'"+searchName+"'"; //format query;
+    var doesIngredientExist = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + formattedName.toUpperCase();
+    var insertNewIngredient = "INSERT INTO ingredients (name) VALUES('" + searchName + "')";
 
-    db.query(query)
+    db.query(doesIngredientExist)
       .then(function(data){
         connection.response = data;
         next();
