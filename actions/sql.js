@@ -251,8 +251,8 @@ exports.addIngredientToDB = {
   },
   run: function(api, connection, next){
     var newIngName = connection.params.name;
-    var insertNewIngredient = "INSERT INTO ingredients (name) VALUES(" + newIngName +")";
-    var doesIngredintExist  = "SELECT * FROM ingredients WHERE UPPER(name)='" + newIngName.toUpperCase() +"'";
+    var insertNewIngredient = "INSERT INTO ingredients (name) VALUES('" + newIngName +"')";
+    var doesIngredintExist  = "SELECT * FROM ingredients WHERE UPPER(name) =" + newIngName.toUpperCase();
     db.query(doesIngredintExist)
       .then(function(data){
         if (data.length = 0){
