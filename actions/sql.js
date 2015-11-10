@@ -273,36 +273,44 @@ exports.addIngredientToDB = {
 
     var searchName = connection.params.name;
     var formattedName = "'"+searchName+"'"; //format query;
+
     var doesIngredientExist = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + formattedName.toUpperCase();
     var insertNewIngredient = "INSERT INTO ingredients (name) VALUES('" + searchName + "')";
 
-    db.query(doesIngredientExist)
-      .then(function(data){
-        connection.response.data = data;
-        if(data.length = 0){ //if no result is returned, then we know it is unique.
-          db.query(insertNewIngredient)
-            .then(function(result){
-              connection.response = result;
-              next();
-            })
-            .catch(function(error){
-              connection.response.error = error;
-              next( new Error(error) );
-            });
-        }
-        else{
-          connection.response.error = {
-            "message":"There is already an ingredient by that name in the database.",
-            "query":searchName,
-            "proof":data
-          }
-          next()
-        }
-      })
-      .catch(function(error){
-        connection.response.error = error;
-        next( new Error(error));
-      });
+    var masterQuery =
+    db.query(doesIngredientExist).then(
+      function(data){
+        connection.response = data;
+      }
+    );
+
+    // db.query(doesIngredientExist)
+    //   .then(function(data){
+    //     connection.response.data = data;
+    //     if(data.length = 0){ //if no result is returned, then we know it is unique.
+    //       db.query(insertNewIngredient)
+    //         .then(function(result){
+    //           connection.response = result;
+    //           next();
+    //         })
+    //         .catch(function(error){
+    //           connection.response.error = error;
+    //           next( new Error(error) );
+    //         });
+    //     }
+    //     else{
+    //       connection.response.error = {
+    //         "message":"There is already an ingredient by that name in the database.",
+    //         "query":searchName,
+    //         "proof":data
+    //       }
+    //       next()
+    //     }
+    //   })
+    //   .catch(function(error){
+    //     connection.response.error = error;
+    //     next( new Error(error));
+    //   });
   }
 }
 
