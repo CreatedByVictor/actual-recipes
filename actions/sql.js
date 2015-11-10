@@ -1,51 +1,61 @@
-var pg = require('pg');
-var openshift_DB_host = process.env.OPENSHIFT_POSTGRESQL_DB_HOST;
-var openshift_DB_port = process.env.OPENSHIFT_POSTGRESQL_DB_PORT;
-var openshift_DB_user = process.env.OPENSHIFT_POSTGRESQL_DB_USERNAME;
-var openshift_DB_pass = process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD;
-var openshift_DB_name = process.env.PGDATABASE;
-var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
+//var pg = require('pg');
+var q = require('q');
+var pgp = require('pg-promise');
 
-function databaseConnect( query, andAnotherThing ){
+var connectionObject = {
+  host: process.env.OPENSHIFT_POSTGRESQL_DB_HOST,
+  port: process.env.OPENSHIFT_POSTGRESQL_DB_PORT,
+  database: 'recipedb',
+  user: process.env.OPENSHIFT_POSTGRESQL_DB_USERNAME,
+  password: process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD
+};
 
-  var connString = "postgresql://" + openshift_DB_user + ":" + openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
+var db = pgp(connectionObject); //New Hotness.
+/*
+//var openshift_DB_host = process.env.OPENSHIFT_POSTGRESQL_DB_HOST;
+//var openshift_DB_port = process.env.OPENSHIFT_POSTGRESQL_DB_PORT;
+//var openshift_DB_user = process.env.OPENSHIFT_POSTGRESQL_DB_USERNAME;
+//var openshift_DB_pass = process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD;
+//var openshift_DB_name = process.env.PGDATABASE;
+//var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
+*/
 
-  pg.connect(connString, function(err, client, done){
-
-    var errorHandler = function(isAnError,obj){
-      if (isAnError){
-        console.log("SQL Error:",isAnError);
-        if (obj){
-          console.log(obj);
-        };
-        if (client){
+//Old impleentation
+/*
+  function databaseConnect( query, andAnotherThing ){
+    var connString = "postgresql://" + openshift_DB_user + ":" + openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
+    pg.connect(connString, function(err, client, done){
+      var errorHandler = function(isAnError,obj){
+        if (isAnError){
+          console.log("SQL Error:",isAnError);
+          if (obj){
+            console.log(obj);
+          };
+          if (client){
+            done(client);
+          }
+          if (andAnotherThing){
+            andAnotherThing(err); //Just return the error,
+          return true;
+          }
+        }
+        else{
+          return false; //were all good.
+        }
+      }
+      if(errorHandler(err, {"message":"Had trouble connecting."})){return;}
+      return client.query(query,function(err,result){
+        if (errorHandler(err,{"message":"There was a problem with the query.", "query":query} )){
+          andAnotherThing(err, null); // return the error on an error.
+        }
+        else{
           done(client);
+          andAnotherThing(null, result); //All is good, no error found, move out.
         }
-        if (andAnotherThing){
-          andAnotherThing(err); //Just return the error,
-        return true;
-        }
-      }
-      else{
-        return false; //were all good.
-      }
-    }
-
-    if(errorHandler(err, {"message":"Had trouble connecting."})){return;}
-
-    return client.query(query,function(err,result){
-
-      if (errorHandler(err,{"message":"There was a problem with the query.", "query":query} )){
-        andAnotherThing(err, null); // return the error on an error.
-        return err;
-      }
-      else{
-        done(client);
-        return andAnotherThing(null, result); //All is good, no error found, move out.
-      }
-    }); // end of client query.
-  });//the last of the connect scope.
-};//
+      }); // end of client query.
+    });//the last of the connect scope.
+  };//
+*/
 
 exports.search = {
   name: 'search',
@@ -125,10 +135,10 @@ exports.getListOfDirectionsForRecipe = {
     id: {required:true}
   },
   run: function(api,connection,next){
-    var recipe_id = connection.params.id;
 
+    var recipe_id = connection.params.id;
     var query = "SELECT * FROM recipedirectionslist WHERE recipe_id=" + recipe_id + " ORDER BY steporder";
-    databaseConnect(query, function(err,result){
+    /*databaseConnect(query, function(err,result){
       if (err){
         connection.response.error = err;
         next();
@@ -138,6 +148,16 @@ exports.getListOfDirectionsForRecipe = {
         next();
       }
     });
+    */
+    db.query(query)
+      .then(function(data){
+        connection.response = data;
+        next(); 
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next(new Error("There was an error."));
+      });
   }
 }
 exports.findIngredientIdFromName = {
