@@ -152,7 +152,7 @@ exports.findIngredientIdFromName = {
     searchName = "'%"+searchName+"%'"; //format query;
 
     query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
-
+    /*
     databaseConnect(query, function(err, result){
       if(err){
         connection.response.error = err;
@@ -171,6 +171,14 @@ exports.findIngredientIdFromName = {
         }
       }
     });
+    */
+    var result = databaseConnect(query, function(err,result){
+      return result;
+    });
+
+    connection.response.result = result;
+    next();
+
   }
 }
 
