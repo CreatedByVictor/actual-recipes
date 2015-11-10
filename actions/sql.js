@@ -256,6 +256,7 @@ exports.addIngredientToDB = {
     db.query(doesIngredintExist)
       .then(function(data){
         connection.response.jeep = data;
+        next();
       })
       .catch(function(error){
         connection.response.error = error;
