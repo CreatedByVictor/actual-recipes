@@ -140,7 +140,7 @@ exports.getListOfDirectionsForRecipe = {
 }
 exports.findIngredientIdFromName = {
   name:"findIngredientIDFromName",
-  description: "I search the ingredients table and see if an ingredint exists, and if it does, I return its id.",
+  description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
   inputs:{
     name:{required:true}
   },
@@ -149,7 +149,7 @@ exports.findIngredientIdFromName = {
 
     searchName = "'%"+searchName+"%'"; //format query;
 
-    query = "SELECT id FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
+    query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
 
     databaseConnect(query, function(err, result){
       if(err){
