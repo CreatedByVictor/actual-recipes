@@ -260,7 +260,7 @@ exports.addIngredientToDB = {
       })
       .catch(function(error){
         connection.response.error = error;
-        next();
+        next( new Error(error));
       });
   }
 }
