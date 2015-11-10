@@ -280,7 +280,9 @@ exports.addIngredientToDB = {
     var masterQuery =
     db.query(doesIngredientExist).then(
       function(data){
-        connection.response = data;
+        connection.response.query = searchName;
+        connection.response.data = data;
+        connection.response.count = data.length;
         next();
       }
     );
