@@ -243,6 +243,23 @@ exports.findIngredientIdFromName = {
 }
 //todo:
 
+exports.listAllIngredients = {
+  name:"listAllIngredients",
+  description:"I return the current contents of the Ingredients database.",
+  inputs:{},
+  run: function(api, connection, next){
+    db.query("SELECT * FROM ingredients")
+      .then(function(data){
+        connection.response = data;
+        next();
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next( new Error(error));
+      });
+  }
+}
+
 exports.addIngredientToDB = {
   name:"addIngredientToDB",
   description: "I add a named ingredient to its database table and return the id:name pair that is returned.",
