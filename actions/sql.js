@@ -252,14 +252,14 @@ exports.addIngredientToDB = {
   run: function(api, connection, next){
     var newIngName = connection.params.name;
     var insertNewIngredient = "INSERT INTO ingredients (name) VALUES('" + newIngName +"')";
-    var doesIngredintExist  = "SELECT * FROM ingredients WHERE UPPER(name) LIKE " + newIngName.toUpperCase();
+    var doesIngredintExist  = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + newIngName.toUpperCase();
     db.query(doesIngredintExist)
       .then(function(data){
         connection.response.jeep = data;
         next();
       })
       .catch(function(error){
-        connection.response.error = error;
+        connection.response.jeep = error;
         next( new Error(error));
       });
   }
