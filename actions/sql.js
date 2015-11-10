@@ -255,7 +255,7 @@ exports.addIngredientToDB = {
     var doesIngredintExist  = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + newIngName.toUpperCase();
 
     var searchName = connection.params.name;
-    searchName = "'%"+searchName+"%'"; //format query;
+    //searchName = "'%"+searchName+"%'"; //format query;
     var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
 
     db.query(query)
