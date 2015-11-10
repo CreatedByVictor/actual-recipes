@@ -260,7 +260,7 @@ exports.addIngredientToDB = {
 
     db.query(query)
       .then(function(data){
-        connection.response.ford = data;
+        connection.response = data;
         next();
       })
       .catch(function(error){
