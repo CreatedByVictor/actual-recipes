@@ -1,6 +1,9 @@
 //var pg = require('pg');
 var q = require('q');
-var pgp = require('pg-promise');
+var options = {
+    promiseLib: q
+};
+var pgp = require('pg-promise')(options);
 
 var connectionObject = {
   host: process.env.OPENSHIFT_POSTGRESQL_DB_HOST,
@@ -152,7 +155,7 @@ exports.getListOfDirectionsForRecipe = {
     db.query(query)
       .then(function(data){
         connection.response = data;
-        next(); 
+        next();
       })
       .catch(function(error){
         connection.response.error = error;
