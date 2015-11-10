@@ -241,7 +241,7 @@ exports.findIngredientIdFromName = {
     next();*/
   }
 }
-//todo:
+
 
 exports.listAllIngredients = {
   name:"listAllIngredients",
@@ -279,7 +279,7 @@ exports.addIngredientToDB = {
     db.query(doesIngredientExist)
       .then(function(data){
         //connection.response = data;
-        if(data.length = 1){
+        if(data.length = 0){ //if no result is returned, then we know it is unique.
           db.query(insertNewIngredient)
             .then(function(result){
               connection.response = result;
