@@ -281,6 +281,7 @@ exports.addIngredientToDB = {
     db.query(doesIngredientExist).then(
       function(data){
         connection.response = data;
+        next();
       }
     );
 
