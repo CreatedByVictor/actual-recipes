@@ -287,7 +287,7 @@ exports.addIngredientToDB = {
       }
     ).then(function(data){
       if (data.length !== 0){
-        var message = "There is already an ingredient with the name: " + searchName + " in the database Ingredients."
+        var message = "There is already an ingredient with the name: " + searchName + " in the database 'ingredients'."
         connection.response.error = {
           "message": message,
           "evidence": data.rows,
@@ -363,18 +363,75 @@ exports.addIngredientToRecipe = {
   name:"addIngredientToRecipe",
   description: "I add an Ingredient to a recipe selected by the id.",
   inputs:{
-    id:   {required:true},
-    name: {required:true},
-    qty:  {required:true},
-    unit: {required:false},
-    note: {required:false}
+    recipeid: {required:true},
+    name:     {required:true},
+    ing_id    {required:false},
+    qty:      {required:true},
+    unit:     {required:false},
+    note:     {required:false}
   },
   run: function(api,connection,next){
-    var recipe_id     = connection.params.id;
+    var recipe_id     = connection.params.recipeid;
     var ing_quantity  = connection.params.qty;
-    var ing_unit      = connection.params.unit;
+    var ing_unit      = connection.params.unit || null;
+    var param_ing_id  = connection.params.ing_id;
     var ing_name      = connection.params.name;
-    var ing_note      = connection.params.note;
-    var query = "INSERT INTO "
+    var ing_name_upper      = ing_name.toUpperCase(); // preformatted for search
+    var ing_note      = connection.params.note || null;
+    var insertQuery   = "INSERT INTO recipeingredientlist (recipe_id, ingredient_id, quantity, unit, note) VALUES( ${recipe_id}, ${ing_id}, ${ing_quantity}, ${ing_unit}, ${ing_note})";
+    var getIngredientIdQuery = "SELECT id FROM ingredients WHERE UPPER(name) LIKE '${ingredient_name}'";
+
+    if (param_ing_id === undefined){
+      db.one(getIngredientIdQuery, { "ingredient_name":ing_name_upper }).then(function(data){
+        var ing_id = data[0].id;
+        var values = {
+          "recipe_id":recipe_id,
+          "ing_id": ing_id,
+          "ing_quantity": ing_quantity,
+          "ing_unit": ing_unit,
+          "ing_note": ing_note
+        };
+        db.none(insertQuery,values).then(function(data){
+          var message = "Successfuly added a new ingredient to the list associated with recipe_id: " +recipe_id;
+          connection.response = message;
+          next();
+        }).catch(function(error){
+          var message = "Had trouble adding a new ingredient to the list associated with recipe_id: " + recipe_id;
+          connection.response.error = {
+            "message": message,
+            "evidence": error
+          };
+          next(new Error(message));
+        });
+      }).catch( function(error){
+        var message = "Had trouble finding the id of the ingredient named " + ing_name;
+        connection.response.error = {
+          "message": message,
+          "evidence": error
+        };
+        next(new Error(message));
+      });
+    }
+    else{
+      var values = {
+        "recipe_id":recipe_id,
+        "ing_id": param_ing_id, //here, we are using the defined value
+        "ing_quantity": ing_quantity,
+        "ing_unit": ing_unit,
+        "ing_note": ing_note
+      };
+      db.none(insertQuery, values).then(function(data){
+        var message = "Successfuly added a new ingredient to the list associated with recipe_id: " +recipe_id;
+        connection.response = message;
+        next();
+      }).catch(function(error){
+        var message = "Had trouble adding a new ingredient to the list associated with recipe_id: " + recipe_id;
+        connection.response.error = {
+          "message": message,
+          "evidence": error
+        };
+        next(new Error(message));
+      });
+    }
   }
 }
