@@ -152,7 +152,11 @@ exports.getListOfRecipes = {
           recipe.ingredients = recipe_ingredients;
 
           masterRecipes.push(recipe);
+          return masterRecipes;
         }
+      }).then(function(data){
+        connection.response = data;
+        next();
       })
       .catch(function(error){
         var message = "Had trouble getting a list of all the recipes.";
