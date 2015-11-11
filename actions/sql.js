@@ -103,18 +103,10 @@ exports.getListOfRecipes = {
   inputs: {},
   run: function(api,connection,next){
 
+    var masterRecipeList = [];
+
     db.many("SELECT * FROM recipes")
       .then(function(data){
-        var newList = [];
-        for(var i = 0; i < data.length; i++){
-          var ingredients = [];
-          var recipe = data[i];
-          ingredients = db.query("SELECT * FROM listRecipeIngredients WHERE recipe_id=$(recipe_id)", {"recipe_id":recipe.id});
-          recipe.ingredients = ingredients;
-          newList.push(recipe);
-        }
-        return newList;
-      }).then(function(data){
         connection.response = data;
         next();
       }).catch(function(error){
