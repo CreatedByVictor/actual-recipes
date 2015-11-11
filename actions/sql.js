@@ -384,10 +384,14 @@ exports.addIngredientToRecipe = {
     var ing_note      = connection.params.note || null;
     var insertQuery   = "INSERT INTO recipeingredientlist (recipe_id, ingredient_id, quantity, unit, note) VALUES( ${recipe_id}, ${ing_id}, ${ing_quantity}, ${ing_unit}, ${ing_note})";
     //var getIngredientIdQuery = "SELECT id FROM ingredients WHERE UPPER(name) LIKE ${ingredient_name}";
-
+    /*
     var ing_name = connection.params.name;
     ing_name = "'"+ing_name+"'"; //format query;
     var getIngredientIdQuery = "SELECT id FROM ingredients WHERE UPPER(name) LIKE " + ing_name.toUpperCase();
+    */
+    var searchName2 = connection.params.name;
+    searchName2 = "'"+searchName2+"'";
+    var getIngredientIdQuery = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName2.toUpperCase();
 
     if (param_ing_id === undefined){
       //db.one(getIngredientIdQuery, { "ingredient_name":ing_name_upper }).then(function(data){
