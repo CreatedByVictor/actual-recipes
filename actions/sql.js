@@ -365,7 +365,7 @@ exports.addIngredientToRecipe = {
   inputs:{
     recipeid: {required:true},
     name:     {required:true},
-    ing_id    {required:false},
+    ing_id:   {required:false},
     qty:      {required:true},
     unit:     {required:false},
     note:     {required:false}
