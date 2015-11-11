@@ -273,13 +273,12 @@ exports.listRecipeIngredients = {
       connection.response = data;
       next();
     }).catch(function(error){
+      var message = "Had trouble finding the list of ingredients associated with the recipe id: " + connection.params.id;
       connection.response.error = {
-        var message = "Had trouble finding the list of ingredients associated with the recipe id:" + connection.params.id;
-        connection.response.error = {
-          "message": message,
-          "evidence": error
-        };
-        next(new Error(message));
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
       }
     })
   }
