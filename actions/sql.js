@@ -127,7 +127,7 @@ exports.getListOfRecipes = {
 }
 
 exports.findIngredientIdFromName = {
-  name:"findIngredientIDFromName",
+  name:"findIngredientIdFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
   inputs:{
     name:{required:false},
@@ -150,8 +150,12 @@ exports.findIngredientIdFromName = {
         next();
       })
       .catch(function(error){
-        connection.response.error = error;
-        next();
+        var message = "Had trouble getting a list of all the recipes.";
+        connection.response.error = {
+          "message": message,
+          "evidence": error
+        };
+        next(new Error(message));
       });
   }
 }
@@ -208,6 +212,29 @@ exports.listRecipeDirections = {
       next();
     }).catch(function(error){
       var message = "Had trouble finding the list of directions associated with the recipe id: " + connection.params.id;
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
+
+exports.listRecipesWithIngredient = {
+  name:"listRecipesWithIngredient",
+  description:"I take an ingredient id and return all recipe ids that include it.",
+  inputs:{
+    ingid:{required:true}
+  },
+  run:function(api, connection, next){
+    var ingredient_id = connection.params.ingid;
+    db.many("SELECT DISTINCT recipe_id FROM recipeingredientlist WHERE ingredient_id = $(ing_id)",{"ing_id":ingredient_id})
+    .then(function(data){
+      connection.response = data;
+      next();
+    }).catch(function(error){
+      var message = "Had trouble getting a list of all the recipes with the ingredient id: "+ingredient_id;
       connection.response.error = {
         "message": message,
         "evidence": error
@@ -401,14 +428,14 @@ exports.addStepToRecipe = {
   name:"addStepToRecipe",
   description:"I add a step to the directions of a recipe with a given id.",
   inputs:{
-    id:{required:true},
+    recipeid:{required:true},
     order:{required:true},
     text:{required:true}
   },
   run: function(api, connection, next){
     var step_text  = connection.params.text;
     var step_order = connection.params.order;
-    var recipe_id  = connection.params.id;
+    var recipe_id  = connection.params.recipeid;
 
     var order = "INSERT INTO recipedirectionslist (recipe_id, steporder, text) VALUES(${recipe_id} ${step_order} ${step_text})";
     var values = {
