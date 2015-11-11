@@ -388,7 +388,7 @@ exports.addIngredientToRecipe = {
 
     if (param_ing_id === undefined){
       //db.one(getIngredientIdQuery, { "ingredient_name":ing_name_upper }).then(function(data){
-      db.one(getIngredientIdQuery,{"ing_name" = searchName2.toUpperCase()}).then(function(data){
+      db.one(getIngredientIdQuery,{"ing_name" : searchName2.toUpperCase()}).then(function(data){
         var ing_id = data[0].id;
         var values = {
           "recipe_id":recipe_id,
