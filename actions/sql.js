@@ -202,7 +202,7 @@ exports.findIngredientIdFromName = {
     n:{required:false}
   },
   run: function(api,connection,next){
-    if (name){
+    if (connection.params.name){
       var searchName = connection.params.name;
       searchName = "'%"+searchName+"%'"; //format query;
       var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
