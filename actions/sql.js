@@ -279,8 +279,7 @@ exports.listRecipeIngredients = {
         "evidence": error
       };
       next(new Error(message));
-      }
-    })
+    });
   }
 }
 
