@@ -383,7 +383,7 @@ exports.addIngredientToRecipe = {
     var insertQuery   = "INSERT INTO recipeingredientlist (recipe_id, ingredient_id, quantity, unit, note) VALUES( ${recipe_id}, ${ing_id}, ${ing_quantity}, ${ing_unit}, ${ing_note})";
 
     var searchName2 = connection.params.name;
-    searchName2 = "'"+searchName2+"'";
+    //searchName2 = "'"+searchName2+"'";
     var getIngredientIdQuery = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE '${ing_name}'";// + searchName2.toUpperCase();
 
     if (param_ing_id === undefined){
