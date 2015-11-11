@@ -198,32 +198,20 @@ exports.findIngredientIdFromName = {
   name:"findIngredientIDFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
   inputs:{
-    name:{required:true}
+    name:{required:true},
+    n:{required:false}
   },
   run: function(api,connection,next){
-    var searchName = connection.params.name;
-    searchName = "'%"+searchName+"%'"; //format query;
-    var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
-    /*
-    databaseConnect(query, function(err, result){
-      if(err){
-        connection.response.error = err;
-        next();
-      }
-      else{
-        if (result.rows.length === 0){
-          var errText = "The query ( " + connection.params.name + " ) was not found in the Ingredients Database.";
-          var newError = new Error(errText);
-          connection.response.error = errText;
-          next(newError);
-        }
-        else{
-          connection.response = result.rows;
-          next();
-        }
-      }
-    });
-    */
+    if (name){
+      var searchName = connection.params.name;
+      searchName = "'%"+searchName+"%'"; //format query;
+      var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
+    }
+    else{
+      var searchName2 = connection.params.n;
+      searchName2 = "'"+searchName2+"'";
+      var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName2.toUpperCase();
+    }
     db.query(query)
       .then(function(data){
         connection.response = data;
@@ -233,15 +221,8 @@ exports.findIngredientIdFromName = {
         connection.response.error = error;
         next();
       });
-      /*
-    var result = databaseConnect(query, function(err,result){
-      return result;
-    });
-    connection.response.result = result;
-    next();*/
   }
 }
-
 
 exports.listAllIngredients = {
   name:"listAllIngredients",
