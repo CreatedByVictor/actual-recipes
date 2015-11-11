@@ -388,7 +388,7 @@ exports.addIngredientToRecipe = {
 
     if (param_ing_id === undefined){
       //db.one(getIngredientIdQuery, { "ingredient_name":ing_name_upper }).then(function(data){
-      db.one(getIngredientIdQuery,{"ing_name" : searchName2.toUpperCase()}).then(function(data){
+      db.query(getIngredientIdQuery,{"ing_name" : searchName2.toUpperCase()}).then(function(data){
         var ing_id = data[0].id;
         var values = {
           "recipe_id":recipe_id,
@@ -397,6 +397,7 @@ exports.addIngredientToRecipe = {
           "ing_unit": ing_unit,
           "ing_note": ing_note
         };
+        console.log("ing_name", searchName2);
         db.none(insertQuery,values).then(function(data){
           var message = "Successfuly added a new ingredient to the list associated with recipe_id: " +recipe_id;
           connection.response = message;
