@@ -102,13 +102,10 @@ exports.getListOfRecipes = {
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
   run: function(api,connection,next){
-
-    var masterRecipeList = [];
-
     db.many("SELECT * FROM recipes")
       .then(function(data){
         connection.response = data;
-        next();
+        next()
       }).catch(function(error){
         var message = "Had trouble getting a list of all the recipes.";
         connection.response.error = {
