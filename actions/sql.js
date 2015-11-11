@@ -406,7 +406,7 @@ exports.addIngredientToRecipe = {
 
     var ing_name = connection.params.name;
     ing_name = "'"+ing_name+"'"; //format query;
-    var getIngredientIdQuery = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + ing_name.toUpperCase();
+    var getIngredientIdQuery = "SELECT id FROM ingredients WHERE UPPER(name) LIKE " + ing_name.toUpperCase();
 
     if (param_ing_id === undefined){
       //db.one(getIngredientIdQuery, { "ingredient_name":ing_name_upper }).then(function(data){
