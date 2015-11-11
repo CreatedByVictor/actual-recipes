@@ -96,104 +96,39 @@ exports.search = {
   }
 
 };
-//promised
+
 exports.getListOfRecipes = {
   name:"getListOfRecipes",
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
   run: function(api,connection,next){
 
-    db.query("SELECT * FROM recipes")
+    db.many("SELECT * FROM recipes")
       .then(function(data){
-        connection.response = data;
-      })
-      .catch(function(error){
-        connection.response.error = error;
-      });
-
-    /*
-    databaseConnect("SELECT * FROM recipes", function(err,recipes){
-      if (err){
-        connection.response.error = err;
-        next();
-      }
-      else{
-        connection.response = recipes.rows;
-        next();
-      }
-    }); // end of first database connection
-    */
-  }
-}
-//promised:
-exports.getListOfIngredientsForRecipe = {
-  name:"getListOfIngredientsForRecipe",
-  description: "I return the list of ingredients for a given recipe id.",
-  inputs: {
-    id: {required:true}
-  },
-  run: function(api,connection,next){
-    var recipe_id = connection.params.id;
-
-    var query = "SELECT * FROM ingredients AS ing, recipeingredientlist AS list WHERE ing.id = list.ingredient_id AND list.recipe_id= "+recipe_id;
-
-    db.query(query)
-      .then(function(data){
+        var newList = [];
+        for(var i = 0; i < data.length; i++){
+          var ingredients = [];
+          var recipe = data[i];
+          ingredients = db.query("SELECT * FROM listRecipeIngredients WHERE recipe_id=$(recipe_id)", {"recipe_id":recipe.id});
+          recipe.ingredients = ingredients;
+          newList.push(recipe);
+        }
+        return newList;
+      }).then(function(data){
         connection.response = data;
         next();
-      })
-      .catch(function(error){
-        connection.response.error = error;
-        next();
+      }).catch(function(error){
+        var message = "Had trouble getting a list of all the recipes.";
+        connection.response.error = {
+          "message": message,
+          "evidence": error
+        };
+        next(new Error(message));
       });
-    /*
-    databaseConnect(query, function(err,result){
-      if (err){
-        connection.response.error = err;
-        next();
-      }
-      else{
-        connection.response = result.rows;
-        next();
-      }
-    });
-    */
-  }
-}
-//promised:
-exports.getListOfDirectionsForRecipe = {
-  name:"getListOfDirectionsForRecipe",
-  description:"I return the list of directions for a given recipe id.",
-  inputs: {
-    id: {required:true}
-  },
-  run: function(api,connection,next){
 
-    var recipe_id = connection.params.id;
-    var query = "SELECT * FROM recipedirectionslist WHERE recipe_id=" + recipe_id + " ORDER BY steporder";
-    /*databaseConnect(query, function(err,result){
-      if (err){
-        connection.response.error = err;
-        next();
-      }
-      else{
-        connection.response = result.rows;
-        next();
-      }
-    });
-    */
-    db.query(query)
-      .then(function(data){
-        connection.response = data;
-        next();
-      })
-      .catch(function(error){
-        connection.response.error = error;
-        next(new Error("There was an error."));
-      });
   }
 }
-//promised:
+
 exports.findIngredientIdFromName = {
   name:"findIngredientIDFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
@@ -255,6 +190,27 @@ exports.listRecipeIngredients = {
       next();
     }).catch(function(error){
       var message = "Had trouble finding the list of ingredients associated with the recipe id: " + connection.params.id;
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
+
+exports.listRecipeDirections = {
+  name:"listRecipeDirections",
+  description:"I return the directions and their order for a given recipe id.",
+  inputs:{ id:{required:true}},
+  run: function(api, connection, next){
+    var recipe_id = connection.params.id;
+    var query = "SELECT * FROM recipedirectionslist WHERE recipe_id = ${recipe_id} ORDER BY steporder";
+    db.many(query,{"recipe_id":recipe_id}).then(function(data){
+      connection.response = data;
+      next();
+    }).catch(function(error){
+      var message = "Had trouble finding the list of directions associated with the recipe id: " + connection.params.id;
       connection.response.error = {
         "message": message,
         "evidence": error
@@ -441,5 +397,42 @@ exports.addIngredientToRecipe = {
         next(new Error(message));
       });
     }
+  }
+}
+
+exports.addStepToRecipe = {
+  name:"addStepToRecipe",
+  description:"I add a step to the directions of a recipe with a given id.",
+  inputs:{
+    id:{required:true},
+    order:{required:true},
+    text:{required:true}
+  },
+  run: function(api, connection, next){
+    var step_text  = connection.params.text;
+    var step_order = connection.params.order;
+    var recipe_id  = connection.params.id;
+
+    var order = "INSERT INTO recipedirectionslist (recipe_id, steporder, text) VALUES(${recipe_id} ${step_order} ${step_text})";
+    var values = {
+      "recipe_id":recipe_id,
+      "step_order":step_order,
+      "step_text":step_text
+    };
+
+    db.many(order,values).then(function(data){
+      var message = "Successfully inserted this step data into the directions of the recipe with the id of: " + recipe_id;
+      connection.response = {
+        "message": message;
+      };
+      next();
+    }).catch(function(error){
+      var message = "Had trouble inserting this step data into the directions of the recipe with the id of: " + recipe_id;
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
   }
 }
