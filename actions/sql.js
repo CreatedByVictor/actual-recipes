@@ -102,11 +102,59 @@ exports.getListOfRecipes = {
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
   run: function(api,connection,next){
+
+    var recipe_array = [];
+    var direction_array = [];
+    var ingredient_array = [];
+    var ingredient_master_array = [];
+    var masterRecipes = [];
+
     db.many("SELECT * FROM recipes")
-      .then(function(data){
-        connection.response = data;
-        next()
-      }).catch(function(error){
+      .then(function(recipe_rows){
+        recipe_array = recipe_rows;
+        return db.many("SELECT * FROM recipeingredientlist");
+      })
+      .then(function (ingredient_rows){
+        ingredient_array = ingredient_rows;
+        return db.many("SELECT * FROM recipedirectionslist");
+      })
+      .then(function(directions_rows){
+        direction_array = directions_rows;
+        return db.many("SELECT * FROM ingredients");
+      })
+      .then(function (all_ingredients){
+        ingredient_master_array = all_ingredients;
+        for(var x = 0; x < recipe_array.length; x++){
+          var recipe = recipe_array[x];
+
+          var recipe_steps = [];
+          for(var d = 0; d < direction_array.length; d++){
+            var step = directions[d];
+            if (recipe.id === step.recipe_id){
+              recipe_steps.push(step);
+            }
+          }
+
+          var recipe_ingredients = [];
+          for (var i = 0; i < ingredient_array.length; i++){
+            var ingredient = ingredient_array[i];
+            if (ingredient.recipe_id === recipe.id){
+              for(var k = 0; k < ingredient_master_array.length; k++){
+                var ing = ingredient_array[k];
+                if (ing.id === ingredient.ingredient_id){
+                  ingredient.name = ing.name;
+                  recipe_ingredients.push(ingredient)
+                }
+              }
+            }
+          }
+          recipe.directions = recipe_steps;
+          recipe.ingredients = recipe_ingredients;
+
+          masterRecipes.push(recipe);
+        }
+      })
+      .catch(function(error){
         var message = "Had trouble getting a list of all the recipes.";
         connection.response.error = {
           "message": message,
