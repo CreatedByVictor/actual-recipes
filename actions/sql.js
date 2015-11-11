@@ -140,10 +140,10 @@ exports.getListOfRecipes = {
             var ingredient = ingredient_array[i];
             if (ingredient.recipe_id === recipe.id){
               for(var k = 0; k < ingredient_master_array.length; k++){
-                var ing = ingredient_array[k];
+                var ing = ingredient_master_array[k];
                 if (ing.id === ingredient.ingredient_id){
                   ingredient.name = ing.name;
-                  recipe_ingredients.push(ingredient)
+                  recipe_ingredients.push(ingredient);
                 }
               }
             }
