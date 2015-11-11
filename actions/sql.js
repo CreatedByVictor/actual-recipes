@@ -435,6 +435,7 @@ exports.addIngredientToRecipe = {
         var message = "Had trouble finding the id of the ingredient named " + ing_name;
         connection.response.error = {
           "message": message,
+          "query":getIngredientIdQuery,
           "evidence": error
         };
         next(new Error(message));
