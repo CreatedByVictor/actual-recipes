@@ -280,12 +280,54 @@ exports.addIngredientToDB = {
     var masterQuery =
     db.query(doesIngredientExist).then(
       function(data){
-        connection.response.query = searchName;
-        connection.response.data = data;
-        connection.response.count = data.length;
-        next();
+        return {
+          "rows":data,
+          "length": data.length
+        };
       }
-    );
+    ).then(function(data){
+      if (data.length !== 0){
+        var message = "There is already an ingredient with the name: " + searchName + " in the database Ingredients."
+        connection.response.error = {
+          "message": message,
+          "evidence": data.rows,
+        }
+        next( new Error(message) );
+      }
+      else{ // it is safe to add this ingredient
+        db.query(insertNewIngredient).then(function(data){
+          db.query(doesIngredientExist).then(function(data){
+            var message = "Successfuly added ingredient with the name: " + searchName;
+            connection.response = {
+              "message": message,
+              "evidence": data
+            }
+            next();
+          }).catch(function(error){
+            var message = "Had trouble verifying that the ingredient with the name: " + searchName + " was added.";
+            connection.response.error = {
+              "message": message,
+              "evidence": error
+            }
+            next( new Error(message));
+          });
+        }).catch(function(error){
+          var message = "Had trouble inserting the ingredient with the name: " + searchName + " to the database.";
+          connection.response.error = {
+            "message": message,
+            "evidence": error
+          }
+          next( new Error(message));
+        });
+      }
+    }).catch(function(error){
+      var message = "Had trouble checking for a duplicate ingredient with the name: " + searchName;
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next( new Error(message));
+    });
 
     // db.query(doesIngredientExist)
     //   .then(function(data){
