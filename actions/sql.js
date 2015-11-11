@@ -198,7 +198,7 @@ exports.findIngredientIdFromName = {
   name:"findIngredientIDFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
   inputs:{
-    name:{required:true},
+    name:{required:false},
     n:{required:false}
   },
   run: function(api,connection,next){
