@@ -423,7 +423,7 @@ exports.addStepToRecipe = {
     db.many(order,values).then(function(data){
       var message = "Successfully inserted this step data into the directions of the recipe with the id of: " + recipe_id;
       connection.response = {
-        "message": message;
+        "message": message
       };
       next();
     }).catch(function(error){
