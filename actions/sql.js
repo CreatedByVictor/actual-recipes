@@ -260,6 +260,31 @@ exports.listAllIngredients = {
   }
 }
 
+exports.listRecipeIngredients = {
+  name:"listRecipeIngredients",
+  description: "I return the list of ingredients and their respective data",
+  inputs:{
+    id:{required:true}
+  },
+  run: function(api, connection, next){
+    var query = "SELECT list.id, list.recipe_id, list.quantity, list.unit, ing.name, list.note FROM ingredients AS ing, recipeingredientlist AS list WHERE list.recipe_id = ${recipe_id} AND list.ingredient_id = ing.id";
+    var values = {"recipe_id":connection.params.id};
+    db.query(query,values).then(function(data){
+      connection.response = data;
+      next();
+    }).catch(function(error){
+      connection.response.error = {
+        var message = "Had trouble finding the list of ingredients associated with the recipe id:" + connection.params.id;
+        connection.response.error = {
+          "message": message,
+          "evidence": error
+        };
+        next(new Error(message));
+      }
+    })
+  }
+}
+
 exports.addIngredientToDB = {
   name:"addIngredientToDB",
   description: "I add a named ingredient to its database table and return the id:name pair that is returned.",
@@ -360,13 +385,14 @@ exports.addIngredientToDB = {
 }
 
 exports.addIngredientToRecipe = {
+  //http://blackoak-fogwoods.rhcloud.com/api/addIngredientToRecipe?recipeid=1&name=Garlic%20Salt&qty=1/4&unit=Teaspoon&note=Use%20sparingly,%20a%20little%20goes%20a%20long%20way.
   name:"addIngredientToRecipe",
   description: "I add an Ingredient to a recipe selected by the id.",
   inputs:{
     recipeid: {required:true},
     name:     {required:true},
-    ing_id:   {required:false},
     qty:      {required:true},
+    ing_id:   {required:false},
     unit:     {required:false},
     note:     {required:false}
   },
