@@ -1,4 +1,3 @@
-//var pg = require('pg');
 var q = require('q');
 var options = {
     promiseLib: q
@@ -13,52 +12,8 @@ var connectionObject = {
   password: process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD
 };
 
-var db = pgp(connectionObject); //New Hotness.
-
-/*
-//var openshift_DB_host = process.env.OPENSHIFT_POSTGRESQL_DB_HOST;
-//var openshift_DB_port = process.env.OPENSHIFT_POSTGRESQL_DB_PORT;
-//var openshift_DB_user = process.env.OPENSHIFT_POSTGRESQL_DB_USERNAME;
-//var openshift_DB_pass = process.env.OPENSHIFT_POSTGRESQL_DB_PASSWORD;
-//var openshift_DB_name = process.env.PGDATABASE;
-//var openshift_DB_url  = process.env.OPENSHIFT_POSTGRESQL_DB_URL;
-//Old implmentation
-  function databaseConnect( query, andAnotherThing ){
-    var connString = "postgresql://" + openshift_DB_user + ":" + openshift_DB_pass + "@" + openshift_DB_host + ":" + openshift_DB_port + "/recipedb";
-    pg.connect(connString, function(err, client, done){
-      var errorHandler = function(isAnError,obj){
-        if (isAnError){
-          console.log("SQL Error:",isAnError);
-          if (obj){
-            console.log(obj);
-          };
-          if (client){
-            done(client);
-          }
-          if (andAnotherThing){
-            andAnotherThing(err); //Just return the error,
-          return true;
-          }
-        }
-        else{
-          return false; //were all good.
-        }
-      }
-      if(errorHandler(err, {"message":"Had trouble connecting."})){return;}
-      return client.query(query,function(err,result){
-        if (errorHandler(err,{"message":"There was a problem with the query.", "query":query} )){
-          andAnotherThing(err, null); // return the error on an error.
-        }
-        else{
-          done(client);
-          andAnotherThing(null, result); //All is good, no error found, move out.
-        }
-      }); // end of client query.
-    });//the last of the connect scope.
-  };//
-*/
-//promised
-
+var db = pgp(connectionObject);
+//Searches
 exports.search = {
   name: 'search',
   description: 'I will return an object of results from a database query.',
@@ -83,16 +38,6 @@ exports.search = {
         connection.response.error = error;
         next();
       });
-
-    /*
-    databaseConnect(query, function(err, output){
-      if (output){
-        connection.response.query = query;
-        connection.response.rows = output.rows;
-      }
-      next();
-    });
-    */
   }
 
 };
@@ -130,20 +75,12 @@ exports.findIngredientIdFromName = {
   name:"findIngredientIdFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
   inputs:{
-    name:{required:false},
-    n:{required:false}
+    name:{required:false}
   },
   run: function(api,connection,next){
-    if (connection.params.name){
-      var searchName = connection.params.name;
-      searchName = "'%"+searchName+"%'"; //format query;
-      var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
-    }
-    else{
-      var searchName2 = connection.params.n;
-      searchName2 = "'"+searchName2+"'";
-      var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName2.toUpperCase();
-    }
+    var searchName = connection.params.name;
+    searchName = "'%"+searchName+"%'"; //format query;
+    var query = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE " + searchName.toUpperCase();
     db.query(query)
       .then(function(data){
         connection.response = data;
@@ -221,8 +158,8 @@ exports.listRecipeDirections = {
   }
 }
 
-exports.listRecipesWithIngredient = {
-  name:"listRecipesWithIngredient",
+exports.findRecipesWithIngredient = {
+  name:"findRecipesWithIngredient",
   description:"I take an ingredient id and return all recipe ids that include it.",
   inputs:{
     ingid:{required:true}
@@ -243,7 +180,7 @@ exports.listRecipesWithIngredient = {
     });
   }
 }
-
+//Additions
 exports.addIngredientToDB = {
   name:"addIngredientToDB",
   description: "I add a named ingredient to its database table and return the id:name pair that is returned.",
@@ -311,34 +248,6 @@ exports.addIngredientToDB = {
       };
       next( new Error(message));
     });
-
-    // db.query(doesIngredientExist)
-    //   .then(function(data){
-    //     connection.response.data = data;
-    //     if(data.length = 0){ //if no result is returned, then we know it is unique.
-    //       db.query(insertNewIngredient)
-    //         .then(function(result){
-    //           connection.response = result;
-    //           next();
-    //         })
-    //         .catch(function(error){
-    //           connection.response.error = error;
-    //           next( new Error(error) );
-    //         });
-    //     }
-    //     else{
-    //       connection.response.error = {
-    //         "message":"There is already an ingredient by that name in the database.",
-    //         "query":searchName,
-    //         "proof":data
-    //       }
-    //       next()
-    //     }
-    //   })
-    //   .catch(function(error){
-    //     connection.response.error = error;
-    //     next( new Error(error));
-    //   });
   }
 }
 
@@ -350,7 +259,7 @@ exports.addIngredientToRecipe = {
     recipeid: {required:true},
     name:     {required:true},
     qty:      {required:true},
-    ing_id:   {required:false},
+    ingid:    {required:false},
     unit:     {required:false},
     note:     {required:false}
   },
@@ -358,17 +267,15 @@ exports.addIngredientToRecipe = {
     var recipe_id     = connection.params.recipeid;
     var ing_quantity  = connection.params.qty;
     var ing_unit      = connection.params.unit || null;
-    var param_ing_id  = connection.params.ing_id;
+    var param_ing_id  = connection.params.ingid;
     var ing_note      = connection.params.note || null;
     var insertQuery   = "INSERT INTO recipeingredientlist (recipe_id, ingredient_id, quantity, unit, note) VALUES( ${recipe_id}, ${ing_id}, ${ing_quantity}, ${ing_unit}, ${ing_note})";
+    var ing_name = connection.params.name;
 
-    var searchName2 = connection.params.name;
-    //searchName2 = "'"+searchName2+"'";
-    var getIngredientIdQuery = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE ${ing_name}";// + searchName2.toUpperCase();
+    var getIngredientIdQuery = "SELECT id, name FROM ingredients WHERE UPPER(name) LIKE ${ing_name}";
 
     if (param_ing_id === undefined){
-      //db.one(getIngredientIdQuery, { "ingredient_name":ing_name_upper }).then(function(data){
-      db.query(getIngredientIdQuery,{"ing_name" : searchName2.toUpperCase()}).then(function(data){
+      db.query(getIngredientIdQuery,{"ing_name" : ing_name.toUpperCase()}).then(function(data){
         var ing_id = data[0].id;
         var values = {
           "recipe_id":recipe_id,
@@ -377,7 +284,7 @@ exports.addIngredientToRecipe = {
           "ing_unit": ing_unit,
           "ing_note": ing_note
         };
-        console.log("ing_name", searchName2);
+        console.log("ing_name", ing_name);
         db.none(insertQuery,values).then(function(data){
           var message = "Successfuly added a new ingredient to the list associated with recipe_id: " +recipe_id;
           connection.response = message;
@@ -400,7 +307,7 @@ exports.addIngredientToRecipe = {
         next(new Error(message));
       });
     }
-    else{
+    else if (param_ing_id !== undefined){
       var values = {
         "recipe_id":recipe_id,
         "ing_id": param_ing_id, //here, we are using the defined value
@@ -420,6 +327,14 @@ exports.addIngredientToRecipe = {
         };
         next(new Error(message));
       });
+    }
+    else{
+      var message = "This Action requires either an 'ingid' or 'name' in order to function."
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
     }
   }
 }
@@ -460,3 +375,9 @@ exports.addStepToRecipe = {
     });
   }
 }
+
+//Deletions
+//Delete A Recipe by ID.
+exports.remove
+//Delete an Ingredient in a recipe.
+//Delete a Step in a recipe.
