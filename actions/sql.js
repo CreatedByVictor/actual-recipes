@@ -257,9 +257,9 @@ exports.addIngredientToRecipe = {
   description: "I add an Ingredient to a recipe selected by the id.",
   inputs:{
     recipeid: {required:true},
-    name:     {required:true},
+    name:     {required:false},
     qty:      {required:true},
-    ingid:    {required:false},
+    ingid:    {required:false}, //Either ingid or name is required here. the id will be given priority if both are present.
     unit:     {required:false},
     note:     {required:false}
   },
