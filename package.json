@@ -1,7 +1,7 @@
  {
-  "author"      : "YOU <YOU@example.com>",
-  "name"        : "my_actionhero_project",
-  "description" : "my actionhero project",
+  "author"      : "Victor Lawrence <madhatterblues@gmail.com>",
+  "name"        : "ActualRecipes",
+  "description" : "An example web app functioning as a recipe book.",
   "version"     : "0.0.1",
   "engines"     : {
     "node": ">=0.10.0"
@@ -9,7 +9,11 @@
   "dependencies" : {
     "actionhero" : "12.1.2",
     "ws"         : "latest",
-    "grunt"      : "latest"
+    "grunt"      : "latest",
+    "q"			 : "latest",
+    "pg"         : "latest",
+    "pg-promise" : "latest",
+    "moment"     : "latest"
   },
   "devDependencies" : {
     "mocha"  : "latest",

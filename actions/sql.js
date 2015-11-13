@@ -662,7 +662,7 @@ exports.updateStep={
   name:"updateStep",
   description:"I update a Step with a given id, with new data.",
   inputs:{
-    stepid: {required:true}
+    stepid: {required:true},
     order:  {required:true},
     text:   {required:true}
   },
