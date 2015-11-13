@@ -14,7 +14,9 @@ var connectionObject = {
 
 var db = pgp(connectionObject);
 
-//Lists
+//
+//  Lists
+//
 exports.listAllRecipes = {
   name:"listOfRecipes",
   description: "I return the full list of all recipes without ingredients and directions.",
@@ -59,7 +61,9 @@ exports.listAllIngredients = {
       });
   }
 }
-//Searches
+//
+//  Searches
+//
 exports.search = {
   name: 'search', //not fully implemented
   description: 'I will return an object of results from a database query.',
@@ -85,7 +89,8 @@ exports.search = {
       });
   }
 
-}; //Not fully implemented.
+};
+//Search is Not fully implemented.
 exports.findIngredientIdFromName = {
   name:"findIngredientIdFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
@@ -175,7 +180,9 @@ exports.findRecipesWithIngredient = {
     });
   }
 }
-//Additions
+//
+//  CREATE
+//
 exports.addRecipeToDatabase = {
   name:"addRecipeToDatabase",
   description:"I add a new recipe to the database and return its id.",
@@ -413,7 +420,9 @@ exports.addStepToRecipe = {
     });
   }
 }
-//Deletions
+//
+//  DELETE
+//
 exports.removeRecipeFromDatabase = {
   name:"removeRecipeFromDatabase",
   description:"I remove a recipe, its ingredients, and directions from the database given the recipe id.",
@@ -533,7 +542,9 @@ exports.removeIngredientFromDatabase = {
     });
   }
 }
-//Updates
+//
+//  UPDATE
+//
 exports.updateRecipe = {
   name:"updateRecipe",
   description:"I update a recipe with a given id, with new data.",
