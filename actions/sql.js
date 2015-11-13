@@ -91,6 +91,26 @@ exports.search = {
 
 };
 //Search is Not fully implemented.
+exports.getRecipe = {
+  name:"getRecipe",
+  description:"I return a given recipe.",
+  inputs:{
+    recipeid: {required:true}
+  },
+  run: function(api,connection,next){
+    db.query("SELECT * FROM recipes WHERE id = ${id}",{"id": connection.params.id}).then(function(data){
+      connection.response = data;
+      next();
+    }).catch(function(error){
+      var message = "Had trouble getting a list of all the recipes.";
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
 exports.findIngredientIdFromName = {
   name:"findIngredientIdFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
