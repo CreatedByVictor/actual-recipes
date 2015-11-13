@@ -212,7 +212,7 @@
     this.echo = function(input){return input;};
     //$scope.recipeData = new RecipeData()
 
-    $scope.recipes = bookListing;
+    this.recipes = bookListing;
 
     this.presentState={
       "mode":_currentMode,
