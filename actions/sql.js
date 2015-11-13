@@ -18,7 +18,7 @@ var db = pgp(connectionObject);
 //  Lists
 //
 exports.listAllRecipes = {
-  name:"listOfRecipes",
+  name:"listAllRecipes",
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
   run: function(api,connection,next){
