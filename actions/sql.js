@@ -407,7 +407,7 @@ exports.removeRecipe = {
   name:"removeRecipe",
   description:"I remove a recipe, its ingredients, and directions from the database given the recipe id.",
   inputs:{
-    id{required:true}
+    id:{required:true}
   },
   run:function(api, connection, next){
     var recipe_id = connection.params.id;
