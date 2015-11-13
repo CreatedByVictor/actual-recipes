@@ -23,9 +23,10 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
-  <body ng-controller="RecipeController as recipe">
+  <body ng-controller="recipe as recipeController">
     <p>{{ 0 | date }}</p>
-    <p>{{recipe.recipeList}}</p>
+    <p>{{recipe.recipes}}</p>
+    <p>{{recipe.recipe}}</p>
     <button ng-click="book.UpdateRecipes()">Update</button>
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript" ></script>
