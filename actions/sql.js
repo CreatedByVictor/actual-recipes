@@ -13,36 +13,9 @@ var connectionObject = {
 };
 
 var db = pgp(connectionObject);
-//Searches
-exports.search = {
-  name: 'search',
-  description: 'I will return an object of results from a database query.',
 
-  inputs:{
-    q:{required:false}
-  },
-
-  outputExample:{
-    "results":"query"
-  },
-
-  run: function(api, connection, next){
-
-    var query = "SELECT * FROM recipes";
-    db.query(query)
-      .then(function(data){
-        connection.response = data;
-        next();
-      })
-      .catch(function(error){
-        connection.response.error = error;
-        next();
-      });
-  }
-
-};
-
-exports.listRecipes = {
+//Lists
+exports.listAllRecipes = {
   name:"listOfRecipes",
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
@@ -70,7 +43,49 @@ exports.listRecipes = {
 
   }
 }
+exports.listAllIngredients = {
+  name:"listAllIngredients",
+  description:"I return the current contents of the Ingredients database.",
+  inputs:{},
+  run: function(api, connection, next){
+    db.query("SELECT * FROM ingredients")
+      .then(function(data){
+        connection.response = data;
+        next();
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next( new Error(error));
+      });
+  }
+}
+//Searches
+exports.search = {
+  name: 'search', //not fully implemented
+  description: 'I will return an object of results from a database query.',
 
+  inputs:{
+    q:{required:false}
+  },
+
+  outputExample:{
+    "results":"query"
+  },
+
+  run: function(api, connection, next){
+    var query = "SELECT * FROM recipes";
+    db.query(query)
+      .then(function(data){
+        connection.response = data;
+        next();
+      })
+      .catch(function(error){
+        connection.response.error = error;
+        next();
+      });
+  }
+
+}; //Not fully implemented.
 exports.findIngredientIdFromName = {
   name:"findIngredientIdFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
@@ -96,33 +111,15 @@ exports.findIngredientIdFromName = {
       });
   }
 }
-
-exports.listAllIngredients = {
-  name:"listAllIngredients",
-  description:"I return the current contents of the Ingredients database.",
-  inputs:{},
-  run: function(api, connection, next){
-    db.query("SELECT * FROM ingredients")
-      .then(function(data){
-        connection.response = data;
-        next();
-      })
-      .catch(function(error){
-        connection.response.error = error;
-        next( new Error(error));
-      });
-  }
-}
-
-exports.listRecipeIngredients = {
-  name:"listRecipeIngredients",
+exports.findRecipeIngredients = {
+  name:"findRecipeIngredients",
   description: "I return the list of ingredients and their respective data",
   inputs:{
-    id:{required:true}
+    ingid:{required:true}
   },
   run: function(api, connection, next){
     var query = "SELECT list.id, list.recipe_id, list.quantity, list.unit, ing.name, list.note FROM ingredients AS ing, recipeingredientlist AS list WHERE list.recipe_id = ${recipe_id} AND list.ingredient_id = ing.id";
-    var values = {"recipe_id":connection.params.id};
+    var values = {"recipe_id":connection.params.ingid};
     db.query(query,values).then(function(data){
       connection.response = data;
       next();
@@ -136,13 +133,12 @@ exports.listRecipeIngredients = {
     });
   }
 }
-
-exports.listRecipeDirections = {
-  name:"listRecipeDirections",
+exports.findRecipeDirections = {
+  name:"findRecipeDirections",
   description:"I return the directions and their order for a given recipe id.",
-  inputs:{ id:{required:true}},
+  inputs:{ recipeid:{required:true}},
   run: function(api, connection, next){
-    var recipe_id = connection.params.id;
+    var recipe_id = connection.params.recipeid;
     var query = "SELECT * FROM recipedirectionslist WHERE recipe_id = ${recipe_id} ORDER BY steporder";
     db.many(query,{"recipe_id":recipe_id}).then(function(data){
       connection.response = data;
@@ -157,7 +153,6 @@ exports.listRecipeDirections = {
     });
   }
 }
-
 exports.findRecipesWithIngredient = {
   name:"findRecipesWithIngredient",
   description:"I take an ingredient id and return all recipe ids that include it.",
@@ -181,8 +176,8 @@ exports.findRecipesWithIngredient = {
   }
 }
 //Additions
-exports.addRecipe = {
-  name:"addRecipe",
+exports.addRecipeToDatabase = {
+  name:"addRecipeToDatabase",
   description:"I add a new recipe to the database and return its id.",
   inputs:{
     name:         {required:true},
@@ -202,12 +197,33 @@ exports.addRecipe = {
     var r_preptime = connection.params.preptime;
     var r_link = connection.params.link;
 
-    var query = "INSERT INTO recipes (name, )"
+    var query = "INSERT INTO recipes (name, description, username, yield, preptime, cooktime, link) VALUES (${name}, ${description}, ${username}, ${yield}, ${preptime}, ${cooktime}, ${link})";
+    var values = {
+      "name":r_name,
+      "description": r_description,
+      "username": r_author,
+      "yield": r_yield,
+      "preptime":r_preptime,
+      "cooktime":r_cooktime,
+      "link":r_link
+    };
+
+    db.none(query,values).then(function(_){
+      var message = "Successfully added the ingredient to the database.";
+      connection.response = message;
+      next();
+    }).catch(function(error){
+      var message = "Had trouble removing the ingredient from the ingredients database.";
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
   }
 }
-
-exports.addIngredientToDB = {
-  name:"addIngredientToDB",
+exports.addIngredientToDatabase = {
+  name:"addIngredientToDatabase",
   description: "I add a named ingredient to its database table and return the id:name pair that is returned.",
   inputs:{
     name:{required:true}
@@ -275,9 +291,7 @@ exports.addIngredientToDB = {
     });
   }
 }
-
 exports.addIngredientToRecipe = {
-  //http://blackoak-fogwoods.rhcloud.com/api/addIngredientToRecipe?recipeid=1&name=Garlic%20Salt&qty=1/4&unit=Teaspoon&note=Use%20sparingly,%20a%20little%20goes%20a%20long%20way.
   name:"addIngredientToRecipe",
   description: "I add an Ingredient to a recipe selected by the id.",
   inputs:{
@@ -363,7 +377,6 @@ exports.addIngredientToRecipe = {
     }
   }
 }
-
 exports.addStepToRecipe = {
   name:"addStepToRecipe",
   description:"I add a step to the directions of a recipe with a given id.",
@@ -400,17 +413,15 @@ exports.addStepToRecipe = {
     });
   }
 }
-
 //Deletions
-//Delete A Recipe by ID.
-exports.removeRecipe = {
-  name:"removeRecipe",
+exports.removeRecipeFromDatabase = {
+  name:"removeRecipeFromDatabase",
   description:"I remove a recipe, its ingredients, and directions from the database given the recipe id.",
   inputs:{
-    id:{required:true}
+    recipeid:{required:true}
   },
   run:function(api, connection, next){
-    var recipe_id = connection.params.id;
+    var recipe_id = connection.params.recipeid;
     db.none("DELETE FROM recipes WHERE id = ${recipe_id}",{"recipe_id":recipe_id}).then(function(_){
       db.none("DELETE FROM listRecipeDirections WHERE recipeid = ${recipe_id}", {"recipe_id":recipe_id}).then(function(_){
         db.none("DELETE FROM listRecipeIngredients WHERE recipeid = ${recipe_id}", {"recipe_id":recipe_id}).then(function(_){
@@ -445,15 +456,14 @@ exports.removeRecipe = {
     });
   }
 }
-//Delete an Ingredient in a recipe.
 exports.removeIngredientFromRecipe = {
   name:"removeIngredientFromRecipe",
   description:"I take a recipeingredientList id and remove it from the database.",
   inputs:{
-    id:{required:true}
+    inglistid:{required:true}
   },
   run: function(api, connection, next){
-    var r_ing_id = connection.params.id;
+    var r_ing_id = connection.params.inglistid;
     db.none("DELETE FROM recipeingredientlist WHERE id = ${id}",{"id":r_ing_id})
     .then(function(_){
       var message = "Successfully removed the ingredient from its list in the database.";
@@ -469,15 +479,14 @@ exports.removeIngredientFromRecipe = {
     });
   }
 }
-//Delete a Step in a recipe.
 exports.removeStepFromRecipe = {
   name:"removeStepFromRecipe",
   description:"I take a recipedirectionslist id and remove it from the database.",
   inputs:{
-    id:{required:true}
+    stepid:{required:true}
   },
   run: function(api, connection, next){
-    var r_step_id = connection.params.id;
+    var r_step_id = connection.params.stepid;
     db.none("DELETE FROM recipedirectionslist WHERE id = ${id}",{"id":r_step_id})
     .then(function(_){
       var message = "Successfully removed the step from its list in the database.";
@@ -493,15 +502,14 @@ exports.removeStepFromRecipe = {
     });
   }
 }
-//remove an ingredeint from its database.
-exports.removeIngredient = {
-  name:"removeIngredient",
+exports.removeIngredientFromDatabase = {
+  name:"removeIngredientFromDatabase",
   description:"I take an ingredient id and remove said ingredient from the database as well as in every instance of its use in any recipe in the database.",
   inputs:{
-    id:{required:true}
+    ingid:{required:true}
   },
   run: function(api,connection,next){
-    var ing_id = connection.params.id;
+    var ing_id = connection.params.ingid;
     db.none("DELETE FROM ingredients WHERE id = ${id}",{"id":ing_id}).then(function(_){
       db.none("DELETE FROM recipeingredientlist WHERE ingredient_id = ${id}",{"id":ing_id}).then(function(_){
         var message = "Successfully removed the ingredient and everywhere it was used in the database.";
@@ -517,6 +525,167 @@ exports.removeIngredient = {
       });
     }).catch(function(error){
       var message = "Had trouble removing the ingredient from the ingredients database.";
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
+//Updates
+exports.updateRecipe = {
+  name:"updateRecipe",
+  description:"I update a recipe with a given id, with new data.",
+  inputs:{
+    recipeid:     {required:true},
+    name:         {required:true},
+    description:  {required:false},
+    yield:        {required:false},
+    cooktime:     {required:false},
+    preptime:     {required:false},
+    author:       {required:false},
+    link:         {required:false}
+  },
+  run:function(api, connection, next){
+    var r_id = connection.params.recipeid;
+    var r_name = connection.params.name;
+    var r_description = connection.params.description;
+    var r_author = connection.params.author;
+    var r_yield = connection.params.yield;
+    var r_cooktime = connection.params.cooktime;
+    var r_preptime = connection.params.preptime;
+    var r_link = connection.params.link;
+
+    var query = "UPDATE recipes SET name = ${name}, description = ${description}, username = ${username}, yield = ${yield}, preptime = ${preptime}, cooktime = ${cooktime}, link = ${link}) WHERE id = ${r_id}";
+    var values = {
+      "r_id": r_id,
+      "name":r_name,
+      "description": r_description,
+      "username": r_author,
+      "yield": r_yield,
+      "preptime":r_preptime,
+      "cooktime":r_cooktime,
+      "link":r_link
+    };
+
+    db.none(query,values).then(function(_){
+      var message = "Successfully Updated Recipe.";
+      connection.response = {
+        "message": message,
+      };
+      next();
+    }).catch(function(error){
+      var message = "Had trouble updating the recipe.";
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+
+  }
+}
+exports.updateIngredient ={
+  name:"updateIngredient",
+  description:"I update an ingredint in the ingredient database",
+  inputs:{
+    ingid:  {required:true},
+    name:   {required:true}
+  },
+  run:function(api, connection, next){
+    var ing_id = connection.params.ingid;
+    var ing_name = connection.params.name;
+    var values = {
+      "name":ing_name,
+      "ingid":ing_id
+    };
+    var query = "UPDATE ingredients SET name = ${name} WHERE id = ${ingid}";
+    db.none(query,values).then(function(_){
+      var message = "Successfully updated ingredient.";
+      connection.response = {
+        "message": message,
+      };
+      next();
+    }).catch(function(error){
+      var message = "Had trouble updating the specified ingredient.";
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
+exports.updateIngredientInRecipe={
+  name:"updateIngredientInRecipe",
+  description:"I update an ingredient (with a given id) that is also used in a recipe, with new data.",
+  inputs:{
+    ringid:   {required:true},
+    name:     {required:false},
+    qty:      {required:false},
+    unit:     {required:false},
+    note:     {required:false}
+  },
+  run:function(api, connection, next){
+    var r_ing_id =    connection.params.ringid;
+    var r_ing_name =  connection.params.name;
+    var r_ing_qty =   connection.params.qty;
+    var r_ing_unit =  connection.params.unit;
+    var r_ing_note =  connection.params.note;
+
+    var query = "UPDATE recipeingredientlist SET name = ${name}, quantity = ${qty}, unit = ${unit}, note = ${note} WHERE id = ${ringid}";
+    var values = {
+      "name":r_ing_name,
+      "qty":r_ing_qty,
+      "unit":r_ing_unit,
+      "note":r_ing_note,
+      "ringid":r_ing_id
+    }
+    db.none(query,values).then(function(_){
+      var message = "Successfully updated ingredient in the list.";
+      connection.response = {
+        "message": message,
+      };
+      next();
+    }).catch(function(error){
+      var message = "Had trouble updating the specified ingredient in the list.";
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
+exports.updateStep={
+  name:"updateStep",
+  description:"I update a Step with a given id, with new data.",
+  inputs:{
+    stepid: {required:true}
+    order:  {required:true},
+    text:   {required:true}
+  },
+  run:function(api, connection, next){
+    var r_step_id =     connection.params.stepid;
+    var r_step_order =  connection.params.order;
+    var r_step_text =   connection.params.text;
+
+    var query = "UPDATE listRecipeDirections SET order = ${order}, text = ${text} WHERE id = ${id}";
+    var values = {
+      "order":r_step_order,
+      "text":r_step_text,
+      "id":r_step_id
+    };
+
+    db.none(query,values).then(function(_){
+      var message = "Successfully updated this step.";
+      connection.response = {
+        "message": message,
+      };
+      next();
+    }).catch(function(error){
+      var message = "Had trouble updating the specified step.";
       connection.response.error = {
         "message": message,
         "evidence": error
