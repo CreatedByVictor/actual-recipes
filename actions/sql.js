@@ -98,7 +98,7 @@ exports.getRecipe = {
     recipeid: {required:true}
   },
   run: function(api,connection,next){
-    db.query("SELECT * FROM recipes WHERE id = ${id}",{"id": connection.params.id}).then(function(data){
+    db.query("SELECT * FROM recipes WHERE id = ${id}",{"id": connection.params.recipeid}).then(function(data){
       connection.response = data;
       next();
     }).catch(function(error){
