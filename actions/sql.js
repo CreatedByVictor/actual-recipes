@@ -42,8 +42,8 @@ exports.search = {
 
 };
 
-exports.getListOfRecipes = {
-  name:"getListOfRecipes",
+exports.ListOfRecipes = {
+  name:"ListOfRecipes",
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
   run: function(api,connection,next){
