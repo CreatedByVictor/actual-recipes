@@ -181,6 +181,31 @@ exports.findRecipesWithIngredient = {
   }
 }
 //Additions
+exports.addRecipe = {
+  name:"addRecipe",
+  description:"I add a new recipe to the database and return its id.",
+  inputs:{
+    name:         {required:true},
+    description:  {required:false},
+    yield:        {required:false},
+    cooktime:     {required:false},
+    preptime:     {required:false},
+    author:       {required:false},
+    link:         {required:false}
+  },
+  run:function(api, connection, next){
+    var r_name = connection.params.name;
+    var r_description = connection.params.description;
+    var r_author = connection.params.author;
+    var r_yield = connection.params.yield;
+    var r_cooktime = connection.params.cooktime;
+    var r_preptime = connection.params.preptime;
+    var r_link = connection.params.link;
+
+    var query = "INSERT INTO recipes (name, )"
+  }
+}
+
 exports.addIngredientToDB = {
   name:"addIngredientToDB",
   description: "I add a named ingredient to its database table and return the id:name pair that is returned.",
@@ -378,6 +403,125 @@ exports.addStepToRecipe = {
 
 //Deletions
 //Delete A Recipe by ID.
-exports.remove
+exports.removeRecipe = {
+  name:"removeRecipe",
+  description:"I remove a recipe, its ingredients, and directions from the database given the recipe id.",
+  inputs:{
+    id{required:true}
+  },
+  run:function(api, connection, next){
+    var recipe_id = connection.params.id;
+    db.none("DELETE FROM recipes WHERE id = ${recipe_id}",{"recipe_id":recipe_id}).then(function(_){
+      db.none("DELETE FROM listRecipeDirections WHERE recipeid = ${recipe_id}", {"recipe_id":recipe_id}).then(function(_){
+        db.none("DELETE FROM listRecipeIngredients WHERE recipeid = ${recipe_id}", {"recipe_id":recipe_id}).then(function(_){
+          var message = "Successfully removed everything associated with recipe id: " + recipe_id;
+          connection.response = {
+            "message": message,
+          };
+          next();
+        }).catch(function(error){
+          var message = "Had trouble removing the ingredients associated with recipe id: " + recipe_id;
+          connection.response.error = {
+            "message": message,
+            "evidence": error
+          };
+          next(new Error(message));
+        })
+      }).catch(function(error){
+        var message = "Had trouble removing the directions associated with recipe id: " + recipe_id;
+        connection.response.error = {
+          "message": message,
+          "evidence": error
+        };
+        next(new Error(message));
+      })
+    }).catch(function(error){
+      var message = "Had trouble removing the recipe with the id: " + recipe_id;
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
 //Delete an Ingredient in a recipe.
+exports.removeIngredientFromRecipe = {
+  name:"removeIngredientFromRecipe",
+  description:"I take a recipeingredientList id and remove it from the database.",
+  inputs:{
+    id:{required:true}
+  },
+  run: function(api, connection, next){
+    var r_ing_id = connection.params.id;
+    db.none("DELETE FROM recipeingredientlist WHERE id = ${id}",{"id":r_ing_id})
+    .then(function(_){
+      var message = "Successfully removed the ingredient from its list in the database.";
+      connection.response = message;
+      next();
+    }).catch(function(error){
+      var message = "Had trouble removing the ingredient with the id: " + r_ing_id;
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
 //Delete a Step in a recipe.
+exports.removeStepFromRecipe = {
+  name:"removeStepFromRecipe",
+  description:"I take a recipedirectionslist id and remove it from the database.",
+  inputs:{
+    id:{required:true}
+  },
+  run: function(api, connection, next){
+    var r_step_id = connection.params.id;
+    db.none("DELETE FROM recipedirectionslist WHERE id = ${id}",{"id":r_step_id})
+    .then(function(_){
+      var message = "Successfully removed the step from its list in the database.";
+      connection.response = message;
+      next();
+    }).catch(function(error){
+      var message = "Had trouble removing the step with the id: " + r_step_id;
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
+//remove an ingredeint from its database.
+exports.removeIngredient = {
+  name:"removeIngredient",
+  description:"I take an ingredient id and remove said ingredient from the database as well as in every instance of its use in any recipe in the database.",
+  inputs:{
+    id:{required:true}
+  },
+  run: function(api,connection,next){
+    var ing_id = connection.params.id;
+    db.none("DELETE FROM ingredients WHERE id = ${id}",{"id":ing_id}).then(function(_){
+      db.none("DELETE FROM recipeingredientlist WHERE ingredient_id = ${id}",{"id":ing_id}).then(function(_){
+        var message = "Successfully removed the ingredient and everywhere it was used in the database.";
+        connection.response = message;
+        next();
+      }).catch(function(error){
+        var message = "Ingredient removed, however I had trouble removing the ingredient from recipies in which it occued.";
+        connection.response.error = {
+          "message": message,
+          "evidence": error
+        };
+        next(new Error(message));
+      });
+    }).catch(function(error){
+      var message = "Had trouble removing the ingredient from the ingredients database.";
+      connection.response.error = {
+        "message": message,
+        "evidence": error
+      };
+      next(new Error(message));
+    });
+  }
+}
