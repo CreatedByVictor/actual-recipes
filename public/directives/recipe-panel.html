@@ -1,24 +1,9 @@
-<div class="recipe panel panel-default" ng-cloak>
-  <div class="panel-heading">
-    <h3 class="panel-title">{{recipe.title}}</h3>
-  </div>
-  <div class="panel-body">
-    {{recipe.description}}
-  </div>
-  <div class="container-fluid">
-    <ul class="list-inline">
-      <li ng-show="recipe.yield"><div>
-        Yield: {{recipe.yield}}
-      </div></li>
-      <li ng-show="recipe.time.prep"><div>
-        Prep Time: {{recipe.time.prep}}
-      </div></li>
-      <li ng-show="recipe.time.cook"><div>
-        Cook Time: {{recipe.time.cook}}
-      </div></li>
-    </ul>
-  </div>
-  <div class="panel-footer" ng-controller="ModeController as mode">
-    <button type="button" ng-click="mode.setToViewMode($index)" class="btn btn-sm btn-default">View this Recipe</button>
+<div>
+  <h1>ActualRecipes</h1>
+  <div ng-repeat="recipe in recipes">
+    <h2>{{ recipe.title }}</h2>
+    <p>{{ recipe.description }}</p>
+    <div ingredient-panel recipe-id='{{recipe.id}}'></div>
+    <div direction-panel recipe-id='{{recipe.id}}'></div>
   </div>
 </div>

@@ -972,3 +972,157 @@
 {"level":"notice","message":"environment: development","timestamp":"2015-11-13T12:12:02.680Z"}
 {"level":"notice","message":"*** Server Started @ 2015-11-13 07:12:02 ***","timestamp":"2015-11-13T12:12:02.680Z"}
 {"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T12:12:45.465Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T12:16:38.551Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T12:16:38.601Z"}
+{"level":"notice","message":"pid: 2687","timestamp":"2015-11-13T12:16:38.753Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T12:16:38.754Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T12:16:38.754Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T12:16:38.755Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T12:16:38.762Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T12:16:38.764Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T12:16:38.772Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 07:16:38 ***","timestamp":"2015-11-13T12:16:38.773Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T12:22:30.471Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T12:22:33.274Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T12:22:33.333Z"}
+{"level":"notice","message":"pid: 2876","timestamp":"2015-11-13T12:22:33.523Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T12:22:33.523Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T12:22:33.524Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T12:22:33.524Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T12:22:33.535Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T12:22:33.535Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T12:22:33.544Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 07:22:33 ***","timestamp":"2015-11-13T12:22:33.546Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T12:31:43.836Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T12:33:22.727Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T12:33:22.775Z"}
+{"level":"notice","message":"pid: 3221","timestamp":"2015-11-13T12:33:22.936Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T12:33:22.936Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T12:33:22.937Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T12:33:22.937Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T12:33:22.948Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T12:33:22.948Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T12:33:22.956Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 07:33:22 ***","timestamp":"2015-11-13T12:33:22.957Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T13:07:31.202Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T13:07:34.665Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T13:07:34.715Z"}
+{"level":"notice","message":"pid: 4173","timestamp":"2015-11-13T13:07:34.880Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T13:07:34.881Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T13:07:34.881Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T13:07:34.882Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T13:07:34.889Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T13:07:34.889Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T13:07:34.897Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 08:07:34 ***","timestamp":"2015-11-13T13:07:34.898Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T13:42:51.156Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T13:42:55.661Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T13:42:55.713Z"}
+{"level":"notice","message":"pid: 5142","timestamp":"2015-11-13T13:42:55.890Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T13:42:55.891Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T13:42:55.891Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T13:42:55.892Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T13:42:55.900Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T13:42:55.901Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T13:42:55.910Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 08:42:55 ***","timestamp":"2015-11-13T13:42:55.910Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T13:49:21.021Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T13:49:27.061Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T13:49:27.112Z"}
+{"level":"notice","message":"pid: 5328","timestamp":"2015-11-13T13:49:27.275Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T13:49:27.276Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T13:49:27.277Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T13:49:27.277Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T13:49:27.284Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T13:49:27.285Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T13:49:27.293Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 08:49:27 ***","timestamp":"2015-11-13T13:49:27.293Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T13:52:36.469Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T13:52:39.113Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T13:52:39.165Z"}
+{"level":"notice","message":"pid: 5423","timestamp":"2015-11-13T13:52:39.332Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T13:52:39.333Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T13:52:39.333Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T13:52:39.334Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T13:52:39.339Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T13:52:39.342Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T13:52:39.351Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 08:52:39 ***","timestamp":"2015-11-13T13:52:39.351Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T13:55:49.192Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T13:55:52.783Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T13:55:52.835Z"}
+{"level":"notice","message":"pid: 5530","timestamp":"2015-11-13T13:55:53.010Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T13:55:53.011Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T13:55:53.012Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T13:55:53.013Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T13:55:53.020Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T13:55:53.023Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T13:55:53.032Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 08:55:53 ***","timestamp":"2015-11-13T13:55:53.033Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T14:09:17.789Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T14:09:20.658Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T14:09:20.717Z"}
+{"level":"notice","message":"pid: 5948","timestamp":"2015-11-13T14:09:20.900Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T14:09:20.901Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T14:09:20.902Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T14:09:20.902Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T14:09:20.910Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T14:09:20.919Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 09:09:20 ***","timestamp":"2015-11-13T14:09:20.919Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T14:09:20.921Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T14:12:44.681Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T14:12:47.473Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T14:12:47.533Z"}
+{"level":"notice","message":"pid: 6056","timestamp":"2015-11-13T14:12:47.706Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T14:12:47.707Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T14:12:47.707Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T14:12:47.708Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T14:12:47.716Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T14:12:47.717Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T14:12:47.726Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 09:12:47 ***","timestamp":"2015-11-13T14:12:47.727Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T14:15:27.857Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T14:15:30.387Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T14:15:30.436Z"}
+{"level":"notice","message":"pid: 6144","timestamp":"2015-11-13T14:15:30.581Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T14:15:30.582Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T14:15:30.582Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T14:15:30.583Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T14:15:30.590Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T14:15:30.591Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T14:15:30.600Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 09:15:30 ***","timestamp":"2015-11-13T14:15:30.600Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T14:36:59.372Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T14:37:03.061Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T14:37:03.126Z"}
+{"level":"notice","message":"pid: 6721","timestamp":"2015-11-13T14:37:03.326Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T14:37:03.326Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T14:37:03.327Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T14:37:03.329Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T14:37:03.343Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T14:37:03.344Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T14:37:03.357Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 09:37:03 ***","timestamp":"2015-11-13T14:37:03.358Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T14:40:08.951Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T14:40:11.433Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T14:40:11.484Z"}
+{"level":"notice","message":"pid: 6817","timestamp":"2015-11-13T14:40:11.647Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T14:40:11.648Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T14:40:11.648Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T14:40:11.649Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T14:40:11.657Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T14:40:11.658Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T14:40:11.667Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 09:40:11 ***","timestamp":"2015-11-13T14:40:11.667Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T14:41:12.964Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-13T14:41:18.410Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-13T14:41:18.460Z"}
+{"level":"notice","message":"pid: 6865","timestamp":"2015-11-13T14:41:18.626Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-13T14:41:18.627Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-13T14:41:18.627Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-13T14:41:18.628Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-13T14:41:18.637Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-13T14:41:18.637Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-13T14:41:18.645Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-13 09:41:18 ***","timestamp":"2015-11-13T14:41:18.646Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-13T14:54:52.870Z"}

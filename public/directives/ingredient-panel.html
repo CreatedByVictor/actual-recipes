@@ -1,0 +1,10 @@
+<div>
+  <h3>Ingredients</h3>
+  <div ng-show="ingredients.length" ng-repeat="ing in ingredients">
+    <span>{{ing.quantity}} {{ing.unit}} {{ing.name}}</span><br>
+    <small><span>{{ing.note}}</span></small>
+  </div>
+  <div ng-hide="ingredients.length">
+    ...Loading...
+  </div>
+</div>

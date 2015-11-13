@@ -1,0 +1,9 @@
+<div>
+  <h3>Directions</h3>
+  <div ng-show="directions.length" ng-repeat="step in directions | orderBy: step.steporder">
+    <span>{{step.steporder}}.) {{step.text}}</span>
+  </div>
+  <div ng-hide="directions.length">
+    ...Loading...
+  </div>
+</div>

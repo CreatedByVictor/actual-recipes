@@ -6,35 +6,16 @@
     <meta name="description" content="ActualRecipes, a digital cookbook." />
     <link rel="icon" href="/public/favicon.ico">
     <title>ActualRecipes</title>
-    <!-- this holds an interface for actionhero. -->
-    <script src="/public/javascript/actionheroClient.js"></script>
-
-    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-    <link rel="stylesheet" href="css/material-icons.css">
-    <link href="css/adjustments.css" rel="stylesheet" type="text/css">
-
-    <!-- Latest Bootstrap compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-    <!-- Optional Bootstrap theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
 
     <!--Let browser know website is optimized for mobile-->
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
-  <body ng-controller="recipe as recipeController">
-    <p>{{ 0 | date }}</p>
-    <p>{{recipe.recipes}}</p>
-    <p>{{recipe.recipe}}</p>
-    <button ng-click="book.UpdateRecipes()">Update</button>
+  <body>
+    <div recipe-panel></div>
 
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript" ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis/com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script src="public/javascript/app.js" type="text/javascript"></script>
   </body>
 </html>
