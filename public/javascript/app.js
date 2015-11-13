@@ -27,7 +27,7 @@
         }],
         recipe:function(){ return {}; }
       },
-      templateUrl: '...',
+      //templateUrl: '...',
       controller:'recipeController',
       controllerAs:'recipes'
     }).state('search',{
@@ -39,7 +39,7 @@
           }],
         recipe:function(){ return {}; }
       },
-      templateUrl: '...',
+      //templateUrl: '...',
       controller:'recipeController',
       controllerAs:'recipes'
     })
