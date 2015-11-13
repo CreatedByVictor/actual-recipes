@@ -42,7 +42,7 @@ exports.search = {
 
 };
 
-exports.listOfRecipes = {
+exports.listRecipes = {
   name:"listOfRecipes",
   description: "I return the full list of all recipes without ingredients and directions.",
   inputs: {},
