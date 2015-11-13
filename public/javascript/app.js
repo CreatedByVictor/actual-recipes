@@ -210,8 +210,9 @@
 
   app.controller("BookController", function($scope, RecipeData){
     this.echo = function(input){return input;};
-    this.recipeData = new RecipeData();
-    this.recipes = recipeData.getData();//testing
+    $scope.recipeData = new RecipeData()
+
+    $scope.recipes = recipeData.getData();//testing
 
     this.presentState={
       "mode":_currentMode,
