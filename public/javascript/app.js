@@ -2,7 +2,7 @@
 
   //var app = angular.module("recipeBook", ['ngMaterial']); //For angular material usage
   var app = angular.module("recipeBook", []);
-  /*
+
   var bookListing = [
         {
           title:"Stuffed Jack-O-Lantern Bell Peppers",
@@ -171,7 +171,7 @@
           footnotes:"Aluminum foil can be used to keep food moist, cook it evenly, and make clean-up easier."
         }
       ];
-      */
+
 /*
   app.config(function($mdThemingProvider) {
       // Configure a dark theme with primary foreground yellow
@@ -208,11 +208,11 @@
 
   });
 
-  app.controller("BookController", function($scope, RecipeData){
+  app.controller("BookController", function(){
     this.echo = function(input){return input;};
-    $scope.recipeData = new RecipeData()
+    //$scope.recipeData = new RecipeData()
 
-    $scope.recipes = recipeData.getData();//testing
+    $scope.recipes = bookListing;
 
     this.presentState={
       "mode":_currentMode,
