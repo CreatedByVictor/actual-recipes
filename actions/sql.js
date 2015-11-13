@@ -95,7 +95,7 @@ exports.findIngredientIdFromName = {
   name:"findIngredientIdFromName",
   description: "I search the ingredients table and see if an ingredients exists or if one is similar, and if one of these thing is, I return its id and name.",
   inputs:{
-    name:{required:false}
+    name:{required:true}
   },
   run: function(api,connection,next){
     var searchName = connection.params.name;
@@ -120,11 +120,11 @@ exports.findRecipeIngredients = {
   name:"findRecipeIngredients",
   description: "I return the list of ingredients and their respective data",
   inputs:{
-    ingid:{required:true}
+    recipeid:{required:true}
   },
   run: function(api, connection, next){
     var query = "SELECT list.id, list.recipe_id, list.quantity, list.unit, ing.name, list.note FROM ingredients AS ing, recipeingredientlist AS list WHERE list.recipe_id = ${recipe_id} AND list.ingredient_id = ing.id";
-    var values = {"recipe_id":connection.params.ingid};
+    var values = {"recipe_id":connection.params.recipeid};
     db.query(query,values).then(function(data){
       connection.response = data;
       next();
@@ -187,7 +187,7 @@ exports.addRecipeToDatabase = {
   name:"addRecipeToDatabase",
   description:"I add a new recipe to the database and return its id.",
   inputs:{
-    name:         {required:true},
+    title:         {required:true},
     description:  {required:false},
     yield:        {required:false},
     cooktime:     {required:false},
@@ -196,7 +196,7 @@ exports.addRecipeToDatabase = {
     link:         {required:false}
   },
   run:function(api, connection, next){
-    var r_name = connection.params.name;
+    var r_title = connection.params.title;
     var r_description = connection.params.description;
     var r_author = connection.params.author;
     var r_yield = connection.params.yield;
@@ -204,9 +204,9 @@ exports.addRecipeToDatabase = {
     var r_preptime = connection.params.preptime;
     var r_link = connection.params.link;
 
-    var query = "INSERT INTO recipes (name, description, username, yield, preptime, cooktime, link) VALUES (${name}, ${description}, ${username}, ${yield}, ${preptime}, ${cooktime}, ${link})";
+    var query = "INSERT INTO recipes (title, description, username, yield, preptime, cooktime, link) VALUES (${title}, ${description}, ${username}, ${yield}, ${preptime}, ${cooktime}, ${link})";
     var values = {
-      "name":r_name,
+      "title":title,
       "description": r_description,
       "username": r_author,
       "yield": r_yield,
@@ -632,26 +632,26 @@ exports.updateIngredientInRecipe={
   name:"updateIngredientInRecipe",
   description:"I update an ingredient (with a given id) that is also used in a recipe, with new data.",
   inputs:{
-    ringid:   {required:true},
-    name:     {required:false},
+    inglistid:  {required:true},
+    ingid:    {required:true},
     qty:      {required:false},
     unit:     {required:false},
     note:     {required:false}
   },
   run:function(api, connection, next){
-    var r_ing_id =    connection.params.ringid;
-    var r_ing_name =  connection.params.name;
+    var ing_list_id =connection.params.inglistid;
+    var ing_id =      connection.params.ingid;
     var r_ing_qty =   connection.params.qty;
     var r_ing_unit =  connection.params.unit;
     var r_ing_note =  connection.params.note;
 
-    var query = "UPDATE recipeingredientlist SET name = ${name}, quantity = ${qty}, unit = ${unit}, note = ${note} WHERE id = ${ringid}";
+    var query = "UPDATE recipeingredientlist SET ingredient_id = ${ingid}, quantity = ${qty}, unit = ${unit}, note = ${note} WHERE id = ${inglistid}";
     var values = {
-      "name":r_ing_name,
       "qty":r_ing_qty,
       "unit":r_ing_unit,
       "note":r_ing_note,
-      "ringid":r_ing_id
+      "ingid":ing_id,
+      "inglistid":ing_list_id
     }
     db.none(query,values).then(function(_){
       var message = "Successfully updated ingredient in the list.";

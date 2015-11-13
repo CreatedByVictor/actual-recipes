@@ -1,0 +1,94 @@
+/////////////////////////////////
+//  Creation:
+/////////////////////////////////
+  addRecipeToDatabase
+    title
+    description
+    yield
+    preptime
+    cooktime
+    author
+    link
+
+  addStepToRecipe
+    recipeid
+    order
+    text
+
+  addIngredientToRecipe
+    recipeid
+    name or ingid
+    qty
+    unit
+    note
+
+  addIngredientToDatabase
+    name
+
+/////////////////////////////////
+//  Read:
+/////////////////////////////////
+  search
+    q
+
+  listAllRecipes
+    -none-
+
+  listAllIngredients
+    -none-
+
+  findIngredientIdFromName
+    name
+
+  findRecipeIngredients
+    recipeid
+
+  findRecipeDirections
+    recipeid
+
+  findRecipesWithIngredient
+    ingid
+
+/////////////////////////////////
+//  Update:
+/////////////////////////////////
+  updateRecipe
+    recipeid
+    name
+    description
+    yield
+    preptime
+    cooktime
+    author
+    link
+
+  updateStep
+    stepid
+    order
+    text
+
+  updateIngredient
+    ingid
+    name
+
+  updateIngredientInRecipe
+    inglistid
+    ingid
+    qty
+    unit
+    note
+
+/////////////////////////////////
+//  Delete:
+////////////////////////////////
+  removeRecipeFromDatabase
+    recipeid
+
+  removeStepFromRecipe
+    stepid
+
+  removeIngredientFromDatabase
+    ingid
+
+  removeIngredientFromRecipe
+    inglistid
