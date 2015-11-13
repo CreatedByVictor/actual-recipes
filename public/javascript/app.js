@@ -1,6 +1,6 @@
 (
   function(){
-    var app = angular.module("recipeBook", []);
+    var app = angular.module("recipeBook", ['ngRoute']);
 
     app.service("RecipeService",['$http',function($http){
       this.ListAllIngredients = function(){
