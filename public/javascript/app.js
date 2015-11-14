@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module("recipeBook", ['ui.router']);
+  var app = angular.module("recipeBook", ['ui.router','ui.bootstrap']);
 
   app.factory("recipeFactory",function($http){
     var search, ingredients, recipes, recipe, recipeSteps, recipeIngredients;
@@ -24,9 +24,59 @@
     recipeIngredients = function(id){
       return $http.get('http://blackoak-fogwoods.rhcloud.com/api/findRecipeIngredients?recipeid='+id);
     };
-    //
-    //
-    //
+    search = function(query){
+      return $http.get('http://blackoak-fogwoods.rhcloud.com/api/findRecipeIngredients?q='+query);
+    };
+    //////////////
+    // Creation //
+    //////////////
+    addRecipe = function(title,author,description,cooktime,preptime,yield,link){
+     var query = function(){
+       var output;
+
+       if(title){       output += "title="        +title+"&"};
+       if(author){      output += "author="       +author+"&"};
+       if(description){ output += "description="  +description+"&"};
+       if(yield){       output += "yield="        +yield+"&"};
+       if(cooktime){    output += "cooktime="     +cooktime+"&"};
+       if(preptime){    output += "preptime="     +preptime+"&"};
+       if(link){        output += "link="         +link+"&"};
+
+       return output;
+     }
+      return $http.get('http://blackoak-fogwoods.rhcloud.com/api/addRecipeToDatabase?'+ query());
+    }
+    addStep = function(recipeid, steporder, text){
+      var query = function(){
+        var output = "";
+        if(recipeid){output += "recipeid="+recipeid+"&"};
+        if(order){output += "order="+order+"&"};
+        if(text){output += "text="+text+"&"};
+        return output;
+      }
+      return $http.get('http://blackoak-fogwoods.rhcloud.com/api/addStepToRecipe?'+ query())
+    }
+    addIngredientToRecipe = function(recipeid, ing_id, ing_name, quantity, unit, note){
+      var query = function(){
+        var output = "";
+
+        if(recipeid){output += "recipeid=" + recipeid + "&"};
+        if(ing_id){output += "ingid=" + ing_id + "&"};
+        if(ing_name){output += "name=" + ing_name + "&"};
+        if(quantity){output += "qty=" + quantiy + "&"};
+        if(unit){output += "unit=" + unit + "&"};
+        if(note){output += "note=" + note + "&"};
+
+        return output;
+      }
+      return $http.get('http://blackoak-fogwoods.rhcloud.com/api/addIngredientToRecipe?'+query());
+    }
+    addIngredientToDatabase = function(name){
+      return $http.get('http://blackoak-fogwoods.rhcloud.com/api/addIngredientToDatabase?name='+name);
+    }
+    /////////////////////
+    // The Holy Return //
+    /////////////////////
     return {
       ////////////////////////
       // Lists and Searches //
@@ -35,10 +85,12 @@
       "recipes":recipes,
       "recipe":recipe,
       "recipeDirections":recipeDirections,
-      "recipeIngredients":recipeIngredients
-      //
-      //
-      //
+      "recipeIngredients":recipeIngredients,
+      "search":search,
+      //////////////
+      // Creation //
+      //////////////
+      "addRecipe" : addRecipe,
     };
   });
 

@@ -1,9 +1,8 @@
-<div>
-  <h1>ActualRecipes</h1>
+<div clas"container-fluid">
   <div ng-repeat="recipe in recipes">
-    <h2>{{ recipe.title }}</h2>
+    <h2>{{ recipe.title }}<small> By {{ recipe.username }}</small></h2>
     <p>{{ recipe.description }}</p>
     <div ingredient-panel recipe-id='{{recipe.id}}'></div>
-    <div direction-panel recipe-id='{{recipe.id}}'></div>
+    <div direction-panel  recipe-id='{{recipe.id}}'></div>
   </div>
 </div>
