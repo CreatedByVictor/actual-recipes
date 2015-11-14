@@ -1,8 +1,22 @@
-<div clas"container-fluid">
-  <div ng-repeat="recipe in recipes">
-    <h2>{{ recipe.title }}<small> By {{ recipe.username }}</small></h2>
-    <p>{{ recipe.description }}</p>
-    <div ingredient-panel recipe-id='{{recipe.id}}'></div>
-    <div direction-panel  recipe-id='{{recipe.id}}'></div>
+<div class="">
+  <div class="panel panel-default" ng-repeat="recipe in recipes">
+    <div class="panel-heading">
+      <h2>
+        {{ recipe.title }}
+        <small> By {{ recipe.username }}</small>
+      </h2>
+    </div>
+    <div class="panel-body">
+      <p style="">{{ recipe.description }}</p>
+      <div ingredient-panel recipe-id='{{recipe.id}}'></div>
+      <div direction-panel  recipe-id='{{recipe.id}}'></div>
+    </div>
+    <ul class="list-group">
+      <li ng-show="recipe.yield" class="list-group-item">Yield: {{recipe.yield}}</li>
+      <li ng-show="recipe.preptime" class="list-group-item">Prep Time: {{recipe.preptime}}</li>
+      <li ng-show="recipe.cooktime" class="list-group-item">Cook Time: {{recipe.cooktime}}</li>
+    </ul>
+    <div class="panel-footer">
+    </div>
   </div>
 </div>
