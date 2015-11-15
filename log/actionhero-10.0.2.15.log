@@ -1389,3 +1389,25 @@
 {"level":"notice","message":"environment: development","timestamp":"2015-11-14T13:33:46.405Z"}
 {"level":"notice","message":"*** Server Started @ 2015-11-14 08:33:46 ***","timestamp":"2015-11-14T13:33:46.406Z"}
 {"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-14T23:42:34.039Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-15T01:33:46.050Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-15T01:33:46.095Z"}
+{"level":"notice","message":"pid: 3955","timestamp":"2015-11-15T01:33:46.231Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-15T01:33:46.231Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-15T01:33:46.232Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-15T01:33:46.233Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-15T01:33:46.239Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-15T01:33:46.243Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-15T01:33:46.251Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-14 20:33:46 ***","timestamp":"2015-11-15T01:33:46.251Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-15T01:38:16.636Z"}
+{"level":"notice","message":"*** starting actionhero ***","timestamp":"2015-11-15T01:38:23.515Z"}
+{"level":"warning","message":"running with fakeredis","timestamp":"2015-11-15T01:38:23.563Z"}
+{"level":"notice","message":"pid: 4251","timestamp":"2015-11-15T01:38:23.707Z"}
+{"level":"notice","message":"server ID: 10.0.2.15","timestamp":"2015-11-15T01:38:23.707Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: defaultRoom","timestamp":"2015-11-15T01:38:23.708Z"}
+{"level":"info","message":"ensuring the existence of the chatRoom: anotherRoom","timestamp":"2015-11-15T01:38:23.708Z"}
+{"level":"info","message":"actionhero member 10.0.2.15 has joined the cluster","timestamp":"2015-11-15T01:38:23.717Z"}
+{"level":"notice","message":"starting server: web","timestamp":"2015-11-15T01:38:23.717Z"}
+{"level":"notice","message":"environment: development","timestamp":"2015-11-15T01:38:23.726Z"}
+{"level":"notice","message":"*** Server Started @ 2015-11-14 20:38:23 ***","timestamp":"2015-11-15T01:38:23.726Z"}
+{"level":"alert","message":"Shutting down open servers and stopping task processing","timestamp":"2015-11-15T01:38:40.202Z"}
